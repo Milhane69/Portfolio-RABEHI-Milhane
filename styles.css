@@ -180,18 +180,19 @@ section#competences ul li:hover {
 /* Section des projets */
 #projets {
     padding: 60px 20px;
-    background-color: #f0f2f5;
+    background-color: #f4f4f4;
 }
 
 #projets h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
     color: #3498db;
     text-transform: uppercase;
+    font-weight: 700;
     letter-spacing: 1.5px;
     border-bottom: 3px solid #3498db;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     display: inline-block;
 }
 
@@ -199,8 +200,8 @@ section#competences ul li:hover {
 #projets .filters {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 20px;
+    margin-bottom: 40px;
 }
 
 #projets .filters button {
@@ -209,7 +210,7 @@ section#competences ul li:hover {
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -226,13 +227,13 @@ section#competences ul li:hover {
     padding: 20px;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
 .projets-category:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
 .projets-category h3 {
@@ -283,6 +284,27 @@ section#competences ul li:hover {
     line-height: 1.5;
 }
 
+/* Lien vers le site du clan */
+.projets-category ul li a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.projets-category ul li a:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
 /* Couleurs spécifiques des bordures */
 #projets-ecole {
     border-left: 4px solid #e67e22;
@@ -293,6 +315,34 @@ section#competences ul li:hover {
 #projets-personnels {
     border-left: 4px solid #8e44ad;
 }
+
+/* Animation de fade-in */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #projets h2 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+    .projets-category ul {
+        grid-template-columns: 1fr;
+    }
+
+    .projets-category ul li {
+        padding: 15px;
+    }
+
+    #projets .filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
 
 /* Animation de fade-in */
 @keyframes fadeInUp {
