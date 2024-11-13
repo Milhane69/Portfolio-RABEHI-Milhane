@@ -13,7 +13,6 @@ body {
     font-size: 18px;
     line-height: 1.6;
     font-weight: 400;
-    overflow-x: hidden;
 }
 
 /* Titres */
@@ -180,27 +179,32 @@ section#competences ul li:hover {
 
 /* Section des projets */
 #projets {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
+    padding: 60px 20px;
+    background-color: #f0f2f5;
 }
 
 #projets h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     color: #3498db;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
+/* Filtres des projets */
 #projets .filters {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     margin-bottom: 30px;
 }
 
 #projets .filters button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     font-size: 1rem;
     background-color: #3498db;
     color: white;
@@ -210,16 +214,25 @@ section#competences ul li:hover {
     transition: all 0.3s ease;
 }
 
-#projets .filters button:hover {
+#projets .filters button:hover,
+#projets .filters button.active {
     background-color: #2980b9;
+    transform: translateY(-3px);
 }
 
+/* Style des catégories de projets */
 .projets-category {
     margin-bottom: 40px;
     padding: 20px;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.projets-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
 }
 
 .projets-category h3 {
@@ -231,19 +244,20 @@ section#competences ul li:hover {
     padding-bottom: 10px;
 }
 
+/* Grille des projets */
 .projets-category ul {
     list-style-type: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
 .projets-category ul li {
-    padding: 15px;
+    padding: 20px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     opacity: 0;
@@ -252,9 +266,10 @@ section#competences ul li:hover {
 
 .projets-category ul li:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Informations des projets */
 .projets-category ul li h4 {
     font-size: 1.5rem;
     color: #2c3e50;
@@ -265,9 +280,10 @@ section#competences ul li:hover {
 .projets-category ul li p {
     font-size: 1rem;
     color: #7f8c8d;
+    line-height: 1.5;
 }
 
-/* Couleurs spécifiques */
+/* Couleurs spécifiques des bordures */
 #projets-ecole {
     border-left: 4px solid #e67e22;
 }
@@ -278,107 +294,49 @@ section#competences ul li:hover {
     border-left: 4px solid #8e44ad;
 }
 
+/* Animation de fade-in */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Contact */
-section#contact {
-    background-color: #3498db;
-    color: white;
-    padding: 60px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-top: 40px;
-    text-align: center;
+/* Responsive Design */
+@media (max-width: 768px) {
+    #projets h2 {
+        font-size: 2rem;
+    }
+    .projets-category ul {
+        grid-template-columns: 1fr;
+    }
+    .projets-category ul li {
+        padding: 15px;
+    }
+    #projets .filters {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 /* Footer */
 footer {
     background-color: #2c3e50;
     color: white;
+    padding: 40px 0;
     text-align: center;
-    padding: 40px 20px;
-    border-top: 5px solid #8e44ad;
-    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
+
 footer p {
-    font-size: 1rem;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
-/* Media Queries pour Responsiveness */
-@media (max-width: 768px) {
-    header nav {
-        padding: 0 20px;
-    }
-
-    header nav .logo h1 {
-        font-size: 24px;
-    }
-
-    header nav ul li {
-        margin-left: 15px;
-    }
-
-    header nav ul li a {
-        font-size: 16px;
-        padding: 8px 16px;
-    }
-
-    section#accueil h2 {
-        font-size: 36px;
-    }
-
-    section#accueil p {
-        font-size: 16px;
-        margin-bottom: 30px;
-    }
-
-    section#competences ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .projets-category ul {
-        grid-template-columns: 1fr;
-    }
-
-    #projets h2 {
-        font-size: 2rem;
-    }
+footer a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-    header nav {
-        flex-direction: column;
-    }
-
-    header nav .logo h1 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        margin-top: 10px;
-    }
-
-    header nav ul li {
-        margin: 5px 0;
-    }
-
-    .btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-
-    section#accueil h2 {
-        font-size: 28px;
-    }
-
-    section#accueil p {
-        font-size: 14px;
-    }
+footer a:hover {
+    color: #8e44ad;
 }
