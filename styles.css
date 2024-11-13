@@ -8,7 +8,7 @@
 
 /* Corps */
 body {
-    background-color: #f8f9fa;
+    background-color: #f4f7f6;
     color: #333;
     font-size: 18px;
     line-height: 1.6;
@@ -20,20 +20,19 @@ body {
 h1, h2, h3 {
     color: #2c3e50;
     font-weight: 600;
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 /* En-tête */
 header {
-    background: linear-gradient(135deg, #3498db, #8e44ad);
+    background: linear-gradient(135deg, #8e44ad, #3498db);
     color: white;
     padding: 20px 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease;
 }
 
@@ -51,7 +50,7 @@ header nav .logo h1 {
 }
 
 header nav .logo h1:hover {
-    transform: rotate(-5deg);
+    transform: rotate(5deg);
 }
 
 header nav ul {
@@ -66,14 +65,14 @@ header nav ul li {
 header nav ul li a {
     color: white;
     font-size: 18px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border-radius: 25px;
     transition: all 0.3s ease;
 }
 
 header nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     text-decoration: underline;
 }
 
@@ -94,19 +93,16 @@ section#accueil {
 }
 
 section#accueil h2 {
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 700;
     margin-bottom: 20px;
-    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 section#accueil p {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 40px;
     line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
-    opacity: 0.8;
 }
 
 /* Sections avec effet */
@@ -143,13 +139,56 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
     font-weight: 700;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
     background-color: #8e44ad;
     transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Compétences */
+section#competences ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+section#competences ul li {
+    font-size: 20px;
+    margin: 10px 30px;
+    padding: 12px 30px;
+    background-color: #f1f1f1;
+    border-radius: 30px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+section#competences ul li:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.competence-description {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.competence-description.show {
+    display: block;
+    opacity: 1;
 }
 
 /* Section des projets */
@@ -160,7 +199,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
 
 #projets h2 {
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 50px;
     color: #3498db;
     text-transform: uppercase;
@@ -201,7 +240,6 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 #projets .filters button:hover,
@@ -214,7 +252,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
 .projets-category {
     margin-bottom: 40px;
     padding: 20px;
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
@@ -273,7 +311,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
     line-height: 1.5;
 }
 
-/* Lien vers le site du clan */
+/* Lien vers le site du projet */
 .projets-category ul li a {
     display: inline-block;
     margin-top: 15px;
@@ -294,28 +332,43 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
     transform: translateY(-3px);
 }
 
+/* Couleurs spécifiques des bordures */
+#projets-ecole {
+    border-left: 4px solid #e67e22;
+}
+#projets-professionnels {
+    border-left: 4px solid #16a085;
+}
+#projets-personnels {
+    border-left: 4px solid #8e44ad;
+}
+
 /* Animation de fade-in */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Liens LinkedIn */
-.linkedin-link {
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+footer a {
     color: #3498db;
-    font-size: 1.3rem;
-    font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.linkedin-link:hover {
+footer a:hover {
     color: #8e44ad;
-    transform: translateY(-3px);
 }
