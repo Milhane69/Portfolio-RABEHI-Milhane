@@ -46,3 +46,7 @@ links.forEach(link => {
         });
     });
 });
+
+document.getElementById("cv-image").addEventListener("click", function() {
+    this.classList.toggle("cv-fullscreen");
+});
