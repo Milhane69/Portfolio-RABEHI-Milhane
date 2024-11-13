@@ -8,7 +8,7 @@
 
 /* Corps */
 body {
-    background-color: #f4f7f6;
+    background-color: #f0f3f5;
     color: #333;
     font-size: 18px;
     line-height: 1.6;
@@ -25,7 +25,7 @@ h1, h2, h3 {
 
 /* En-tête */
 header {
-    background: linear-gradient(135deg, #8e44ad, #3498db);
+    background: linear-gradient(135deg, #4a90e2, #6dbb7b);
     color: white;
     padding: 20px 0;
     position: fixed;
@@ -85,11 +85,11 @@ section {
 
 /* Section Accueil */
 section#accueil {
-    background: linear-gradient(135deg, #003d68, #27393f, #ffffff);
+    background: linear-gradient(135deg, #a0e5ff, #e1e8f0);
     color: white;
     padding: 120px 0;
     background-size: 400% 400%;
-    animation: gradientAnimation 10s ease infinite;
+    animation: gradientAnimation 15s ease infinite;
 }
 
 section#accueil h2 {
@@ -114,6 +114,7 @@ section#apropos, section#competences, section#projets, section#contact {
     padding: 50px;
     transition: all 0.3s ease-in-out;
     position: relative;
+    background-color: #f9fafb;
 }
 
 section#apropos:hover, section#competences:hover, section#projets:hover, section#contact:hover {
@@ -121,7 +122,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
-/* Animations des sections */
+/* Animation de gradient dynamique */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -130,7 +131,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
 
 /* Boutons */
 .btn {
-    background-color: #3498db;
+    background-color: #4a90e2;
     color: white;
     padding: 12px 30px;
     border-radius: 30px;
@@ -143,7 +144,7 @@ section#apropos:hover, section#competences:hover, section#projets:hover, section
 }
 
 .btn:hover {
-    background-color: #8e44ad;
+    background-color: #6dbb7b;
     transform: translateY(-5px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
@@ -168,7 +169,7 @@ section#competences ul li {
 }
 
 section#competences ul li:hover {
-    background-color: #3498db;
+    background-color: #4a90e2;
     color: white;
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -177,7 +178,7 @@ section#competences ul li:hover {
 .competence-description {
     margin-top: 40px;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #f4f7f6;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-size: 18px;
@@ -194,18 +195,18 @@ section#competences ul li:hover {
 /* Section des projets */
 #projets {
     padding: 60px 20px;
-    background-color: #f4f4f4;
+    background-color: #e3f2fd;
 }
 
 #projets h2 {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 50px;
-    color: #3498db;
+    color: #4a90e2;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1.5px;
-    border-bottom: 3px solid #3498db;
+    border-bottom: 3px solid #4a90e2;
     padding-bottom: 15px;
     display: inline-block;
     position: relative;
@@ -219,7 +220,7 @@ section#competences ul li:hover {
     transform: translateX(-50%);
     width: 40px;
     height: 4px;
-    background-color: #8e44ad;
+    background-color: #6dbb7b;
     border-radius: 2px;
 }
 
@@ -234,7 +235,7 @@ section#competences ul li:hover {
 #projets .filters button {
     padding: 12px 25px;
     font-size: 1rem;
-    background-color: #3498db;
+    background-color: #4a90e2;
     color: white;
     border: none;
     border-radius: 6px;
@@ -265,10 +266,10 @@ section#competences ul li:hover {
 
 .projets-category h3 {
     font-size: 2rem;
-    color: #3498db;
+    color: #4a90e2;
     margin-bottom: 20px;
     text-transform: uppercase;
-    border-bottom: 2px solid #3498db;
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 10px;
 }
 
@@ -285,19 +286,13 @@ section#competences ul li:hover {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
     opacity: 0;
+    transform: translateY(30px);
     animation: fadeInUp 0.5s ease-out forwards;
 }
 
-.projets-category ul li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Informations des projets */
 .projets-category ul li h4 {
     font-size: 1.5rem;
     color: #2c3e50;
@@ -311,7 +306,6 @@ section#competences ul li:hover {
     line-height: 1.5;
 }
 
-/* Lien vers le site du projet */
 .projets-category ul li a {
     display: inline-block;
     margin-top: 15px;
@@ -330,17 +324,6 @@ section#competences ul li:hover {
 .projets-category ul li a:hover {
     background-color: #2980b9;
     transform: translateY(-3px);
-}
-
-/* Couleurs spécifiques des bordures */
-#projets-ecole {
-    border-left: 4px solid #e67e22;
-}
-#projets-professionnels {
-    border-left: 4px solid #16a085;
-}
-#projets-personnels {
-    border-left: 4px solid #8e44ad;
 }
 
 /* Animation de fade-in */
