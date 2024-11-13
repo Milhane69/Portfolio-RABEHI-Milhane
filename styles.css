@@ -13,6 +13,7 @@ body {
     font-size: 18px;
     line-height: 1.6;
     font-weight: 400;
+    overflow-x: hidden;
 }
 
 /* Titres */
@@ -305,4 +306,79 @@ footer {
 }
 footer p {
     font-size: 1rem;
+}
+
+/* Media Queries pour Responsiveness */
+@media (max-width: 768px) {
+    header nav {
+        padding: 0 20px;
+    }
+
+    header nav .logo h1 {
+        font-size: 24px;
+    }
+
+    header nav ul li {
+        margin-left: 15px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    section#accueil h2 {
+        font-size: 36px;
+    }
+
+    section#accueil p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    section#competences ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projets-category ul {
+        grid-template-columns: 1fr;
+    }
+
+    #projets h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header nav {
+        flex-direction: column;
+    }
+
+    header nav .logo h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    header nav ul li {
+        margin: 5px 0;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    section#accueil h2 {
+        font-size: 28px;
+    }
+
+    section#accueil p {
+        font-size: 14px;
+    }
 }
