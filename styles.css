@@ -343,30 +343,6 @@ section#competences ul li:hover {
     }
 }
 
-
-/* Animation de fade-in */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    #projets h2 {
-        font-size: 2rem;
-    }
-    .projets-category ul {
-        grid-template-columns: 1fr;
-    }
-    .projets-category ul li {
-        padding: 15px;
-    }
-    #projets .filters {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
 /* Footer */
 footer {
     background-color: #2c3e50;
