@@ -14,6 +14,7 @@ body {
     line-height: 1.6;
     font-weight: 400;
     transition: background-color 0.3s ease;
+    padding-top: 80px; /* Compense la hauteur du header pour ne pas cacher le contenu */
 }
 
 /* Titres */
@@ -68,12 +69,30 @@ header nav ul li a {
     padding: 12px 25px;
     border-radius: 25px;
     transition: all 0.3s ease;
+    text-decoration: none; /* Suppression de la soulignement par défaut */
 }
 
 header nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-4px);
     text-decoration: underline;
+}
+
+/* Boutons de menu : amélioration du style */
+header nav ul li a {
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Sections de contenu */
@@ -250,44 +269,21 @@ section#competences ul li:hover {
 
 /* Style des catégories de projets */
 .projets-category {
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    margin-bottom: 50px;
 }
 
-.projets-category:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-}
-
-.projets-category h3 {
-    font-size: 2rem;
-    color: #3498db;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-}
-
-/* Grille des projets */
 .projets-category ul {
-    list-style-type: none;
-    padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
 .projets-category ul li {
+    background-color: white;
+    border-radius: 12px;
     padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards;
 }
