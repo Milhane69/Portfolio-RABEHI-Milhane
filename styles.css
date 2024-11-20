@@ -372,3 +372,77 @@ footer a {
 footer a:hover {
     color: #8e44ad;
 }
+
+/* Responsiveness pour les petits écrans */
+@media (max-width: 768px) {
+    header nav {
+        padding: 0 20px;
+    }
+
+    header nav .logo h1 {
+        font-size: 24px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    section#accueil {
+        padding: 80px 20px;
+    }
+
+    section#accueil h2 {
+        font-size: 40px;
+    }
+
+    section#accueil p {
+        font-size: 18px;
+    }
+
+    section#apropos, section#competences, section#projets, section#contact {
+        padding: 30px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+
+    section#competences ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .projets-category ul {
+        grid-template-columns: 1fr;
+    }
+
+    .projets-category ul li {
+        font-size: 16px;
+    }
+}
+
+/* Responsiveness pour les petits écrans (téléphones) */
+@media (max-width: 480px) {
+    section#accueil h2 {
+        font-size: 32px;
+    }
+
+    section#accueil p {
+        font-size: 16px;
+    }
+
+    section#competences ul li {
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .projets-category ul li h4 {
+        font-size: 1.2rem;
+    }
+
+    .projets-category ul li p {
+        font-size: 0.9rem;
+    }
+}
