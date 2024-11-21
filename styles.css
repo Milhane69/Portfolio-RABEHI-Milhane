@@ -450,29 +450,22 @@ footer a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black; /* Fond de l'écran (peut être modifié) */
-    color: #00FF00; /* Couleur du texte (vert rétro) */
+    background-color: black; /* Fond noir, thème informatique */
+    color: #00FF00; /* Couleur du texte (vert rétro typique) */
     display: flex; /* Utilisation de Flexbox pour centrer le contenu */
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Permet d'afficher l'écran au-dessus des autres éléments */
     font-family: 'Courier New', Courier, monospace; /* Police rétro */
-    animation: fadeOut 3s ease-in-out forwards; /* Animation de disparition de l'écran */
+    animation: fadeOut 5s ease-in-out forwards; /* Animation de disparition de l'écran */
 }
 
 /* Contenu de l'écran de démarrage */
 .splash-content h1, .splash-content p {
     margin: 0;
-    animation: typing 2s steps(30) 1s 1 normal both; /* Animation du texte */
+    animation: typing 3s steps(50) 1s 1 normal both; /* Animation du texte "taper" */
     white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
     overflow: hidden; /* Cache le texte pendant l'animation */
-}
-
-/* P, ajoute des animations distinctes pour le paragraphe (si nécessaire) */
-.splash-content p {
-    animation: typing 2.5s steps(30) 1.5s 1 normal both; /* Personnalisation de l'animation pour le texte secondaire */
-    white-space: nowrap;
-    overflow: hidden;
 }
 
 /* Animation du texte "tapé" */
@@ -500,15 +493,8 @@ footer a:hover {
 }
 
 /* Personnalisation à ajouter : 
-   - Si vous voulez changer le fond, remplacez `background-color: black;` par une autre couleur (ex. `#333` pour un gris foncé).
-   - Pour ajuster la couleur du texte, changez `color: #00FF00;` avec la couleur de votre choix (par exemple, `#FFFFFF` pour du texte blanc).
-   - Si vous avez besoin d'ajuster la vitesse de l'animation de "taper" ou de disparition, modifiez les valeurs dans les propriétés `animation` et `@keyframes`. */
+   - Si vous souhaitez que l'écran apparaisse plus lentement ou rapidement, ajustez les durées dans les propriétés d'animation.
+   - Si vous voulez changer la couleur du fond ou du texte, modifiez les valeurs dans `background-color` et `color`. */
 
-/* Exemple d'ajout de contenu spécifique dans HTML :
-   <div class="splash-screen">
-      <div class="splash-content">
-          <h1>Bienvenue dans le Terminal</h1> <!-- Changez ce texte comme vous voulez -->
-          <p>Chargement en cours...</p> <!-- Changez ce texte comme vous voulez -->
-      </div>
-   </div>
-*/
+/* Exemple d'ajout de contenu dans HTML : 
+   Le contenu de l'écran de démarrage (titre et texte) sera inséré ici. */
