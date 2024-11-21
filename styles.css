@@ -445,30 +445,32 @@ footer a:hover {
 
 /* Écran de démarrage */
 .splash-screen {
-    position: fixed;
+    position: fixed; /* Fixe l'écran sur toute la fenêtre */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
-    color: #00FF00; /* Texte vert pour un style rétro informatique */
-    display: flex;
+    background-color: black; /* Fond de l'écran (peut être modifié) */
+    color: #00FF00; /* Couleur du texte (vert rétro) */
+    display: flex; /* Utilisation de Flexbox pour centrer le contenu */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    font-family: 'Courier New', Courier, monospace;
-    animation: fadeOut 3s ease-in-out forwards; /* Animation de disparition */
+    z-index: 1000; /* Permet d'afficher l'écran au-dessus des autres éléments */
+    font-family: 'Courier New', Courier, monospace; /* Police rétro */
+    animation: fadeOut 3s ease-in-out forwards; /* Animation de disparition de l'écran */
 }
 
+/* Contenu de l'écran de démarrage */
 .splash-content h1, .splash-content p {
     margin: 0;
-    animation: typing 2s steps(30) 1s 1 normal both; /* Animation de type machine à écrire */
-    white-space: nowrap;
-    overflow: hidden;
+    animation: typing 2s steps(30) 1s 1 normal both; /* Animation du texte */
+    white-space: nowrap; /* Empêche le texte de se diviser sur plusieurs lignes */
+    overflow: hidden; /* Cache le texte pendant l'animation */
 }
 
+/* P, ajoute des animations distinctes pour le paragraphe (si nécessaire) */
 .splash-content p {
-    animation: typing 2.5s steps(30) 1.5s 1 normal both; /* Animation de type machine à écrire pour le sous-texte */
+    animation: typing 2.5s steps(30) 1.5s 1 normal both; /* Personnalisation de l'animation pour le texte secondaire */
     white-space: nowrap;
     overflow: hidden;
 }
@@ -476,24 +478,37 @@ footer a:hover {
 /* Animation du texte "tapé" */
 @keyframes typing {
     from {
-        width: 0;
+        width: 0; /* Commence avec un texte invisible */
     }
     to {
-        width: 100%;
+        width: 100%; /* Fin avec tout le texte visible */
     }
 }
 
 /* Animation de la disparition de l'écran de démarrage */
 @keyframes fadeOut {
     0% {
-        opacity: 1;
+        opacity: 1; /* L'écran est visible au début */
     }
     99% {
-        opacity: 1;
+        opacity: 1; /* Maintient la visibilité juste avant la fin */
     }
     100% {
-        opacity: 0;
-        visibility: hidden;
+        opacity: 0; /* Disparition de l'écran */
+        visibility: hidden; /* Rend l'écran complètement invisible */
     }
 }
 
+/* Personnalisation à ajouter : 
+   - Si vous voulez changer le fond, remplacez `background-color: black;` par une autre couleur (ex. `#333` pour un gris foncé).
+   - Pour ajuster la couleur du texte, changez `color: #00FF00;` avec la couleur de votre choix (par exemple, `#FFFFFF` pour du texte blanc).
+   - Si vous avez besoin d'ajuster la vitesse de l'animation de "taper" ou de disparition, modifiez les valeurs dans les propriétés `animation` et `@keyframes`. */
+
+/* Exemple d'ajout de contenu spécifique dans HTML :
+   <div class="splash-screen">
+      <div class="splash-content">
+          <h1>Bienvenue dans le Terminal</h1> <!-- Changez ce texte comme vous voulez -->
+          <p>Chargement en cours...</p> <!-- Changez ce texte comme vous voulez -->
+      </div>
+   </div>
+*/
