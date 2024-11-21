@@ -442,3 +442,57 @@ footer a:hover {
         font-size: 0.9rem;
     }
 }
+
+/* Écran de démarrage */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Courier New', Courier, monospace;
+    animation: fadeOut 3s ease-in-out forwards;
+}
+
+.splash-content h1, .splash-content p {
+    margin: 0;
+    animation: typing 2s steps(30) 1s 1 normal both;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.splash-content p {
+    animation: typing 2.5s steps(30) 1.5s 1 normal both;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Animation du texte "taper" */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Animation de la disparition de l'écran de démarrage */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
