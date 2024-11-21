@@ -451,29 +451,29 @@ footer a:hover {
     width: 100%;
     height: 100%;
     background-color: black;
-    color: white;
+    color: #00FF00; /* Texte vert pour un style rétro informatique */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     font-family: 'Courier New', Courier, monospace;
-    animation: fadeOut 3s ease-in-out forwards;
+    animation: fadeOut 3s ease-in-out forwards; /* Animation de disparition */
 }
 
 .splash-content h1, .splash-content p {
     margin: 0;
-    animation: typing 2s steps(30) 1s 1 normal both;
+    animation: typing 2s steps(30) 1s 1 normal both; /* Animation de type machine à écrire */
     white-space: nowrap;
     overflow: hidden;
 }
 
 .splash-content p {
-    animation: typing 2.5s steps(30) 1.5s 1 normal both;
+    animation: typing 2.5s steps(30) 1.5s 1 normal both; /* Animation de type machine à écrire pour le sous-texte */
     white-space: nowrap;
     overflow: hidden;
 }
 
-/* Animation du texte "taper" */
+/* Animation du texte "tapé" */
 @keyframes typing {
     from {
         width: 0;
@@ -496,3 +496,4 @@ footer a:hover {
         visibility: hidden;
     }
 }
+
