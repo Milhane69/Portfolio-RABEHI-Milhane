@@ -51,9 +51,10 @@ document.getElementById("cv-image").addEventListener("click", function() {
     this.classList.toggle("cv-fullscreen");
 });
 
-window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('splash-screen').classList.add('hidden');
-            }, 8000); // Cache le splash après 8 secondes
-        };
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        document.getElementById("splash-screen").style.display = "none";
+    }, 8000); // L'écran d'accueil disparaît après 5 secondes
+});
+
 
