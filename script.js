@@ -54,7 +54,7 @@ document.getElementById("cv-image").addEventListener("click", function() {
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         document.getElementById("splash-screen").style.display = "none";
-    }, 8000); // L'écran d'accueil disparaît après 5 secondes
+    }, 10000); // L'écran d'accueil disparaît après 5 secondes
 });
 
 
