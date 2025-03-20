@@ -274,37 +274,56 @@ section#competences ul li:hover {
 
 .projets-category ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .projets-category ul li {
-    background-color: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    animation: fadeInUp 0.5s ease-out forwards;
+    position: relative;
+    overflow: hidden;
 }
 
 .projets-category ul li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Informations des projets */
 .projets-category ul li h4 {
-    font-size: 1.5rem;
+    font-size: 20px;
     color: #2c3e50;
     margin-bottom: 10px;
-    font-weight: bold;
+    text-align: center;
 }
 
 .projets-category ul li p {
-    font-size: 1rem;
+    font-size: 16px;
     color: #7f8c8d;
+    text-align: justify;
     line-height: 1.5;
+}
+
+.projets-category ul li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.projets-category ul li:hover::before {
+    opacity: 1;
 }
 
 /* Lien vers le site du projet */
@@ -337,6 +356,29 @@ section#competences ul li:hover {
 }
 #projets-personnels {
     border-left: 4px solid #8e44ad;
+}
+
+.projet-description {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.projet-description.active {
+    display: block;
+}
+
+.toggle-description {
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #3498db;
+    font-weight: bold;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+.toggle-description:hover {
+    color: #8e44ad;
 }
 
 /* Animation de fade-in */
@@ -580,6 +622,38 @@ section.show {
 @keyframes blink {
     from, to { border-color: transparent; }
     50% { border-color: white; }
+}
+
+.livrables-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.livrables-container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.livrables-container ul li {
+    list-style: none;
+}
+
+.livrables-container a {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: #3498db;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.livrables-container a:hover {
+    background-color: #8e44ad;
+    transform: scale(1.05);
 }
 
 
