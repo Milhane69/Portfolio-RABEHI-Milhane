@@ -1,60 +1,86 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Sélection de tous les éléments de compétence
+    /*** 🔹 Gestion des descriptions de compétences ***/
     const competencies = document.querySelectorAll('.competence');
-    // Conteneur pour afficher la description
     const descriptionContainer = document.getElementById('competence-description');
 
-    // Fonction qui gère l'affichage de la description
     competencies.forEach(function(competence) {
         competence.addEventListener('click', function() {
-            // Récupère la description de la compétence cliquée
             const descriptionText = competence.getAttribute('data-description');
-            
-            // Met à jour le contenu du conteneur de description
             descriptionContainer.innerHTML = `<p>${descriptionText}</p>`;
-            
-            // Affiche la description avec animation
             descriptionContainer.classList.add('show');
         });
     });
 
-    // Ferme la description si l'utilisateur clique en dehors de la compétence
     document.addEventListener('click', function(event) {
-        // Vérifie si l'utilisateur a cliqué à l'extérieur de la section compétences
         if (!event.target.closest('#competences') && !event.target.closest('#competence-description')) {
             descriptionContainer.classList.remove('show');
         }
     });
-});
 
-// Sélectionne tous les liens de navigation
-const links = document.querySelectorAll('nav ul li a');
+    /*** 🔹 Gestion du scroll fluide pour la navigation ***/
+    const links = document.querySelectorAll('nav ul li a');
 
-// Ajoute un écouteur d'événement à chaque lien
-links.forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault(); // Empêche le comportement par défaut du lien
-        
-        // Récupère l'ID de la section cible (ex: #accueil)
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        // Effectue le défilement vers la section cible avec un effet
-        window.scrollTo({
-            top: targetElement.offsetTop - 60, // Ajuste la position si nécessaire
-            behavior: 'smooth'
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 60, 
+                behavior: 'smooth'
+            });
         });
     });
+
+    /*** 🔹 Agrandissement de l'image du CV ***/
+    const cvImage = document.getElementById("cv-image");
+    if (cvImage) {
+        cvImage.addEventListener("click", function() {
+            this.classList.toggle("cv-fullscreen");
+        });
+    }
+
+    /*** 🔹 Disparition de l'écran de chargement ***/
+    const splashScreen = document.getElementById("splash-screen");
+    if (splashScreen) {
+        setTimeout(function() {
+            splashScreen.style.display = "none";
+        }, 5000);
+    }
+
+    /*** 🔹 Gestion du mode sombre ***/
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+        });
+    }
+
+    /*** 🔹 Gestion du bouton "Voir plus" dans les projets ***/
+    document.querySelectorAll(".toggle-description").forEach(button => {
+        button.addEventListener("click", function() {
+            let description = this.previousElementSibling;
+
+            if (description && description.classList.contains("projet-description")) {
+                description.classList.toggle("active");
+                this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
+            }
+        });
+    });
+
+    /*** 🔹 Ajout de l'effet de scroll pour l'apparition des sections ***/
+    const sections = document.querySelectorAll("section");
+
+    function checkScroll() {
+        sections.forEach((section) => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight * 0.85) {
+                section.classList.add("show");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
 });
-
-document.getElementById("cv-image").addEventListener("click", function() {
-    this.classList.toggle("cv-fullscreen");
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-        document.getElementById("splash-screen").style.display = "none";
-    }, 10000); // L'écran d'accueil disparaît après 5 secondes
-});
-
-
