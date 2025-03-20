@@ -8,15 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="splash-screen">
-        <div class="splash-content">
-            <h1>Bienvenue dans le Système     </h1> <!-- Remplacez ce texte par ce que vous voulez afficher -->
-            <p>Initialisation en cours...</p> <!-- Changez ce texte pour afficher ce que vous voulez -->
-        </div>
-    </div>
-
-
-    
+   
     <header>
         <nav>
             <div class="logo">
@@ -396,12 +388,6 @@
         document.getElementById("dark-mode-toggle").addEventListener("click", function() {
         document.body.classList.toggle("dark-mode");
     });
-
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('splash-screen').classList.add('hidden');
-            }, 10000); // Cache le splash après 4 secondes
-        };
     </script>
     <script src="script.js"></script>
 </body>
