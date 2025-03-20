@@ -60,15 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
      // Sélection de tous les boutons "Voir plus"
     document.querySelectorAll(".toggle-description").forEach(button => {
         button.addEventListener("click", function() {
-            // Recherche la description correspondante dans le même parent <li>
-            let parentLi = this.closest("li"); // Trouve le <li> parent
+            // Recherche la description correspondante dans le même <li>
+            let parentLi = this.closest("li");
             let description = parentLi.querySelector(".projet-description");
 
-            // Vérification si la description existe
+            // Vérifie si la description existe
             if (description) {
                 description.classList.toggle("active");
 
-                // Change le texte du bouton en fonction de l'état de la description
+                // Met à jour le texte du bouton
                 this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
             }
         });
