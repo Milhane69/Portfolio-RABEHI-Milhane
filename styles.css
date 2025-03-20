@@ -220,7 +220,7 @@ section#competences ul li:hover {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 50px;
-    color: #3498db;
+    color: #ffffff;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -360,11 +360,16 @@ section#competences ul li:hover {
 
 .projet-description {
     display: none;
-    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
 }
 
 .projet-description.active {
     display: block;
+    opacity: 1;
+    max-height: 500px; /* Ajuste selon ton besoin */
 }
 
 .toggle-description {
@@ -380,6 +385,7 @@ section#competences ul li:hover {
 .toggle-description:hover {
     color: #8e44ad;
 }
+
 
 /* Animation de fade-in */
 @keyframes fadeInUp {
