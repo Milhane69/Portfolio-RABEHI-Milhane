@@ -377,6 +377,22 @@
     </footer>
 
     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll("section");
+    
+        function checkScroll() {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight * 0.85) {
+                    section.classList.add("show");
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", checkScroll);
+        checkScroll();
+    });
+
         document.getElementById("dark-mode-toggle").addEventListener("click", function() {
         document.body.classList.toggle("dark-mode");
     });
