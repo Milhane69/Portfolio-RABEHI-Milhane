@@ -56,14 +56,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle("dark-mode");
         });
     }
-
-    /*** 🔹 Gestion du bouton "Voir plus" dans les projets ***/
+    
+     // Sélection de tous les boutons "Voir plus"
     document.querySelectorAll(".toggle-description").forEach(button => {
         button.addEventListener("click", function() {
-            let description = this.previousElementSibling;
+            // Recherche la description correspondante dans le même parent <li>
+            let parentLi = this.closest("li"); // Trouve le <li> parent
+            let description = parentLi.querySelector(".projet-description");
 
-            if (description && description.classList.contains("projet-description")) {
+            // Vérification si la description existe
+            if (description) {
                 description.classList.toggle("active");
+
+                // Change le texte du bouton en fonction de l'état de la description
                 this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
             }
         });
