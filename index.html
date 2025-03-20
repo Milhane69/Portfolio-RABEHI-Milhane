@@ -629,43 +629,6 @@
         <p>&copy; Mon Portfolio RABEHI Milhane</p>
     </footer>
 
-    <script>
-    window.onload = function() {
-        // Fonction pour gérer l'affichage des sections au scroll
-        const sections = document.querySelectorAll("section");
-
-        function checkScroll() {
-            sections.forEach((section) => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < window.innerHeight * 0.85) {
-                    section.classList.add("show");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", checkScroll);
-        checkScroll();
-
-        // Fonction pour gérer l'affichage des descriptions de projet
-        document.querySelectorAll(".toggle-description").forEach(button => {
-            button.addEventListener("click", function() {
-                // Sélectionne la div .projet-description associée
-                let description = this.previousElementSibling;
-                
-                // Vérifie si c'est bien une description
-                if (description && description.classList.contains("projet-description")) {
-                    description.classList.toggle("active");
-                    this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
-                }
-            });
-        });
-
-        // Mode sombre
-        document.getElementById("dark-mode-toggle").addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
-        });
-    };
-</script>
     <script src="script.js"></script>
 </body>
 </html>
