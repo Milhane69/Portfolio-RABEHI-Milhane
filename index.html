@@ -647,10 +647,15 @@
     });
 
         document.querySelectorAll(".toggle-description").forEach(button => {
-        button.addEventListener("click", () => {
-            let description = button.previousElementSibling;
-            description.classList.toggle("active");
-            button.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
+        button.addEventListener("click", function() {
+            // Trouver l'élément .projet-description associé
+            let description = this.previousElementSibling;
+            
+            // Vérifier s'il s'agit bien de la description
+            if (description && description.classList.contains("projet-description")) {
+                description.classList.toggle("active");
+                this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
+            }
         });
     });
 
