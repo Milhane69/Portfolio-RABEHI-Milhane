@@ -28,6 +28,7 @@
                 <li><a href="#projets">Projets</a></li>
                 <li><a href="#CV">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <button id="dark-mode-toggle">🌙</button>
             </ul>
         </nav>           
             
@@ -376,6 +377,10 @@
     </footer>
 
     <script>
+        document.getElementById("dark-mode-toggle").addEventListener("click", function() {
+        document.body.classList.toggle("dark-mode");
+    });
+
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById('splash-screen').classList.add('hidden');
