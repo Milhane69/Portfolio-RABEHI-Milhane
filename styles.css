@@ -378,12 +378,14 @@ section#competences ul li:hover {
 }
 
 .projet-description {
-    display: none;
-    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
 }
 
+/* Quand on active "Voir plus" */
 .projet-description.active {
-    display: block;
+    max-height: 1000px; /* Assez grand pour tout montrer */
 }
 
 
