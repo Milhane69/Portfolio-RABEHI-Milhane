@@ -64,18 +64,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    /*** 🔹 Apparition des sections au scroll ***/
-    const sections = document.querySelectorAll("section");
+    // Animation Voir plus / Voir moins
+const toggleButtons = document.querySelectorAll('.toggle-description');
 
-    function checkScroll() {
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < window.innerHeight * 0.85) {
-                section.classList.add("show");
-            }
-        });
-    }
+toggleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const description = button.previousElementSibling;
+        description.classList.toggle('active');
 
-    window.addEventListener("scroll", checkScroll);
-    checkScroll();
+        // Change texte bouton
+        if (description.classList.contains('active')) {
+            button.textContent = "Voir moins";
+        } else {
+            button.textContent = "Voir plus";
+        }
+    });
 });
+
+
+   // Animation au scroll
+const sections = document.querySelectorAll('section');
+
+function revealSections() {
+    const triggerBottom = window.innerHeight / 1.2;
+
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+            section.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealSections);
+document.addEventListener('DOMContentLoaded', revealSections);
+
