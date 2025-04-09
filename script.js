@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     /*** 🔹 Gestion du scroll fluide pour la navigation ***/
-    const links = document.querySelectorAll('nav ul li a');
+    const links = document.querySelectorAll('nav ul li a[href^="#"]');
 
     links.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -26,10 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
-            window.scrollTo({
-                top: targetElement.offsetTop - 60, 
-                behavior: 'smooth'
-            });
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -49,32 +51,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    /*** 🔹 Gestion du mode sombre ***/
-    const darkModeToggle = document.getElementById("dark-mode-toggle");
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener("click", function() {
-            document.body.classList.toggle("dark-mode");
-        });
-    }
-    
-     // Sélection de tous les boutons "Voir plus"
+    /*** 🔹 Gestion des boutons "Voir plus" ***/
     document.querySelectorAll(".toggle-description").forEach(button => {
         button.addEventListener("click", function() {
-            // Recherche la description correspondante dans le même <li>
             let parentLi = this.closest("li");
             let description = parentLi.querySelector(".projet-description");
 
-            // Vérifie si la description existe
             if (description) {
                 description.classList.toggle("active");
-
-                // Met à jour le texte du bouton
                 this.textContent = description.classList.contains("active") ? "Voir moins" : "Voir plus";
             }
         });
     });
 
-    /*** 🔹 Ajout de l'effet de scroll pour l'apparition des sections ***/
+    /*** 🔹 Apparition des sections au scroll ***/
     const sections = document.querySelectorAll("section");
 
     function checkScroll() {
