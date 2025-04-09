@@ -24,6 +24,11 @@ h1, h2, h3 {
     letter-spacing: 1px;
 }
 
+#projets h2 {
+    pointer-events: none;
+}
+
+
 /* En-tête */
 header {
     background: linear-gradient(135deg, #8e44ad, #3498db);
