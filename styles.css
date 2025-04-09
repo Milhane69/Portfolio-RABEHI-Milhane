@@ -218,7 +218,7 @@ section#competences ul li:hover {
 }
 
 /* Section des s */
-#.projets-category {
+.projets-category {
     padding: 60px 20px;
     background-color: #f4f4f4;
 }
@@ -272,19 +272,6 @@ section#competences ul li:hover {
 .projets-category .filters button.active {
     background-color: #2980b9;
     transform: translateY(-3px);
-}
-
-/* Style des catégories de s */
-.projets-category-category {
-    margin-bottom: 50px;
-}
-
-.projets-category-category ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
-    justify-content: center;
-    padding: 20px;
 }
 
 .projets-category ul li {
