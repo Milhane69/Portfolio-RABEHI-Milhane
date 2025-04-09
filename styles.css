@@ -107,3 +107,106 @@
     opacity: 1;
 }
 
+.projets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projet-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.projet-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.projet-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.projet-card p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Livrables */
+.livrables {
+    margin-top: 20px;
+}
+
+.livrables h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.livrables a {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.livrables a:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Bouton Voir Plus / Voir Moins */
+.toggle-description {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #8e44ad;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.toggle-description:hover {
+    background-color: #6a11cb;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .projet-card {
+        padding: 20px 15px;
+    }
+
+    .projet-card h3 {
+        font-size: 20px;
+    }
+
+    .projet-card p {
+        font-size: 14px;
+    }
+
+    .livrables a, .toggle-description {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
