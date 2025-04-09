@@ -26,6 +26,8 @@ h1, h2, h3 {
 
 #projets h2 {
     pointer-events: none;
+    z-index: 1;
+    position: relative;
 }
 
 
@@ -37,7 +39,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
+    z-index: 1;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease;
 }
@@ -669,6 +671,9 @@ section.show {
     transform: scale(1.05);
 }
 
+* {
+    outline: 1px solid red;
+}
 
 
 
