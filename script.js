@@ -64,39 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animation Voir plus / Voir moins
-const toggleButtons = document.querySelectorAll('.toggle-description');
+    /*** 🔹 Animation au scroll ***/
+    const sections = document.querySelectorAll('section');
 
-toggleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const description = button.previousElementSibling;
-        description.classList.toggle('active');
+    function revealSections() {
+        const triggerBottom = window.innerHeight / 1.2;
 
-        // Change texte bouton
-        if (description.classList.contains('active')) {
-            button.textContent = "Voir moins";
-        } else {
-            button.textContent = "Voir plus";
-        }
-    });
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < triggerBottom) {
+                section.classList.add('show');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', revealSections);
+    revealSections();
 });
-
-
-   // Animation au scroll
-const sections = document.querySelectorAll('section');
-
-function revealSections() {
-    const triggerBottom = window.innerHeight / 1.2;
-
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) {
-            section.classList.add('show');
-        }
-    });
-}
-
-window.addEventListener('scroll', revealSections);
-revealSections();
-
-
