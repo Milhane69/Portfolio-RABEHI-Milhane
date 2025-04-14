@@ -97,5 +97,6 @@ function revealSections() {
 }
 
 window.addEventListener('scroll', revealSections);
-document.addEventListener('DOMContentLoaded', revealSections);
+revealSections();
+
 
