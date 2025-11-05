@@ -1,657 +1,465 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio RABEHI Milhane</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – RABEHI Milhane | Master MIASHS (Informatique & Cognition) – UGA</title>
+  <meta name="description" content="Portfolio de RABEHI Milhane, Master MIASHS parcours Informatique & Cognition à l'UGA. Projets en data, IA, web, bases de données, cybersécurité et BI (Power BI)." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/kTcXn6b8bqvZ3m0dYqf5mTQ1x4Qy5y3o2l2iXrKc5Qxw3mDqzYy5/5WZL5VZ4qYxF6z3w1pVt+Qig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Open Graph / SEO de base -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portfolio – RABEHI Milhane" />
+  <meta property="og:description" content="Master MIASHS (Informatique & Cognition) – UGA. Data, IA, web, bases de données, cybersécurité et BI." />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Données structurées JSON-LD minimalistes -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "RABEHI Milhane",
+    "url": "",
+    "email": "mailto:milhane13130@gmail.com",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Université Grenoble Alpes"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "IUT d'Annecy – USMB"
+    },
+    "knowsAbout": ["Data", "Power BI", "IA", "Bases de données", "Cybersécurité", "Développement Web"]
+  }
+  </script>
+  <style>
+    /* Styles utilitaires minimum pour garantir une base lisible même sans styles.css */
+    :root{--bg:#0b1020;--card:#111827;--ink:#e5e7eb;--muted:#9ca3af;--brand:#38bdf8;--accent:#22c55e}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:focus,button:focus{outline:2px solid var(--brand);outline-offset:2px}
+    header{position:sticky;top:0;background:rgba(11,16,32,.9);backdrop-filter:saturate(140%) blur(6px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    nav{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+    .logo h1{margin:0;font-size:1.1rem;letter-spacing:.4px}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{padding:8px 10px;border-radius:10px}
+    .nav-links a:hover{background:rgba(56,189,248,.15)}
+    .burger{display:none;background:none;border:none;color:var(--ink);font-size:1.2rem}
+    .container{max-width:1100px;margin:auto;padding:64px 20px}
+    .hero{display:grid;gap:14px;text-align:center;padding-top:40px}
+    .typing-effect{font-size:clamp(1.4rem,3vw,2rem);}
+    .btn{display:inline-block;background:var(--brand);color:#001018;padding:10px 16px;border-radius:12px;font-weight:600}
+    .btn:hover{filter:brightness(1.1)}
+    section{scroll-margin-top:80px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}
+    .competences-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;list-style:none;padding:0;margin:0}
+    .competence{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:12px;cursor:pointer}
+    .competence:hover{border-color:var(--brand)}
+    .competence-description{margin-top:12px;color:var(--muted)}
+    .projets-category ul{list-style:none;padding:0;margin:0;display:grid;gap:16px}
+    .projets-category li{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px}
+    .toggle-description{background:none;border:1px solid rgba(255,255,255,.2);color:var(--ink);padding:8px 10px;border-radius:10px;cursor:pointer}
+    .livrables-container .btn,.btn-fichier{margin-right:8px;margin-top:6px}
+    .cv-container{text-align:center}
+    .cv-thumbnail{max-width:820px;width:100%;border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+    footer{border-top:1px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:var(--muted)}
+    /* Mobile */
+    @media (max-width:800px){
+      .nav-links{display:none;position:absolute;inset:56px 12px auto;flex-direction:column;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px}
+      .nav-links.open{display:flex}
+      .burger{display:block}
+    }
+  </style>
 </head>
 <body>
-   
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>RABEHI Milhane</h1>
-            </div>
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#apropos">À propos</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Projets</a></li>
-                <li><a href="#CV">CV</a></li>
-                <li><a href="#contact">Contact</a></li>
-                </ul>            
-        </nav>           
-            
-    </header>
+  <a class="skip-link" href="#contenu" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden">Aller au contenu</a>
 
-    <section id="accueil">
-        <div class="container">
-            <h2 class="typing-effect">Bienvenue sur mon Portfolio</h2>
-            <p>Je suis un étudiant en informatique passionné par le développement web, l'intelligence artificielle, les bases de données et la cybersécurité.</p>
-            <a href="#projets" class="btn">Voir mes projets</a>
-        </div>
+  <header role="banner">
+    <nav aria-label="Navigation principale">
+      <div class="logo"><h1>RABEHI Milhane</h1></div>
+      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      <div class="nav-links" role="navigation">
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#competences">Compétences</a>
+        <a href="#projets">Projets</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section id="accueil" class="container hero" aria-labelledby="titreh">
+      <h2 id="titreh" class="typing-effect">Bienvenue sur mon Portfolio</h2>
+      <p>Étudiant en <strong>Master MIASHS – parcours Informatique & Cognition</strong> à l'<strong>Université Grenoble Alpes</strong> (UGA). Passionné par la <strong>data</strong>, l'<strong>IA</strong>, le <strong>développement web</strong>, les <strong>bases de données</strong> et la <strong>cybersécurité</strong>.</p>
+      <p><a href="#projets" class="btn" aria-label="Voir mes projets">Voir mes projets</a></p>
     </section>
 
-    <section id="apropos">
-        <div class="container">
-            <h2>À propos de moi</h2>
-            <p>Je m’appelle Milhane Rabehi, actuellement en troisième année de B.U.T. Informatique à l’USMB, Annecy le Vieux. Je suis actuellement en formation pour devenir data buisness analyst, je m'oriente dans la data. J'ai une passion pour le code et la résolution de problèmes complexes. Mon parcours académique est centré sur l’administration, la gestion et l’exploitation des données, ce qui m’a permis de développer des compétences solides dans ces domaines.
-
-                Je suis également certifié PIX et titulaire d’un Bac Technologique STI2D, avec une spécialisation en Systèmes d’Information et Numérique. Mon éducation m’a fourni une base solide en informatique et en technologies de l’information, me préparant à relever les défis du monde professionnel.
-                
-                En dehors de mes études, je suis passionné par la musculation, les jeux vidéo, la boxe Muay Thai et les sports automobiles. Je suis également joueur esport dans certains jeux vidéos. Mes compétences linguistiques incluent l’anglais niveau B2, l’espagnol, l’arabe dialectal et quelques mots en japonais.</p>
-        </div>
+    <section id="apropos" class="container" aria-labelledby="apropos-titre">
+      <h2 id="apropos-titre">À propos de moi</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Parcours</h3>
+          <p>Je m’appelle <strong>Milhane Rabehi</strong>. Après un <strong>B.U.T. Informatique (USMB – IUT d’Annecy)</strong> orienté <em>Analyse & Gestion des Données</em>, je poursuis désormais un <strong>Master MIASHS – Informatique & Cognition</strong> à l’<strong>UGA</strong>.</p>
+          <p>Mes centres d’intérêt : <strong>modélisation de données</strong>, <strong>scripts Python</strong>, <strong>analyse statistique</strong>, <strong>visualisation (Power BI)</strong> et intégration <strong>OLAP</strong>.</p>
+        </article>
+        <article class="card">
+          <h3>Compétences clés</h3>
+          <ul>
+            <li>Data & BI : SQL/NoSQL, DWH/OLAP, Power BI, ETL</li>
+            <li>IA & Cognition : Python (pandas, scikit-learn), NLP de base, expérimentation</li>
+            <li>Web : HTML/CSS/JS, PHP/Laravel, API REST</li>
+            <li>Sécurité : bonnes pratiques, RGPD, durcissement basique</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Certifs & Langues</h3>
+          <p>Certifié <strong>PIX</strong>. Langues : 🇬🇧 B2, 🇪🇸 notions, 🇩🇿 arabe dialectal, 🇯🇵 quelques mots.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="competences">
-        <div class="container">
-            <h2>Compétences</h2>
-            <ul class="competences-list">
-                <li class="competence" data-description="Administration, gestion et exploitation des données, y compris la création et l'exploitation de bases de données.">
-                    Gestion des Données
-                </li>
-                <li class="competence" data-description="Développement de sites web et d'applications interactives en utilisant HTML, CSS, et JavaScript.">
-                    Développement Web (HTML, CSS, JavaScript)
-                </li>
-                <li class="competence" data-description="Programmation en divers langages pour résoudre des problèmes complexes et développer des applications.">
-                    Programmation (Python, Java, C++)
-                </li>
-                <li class="competence" data-description="Utilisation de SAP pour la gestion des processus d'entreprise et la création de rapports.">
-                    SAP & Gestion des Processus
-                </li>
-                <li class="competence" data-description="Analyse des besoins utilisateurs, modélisation des données et création de tableaux de bord interactifs.">
-                    Analyse et Modélisation des Données
-                </li>
-                <li class="competence" data-description="Création de bases de données et gestion de projets pour répondre aux besoins des clients.">
-                    Gestion de Projet
-                </li>
-                <li class="competence" data-description="Exploitation et gestion de bases de données relationnelles et NoSQL.">
-                    Bases de Données (SQL, NoSQL)
-                </li>
-                <li class="competence" data-description="Développement d'applications complexes et optimisation des solutions à partir de données internes et externes.">
-                    Développement d'Applications
-                </li>
-                <li class="competence" data-description="Utilisation d'outils de visualisation de données comme Power BI pour créer des rapports interactifs.">
-                    Visualisation de Données (Power BI)
-                </li>
-                <li class="competence" data-description="Analyse des vulnérabilités et mise en place de mesures de sécurité pour les systèmes d'information.">
-                    Cybersécurité
-                </li>
-                <li class="competence" data-description="Création de diagrammes UML pour la modélisation des systèmes d'information.">
-                    Modélisation UML
-                </li>
-                <li class="competence" data-description="Utilisation de Visual Studio Code pour le développement d'applications en C, C++, et C#.">
-                    Développement avec Visual Studio Code
-                </li>
-                <li class="competence" data-description="Utilisation de Microsoft Excel, PowerPoint, Word, et MSProject pour la gestion de projets et la création de rapports.">
-                    Outils Microsoft (Excel, PowerPoint, Word, MSProject)
-                </li>
-                <li class="competence" data-description="Utilisation de Python avec des bibliothèques comme pandas et anaconda pour l'analyse de données.">
-                    Analyse de Données avec Python
-                </li>
-                <li class="competence" data-description="Utilisation de SAP BW pour la conception de cubes d'achat et la création de rapports.">
-                    SAP BW
-                </li>
-                <li class="competence" data-description="Utilisation de SAP FICO.">
-                    SAP FICO
-                </li>
-            </ul>
-            <div id="competence-description" class="competence-description">
-                <p>Sélectionne une compétence pour en savoir plus.</p>
-            </div>
-        </div>
-    </section>
-    
-    
-
-    <section id="projets">
-        <div class="container">
-            <h2>Mes Projets</h2>
-            
-            <!-- Projets École -->
-            <div class="projets-category" id="projets-ecole">
-                <h3>Projets École</h3>
-                <ul>
-                   <li>
-                        <h4>Implémentation d'un besoin client</h4>
-                        <p>Création d'un jeu vidéo de type escape game en utilisant le framework MonoGame. Le jeu inclut des énigmes et questions interactives développées en HTML, CSS et JavaScript.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet avait pour objectif :</p>
-                            <ul>
-                                <li>🎮 Développer un escape game interactif</li>
-                                <li>🖥️ Intégrer des énigmes et des mini-jeux en HTML, CSS et JavaScript</li>
-                                <li>🎨 Concevoir un environnement immersif avec MonoGame</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrable</h3>
-                            <ul>
-                                <li><a href="CompteRenduMonogame.pdf" target="_blank" class="btn">📄 Voir le PDF</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Comparaison d'approches algorithmiques</h4>
-                        <p>Développement d'une intelligence artificielle pour le jeu vidéo, permettant à l'algorithme de prendre des décisions de manière autonome, sans intervention humaine.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet impliquait :</p>
-                            <ul>
-                                <li>🤖 Développement d'un algorithme d'IA décisionnel</li>
-                                <li>🧠 Comparaison de différentes approches (Minimax, Alpha-Beta, réseaux de neurones)</li>
-                                <li>📈 Analyse des performances et optimisation</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrable</h3>
-                            <ul>
-                                <li><a href="CompteRenduMonogame.pdf" target="_blank" class="btn">📄 Voir le PDF</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Installation d'un poste de développement</h4>
-                        <p>Création d'une machine virtuelle sous Debian avec un environnement de développement configuré pour C#. Le but était de permettre le codage en CSS sur la machine virtuelle.</p>
-                    
-                        <div class="projet-description">
-                            <p>Les étapes du projet comprenaient :</p>
-                            <ul>
-                                <li>💻 Installation et configuration d'une VM Debian</li>
-                                <li>🛠️ Mise en place d’un environnement de développement pour C#</li>
-                                <li>🔗 Intégration d'outils pour faciliter le développement en CSS et JavaScript</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrable</h3>
-                            <ul>
-                                <li><a href="USER_GUIDE.pdf" target="_blank" class="btn">📘 Voir le USER GUIDE</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    
-                    <li>
-                        <h4>Création d'une base de données</h4>
-                        <p>Mise en place d'une base de données PostgreSQL, avec des requêtes SQL permettant de tester et vérifier son bon fonctionnement et sa stabilité.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet avait pour objectif de :</p>
-                            <ul>
-                                <li>📌 Concevoir une base de données optimisée sous PostgreSQL</li>
-                                <li>🔍 Écrire et exécuter des requêtes SQL pour assurer l’intégrité des données</li>
-                                <li>📊 Vérifier la stabilité et les performances des requêtes</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    </li>
-                    
-                    <li>
-                        <h4>Recueil des besoins</h4>
-                        <p>Conception d'un questionnaire destiné aux utilisateurs pour créer un persona dans le cadre d'une activité proposée à Annecy.</p>
-                    
-                        <div class="projet-description">
-                            <p>Le projet consistait à :</p>
-                            <ul>
-                                <li>📋 Élaborer un questionnaire structuré pour recueillir les besoins des utilisateurs</li>
-                                <li>🎭 Définir un persona basé sur les réponses obtenues</li>
-                                <li>🖥️ Créer une maquette représentant le parcours utilisateur et les fonctionnalités essentielles de l’application</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li><a href="https://www.figma.com/proto/ShATBSnQilreJGmetXW3x5/Untitled?node-id=1-780&node-type=canvas&t=D8qzbtdt0myHRHV8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A780&show-proto-sidebar=1" target="_blank" class="btn">🎨 Voir la maquette Figma</a></li>
-                                <li><a href="Persona.docx" target="_blank" class="btn">📑 Voir le persona</a></li>
-                                <li><a href="QuestionnaireS1.05.pdf" target="_blank" class="btn">📋 Voir les réponses du questionnaire</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Analyse de l'environnement économique et écologique</h4>
-                        <p>Analyse complète de l'entreprise Capgemini, avec une présentation orale portant sur ses activités.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet comprenait :</p>
-                            <ul>
-                                <li>🔍 Une étude approfondie de l'entreprise Capgemini</li>
-                                <li>📊 Réalisation d’une analyse SWOT (Forces, Faiblesses, Opportunités, Menaces)</li>
-                                <li>📈 Présentation orale sur la position de l’entreprise sur le marché</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li><a href="SAe_1.06.pptx" target="_blank" class="btn">📊 Voir la présentation</a></li>
-                                <li><a href="Compte rendu de synthèse Capgemini.docx" target="_blank" class="btn">📑 Voir le compte rendu</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Développement d'une application IHM</h4>
-                        <p>Conception et réalisation d'une application avec des données stockées sur PhpPgAdmin.</p>
-                    
-                        <div class="projet-description">
-                            <p>Le projet impliquait :</p>
-                            <ul>
-                                <li>🖥️ Développement d’une interface utilisateur interactive</li>
-                                <li>🔗 Connexion et gestion des données avec PhpPgAdmin</li>
-                                <li>📌 Tests et validation de la fluidité de l’IHM</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li><a href="IHM.pdf" target="_blank" class="btn">📜 Compte rendu IHM</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    
-                    <li>
-                        <h4>Exploration algorithmique d'un problème</h4>
-                        <p>Modélisation d'un problème sous forme de graphes et utilisation d'outils d'aide à la décision, comme Excel et VBA.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet avait pour but de :</p>
-                            <ul>
-                                <li>🔍 Représenter un problème sous forme de graphes</li>
-                                <li>📊 Analyser les performances des différentes solutions</li>
-                                <li>⚡ Optimiser la prise de décision en matière de production et de gestion</li>
-                            </ul>
-                    
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li>📄 Rapport d'analyse et d'optimisation</li>
-                                <li>📊 Modélisation et simulation sous Excel</li>
-                                <li>📜 Documentation technique</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>🔗 Accès aux fichiers :</h3>
-                            <ul>
-                                <li><a href="OutilsDecision_E12V2.xlsm" target="_blank" class="btn-fichier">📂 Ouvrir le fichier Excel avec macros</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Installation de services réseau</h4>
-                        <p>Déploiement d'un site WordPress sur un Raspberry Pi avec une base MariaDB pour gérer un contenu dynamique.</p>
-                    
-                        <div class="projet-description">
-                            <p>Objectifs du projet :</p>
-                            <ul>
-                                <li>🖥️ Configurer un serveur web avec WordPress</li>
-                                <li>💾 Gérer une base de données MariaDB</li>
-                                <li>🔧 Administrer et sécuriser le service réseau</li>
-                            </ul>
-                    
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li>📜 Guide d'installation et d'administration</li>
-                                <li>📝 Rapport sur la configuration réseau</li>
-                                <li>🔍 Étude des performances et de la sécurité</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>🔗 Accès aux documents :</h3>
-                            <ul>
-                                <li><a href="USERGUIDE_SAE" target="_blank" class="btn-fichier">📗 Ouvrir le User guide</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li>
-                        <h4>Exploitation d'une base de données</h4>
-                        <p>Création et exploitation d'une base de données pour générer des analyses statistiques et visualisations.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce projet comprenait :</p>
-                            <ul>
-                                <li>🛠️ Modélisation et structuration des données</li>
-                                <li>📊 Création de jeux de données</li>
-                                <li>📈 Analyse statistique et visualisation sous Power BI</li>
-                            </ul>
-                    
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li>📄 Documentation technique</li>
-                                <li>📊 Fichiers Power BI et Excel</li>
-                                <li>📝 Rapport d'analyse des données</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>🔗 Accès aux fichiers :</h3>
-                            <ul>
-                                <li><a href="sae4.pbix" target="_blank" class="btn">📊 Fichier Power BI</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    
-                    <li>
-                        <h4>Organisation du travail d'équipe</h4>
-                        <p>Organisation d'un séminaire d'entreprise en anglais dans le cadre d'un voyage scolaire en Angleterre.</p>
-                    
-                        <div class="projet-description">
-                            <p>Ce séminaire avait pour objectif de :</p>
-                            <ul>
-                                <li>✅ Favoriser la cohésion de groupe</li>
-                                <li>🌍 Développer la communication interculturelle</li>
-                                <li>🎤 Améliorer l'expression orale en anglais</li>
-                                <li>📋 Élaborer un programme d'activités et de présentations</li>
-                            </ul>
-                    
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li>📜 Affiche du séminaire</li>
-                                <li>📝 Dossier de préparation</li>
-                                <li>📄 Poster récapitulatif</li>
-                                <li>🎤 Présentation orale</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>🔗 Accès aux documents :</h3>
-                            <ul>
-                                <li><a href="Affiche_seminaire.pdf" target="_blank" class="btn">📜 Affiche du séminaire</a></li>
-                                <li><a href="sae6.pdf" target="_blank" class="btn">📄 Poster du séminaire</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                    <li>
-                        <h4>Création d'un site internet complet et fonctionnel</h4>
-                        <p>Ce projet consiste en la conception et le développement d'un site web basé sur Laravel, intégrant plusieurs fonctionnalités avancées :</p>
-                    
-                        <div class="projet-description">
-                            <ul>
-                                <li><strong>Gestion des données sensibles</strong> : Implémentation de bonnes pratiques en matière de sécurité.</li>
-                                <li><strong>Tests de charge et chatbot</strong> : Vérification des performances et développement d'un chatbot interactif.</li>
-                                <li><strong>Modélisation des données</strong> : Création du Modèle Conceptuel de Données (MCD).</li>
-                                <li><strong>Analyse et visualisation</strong> : Exploitation des données via Power BI.</li>
-                                <li><strong>Approche Agile</strong> : Utilisation des méthodes agiles et suivi du projet avec Azure DevOps.</li>
-                                <li><strong>Documentation et conformité</strong> : Rédaction de la documentation RGPD et d'un guide utilisateur.</li>
-                                <li><strong>Présentation finale</strong> : Démonstration et soutenance du projet en anglais.</li>
-                            </ul>
-                    
-                            <h3>📂 Livrables :</h3>
-                            <ul>
-                                <li>📜 Documentation RGPD et guide utilisateur</li>
-                                <li>💾 Scripts et base de données</li>
-                                <li>📊 Rapports Power BI</li>
-                                <li>🔄 Modèle Conceptuel de Données (MCD)</li>
-                                <li>🎤 Présentation finale en anglais</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    
-                        <div class="livrables-container">
-                            <h3>🔗 Accès aux documents :</h3>
-                            <ul>
-                                <li><a href="Rendu FinalS3.01.docx" target="_blank" class="btn">📌 Compte rendu diagramme</a></li>
-                                <li><a href="CryptoS3.01.docx" target="_blank" class="btn">🔐 Rendu Cryptographie</a></li>
-                                <li><a href="ChargeReseauChatbotS3.01.docx" target="_blank" class="btn">📡 Rendu réseau chatbot</a></li>
-                                <li><a href="RenduFinalS3.01.xlsx" target="_blank" class="btn">📊 Rendu Excel des données</a></li>
-                                <li><a href="DocRGPDS3.01.docx" target="_blank" class="btn">📜 Compte rendu RGPD</a></li>
-                                <li><a href="CompteRenduFinalPOWERBIS3.01.docx" target="_blank" class="btn">📈 Compte rendu final POWER BI</a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-
-                        <li>
-                            <h4>Optimisation de la base de données (Projet Open Food Facts)</h4>
-                            <p>Optimisation de la base PostgreSQL d’Open Food Facts pour réduire la redondance des données.</p>
-                        
-                            <div class="projet-description">
-                                <p>Ce projet visait à améliorer l'organisation des données pour optimiser leur exploitation. Nous avons :</p>
-                                <ul>
-                                    <li>Intégré des ventes simulées pour des analyses sous Power BI.</li>
-                                    <li>Exploré les données via Knime.</li>
-                                    <li>Développé des modèles IA pour calculer le Nutri-Score.</li>
-                                    <li>Mis en place une détection automatique des erreurs de saisie.</li>
-                                </ul>
-                                <p>Les solutions sont adaptées pour un PC standard et permettent une visualisation efficace des résultats.</p>
-                                <h3>📂 Livrables :</h3>
-                                <ul>
-                                    <li>📜 Documentation technique</li>
-                                    <li>💾 Scripts de nettoyage et transformation</li>
-                                    <li>📊 Rapports Power BI</li>
-                                    <li>🔄 Workflows Knime</li>
-                                    <li>🎤 Présentation finale en anglais</li>
-                                </ul>
-                            </div>
-                            <button class="toggle-description">Voir plus</button>
-                        
-                            <div class="livrables-container">
-                                <h3>🔗 Accès aux documents :</h3>
-                                <ul>
-                                    <li><a href="CompteRenduS4.01.pdf" target="_blank" class="btn">📄 Voir le Compte rendu</a></li>
-                                </ul>
-                            </div>
-                        </li>
-
-                    <li>
-                        <h4>Projet IMDb – SAE 5.C.01</h4>
-                        <p>Ce projet consiste à concevoir une solution optimisée pour le stockage et l’exploitation des données de l’Internet Movie Database (IMDb). Il comprend plusieurs volets :</p>
-                        
-                        <div class="projet-description">
-                            <ul>
-                                <li><strong>Création d’une base de données OLTP :</strong> Modélisation et optimisation de la base relationnelle.</li>
-                                <li><strong>Mise en place d’un entrepôt de données OLAP :</strong> Structuration en étoile et intégration avec Power BI.</li>
-                                <li><strong>Développement de modèles IA :</strong> Analyse NLP des critiques de films et attribution de notes automatiques.</li>
-                                <li><strong>Gestion de projet :</strong> Planification Gantt et soutenance finale.</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                
-                        <div class="livrables-container">
-                            <h3>Livrables du projet IMDb – SAE 5.C.01</h3>
-                            <ul>
-                                <li><a href="Soutenance.pdf" target="_blank" class="btn">🎤 Voir la soutenance</a></li>
-                                <li><a href="Document final.docx" target="_blank" class="btn">📑 Voir le document final</a></li>
-                                <li><a href="SAE5.C.01 IMDb 2024-25.docx" target="_blank" class="btn">📌 Voir le sujet du projet</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-    
-            <!-- Projets Professionnels -->
-            <div class="projets-category" id="projets-professionnels">
-                <h3>Projets Professionnels</h3>
-                <ul>
-                    <li>
-                        <h4>Remodélisation d'un cube SAP pour le reporting des achats</h4>
-                        <p>Remodélisation complète d'un cube MM (module achat) sur SAP pour optimiser le reporting des données d'achat. (BRENNTAG FRANCE)</p>
-                    </li>
-            
-                    <li>
-                        <h4>Système de gestion des commandes e-commerce</h4>
-                        <p>Développement d'un système de gestion des commandes pour une entreprise de commerce en ligne, en utilisant PHP et MySQL. (EASYDIS FRANCE)</p>
-                    </li>
-            
-                    <li>
-                        <h4>Création d'un système de reporting en lien avec les abonnées à l'eau potable</h4>
-                        <p>Création d’un système de reporting avec Power BI basé sur des données existantes, destiné au service en lien avec les habitants. (ANNEMASSE AGGLO FRANCE)</p>
-            
-                        <div class="projet-description">
-                            <p>Les principales tâches réalisées :</p>
-                            <ul>
-                                <li>📊 Développement de rapports Power BI exploitant les données de la base de données interne</li>
-                                <li>🔍 Vérification et correction des incohérences des données clients et abonnements</li>
-                                <li>📈 Création de KPI et d'indicateurs de suivi pour l'analyse des abonnements, facturations, recouvrement et d'autres</li>
-                                <li>💾 Implémentation d'une base de données OLAP sous PostgreSQL pour optimiser les performances</li>
-                                <li>⚙️ Automatisation des tâches de monitoring avec Power Automate sur plusieurs données avec des mails de prévention</li>
-                                <li>🌐 Développement d'un site interne de gestion des tickets, gestion des rôles, gestion des favoris et des connexions utilisateurs</li>
-                                <li>🤖 Création d'un chatbot intelligent pour orienter les utilisateurs vers les bons rapports Power BI</li>
-                                <li>🛠️ Intégration d'un modèle IA pour la gestion des erreurs et la correction automatique des fautes réalisé avec des vues js</li>
-                                <li>💾 Création de différents modèle de données (personalisées/prédéfinis), qui se met à jour quotidiennement puisque la base de donénes contient plus de 750 tables</li>
-                                <li>🗂️ Pérennisation du projet avec documentation détaillée et commentaires sur les scripts complexes</li>
-                            </ul>
-                        </div>                      
-                   </ul>
-            </div>
-    
-            <!-- Projets Personnels -->
-            <div class="projets-category" id="projets-personnels">
-                <h3>Projets Personnels</h3>
-                <ul>
-                    <li>
-                        <h4>Portfolio Personnel</h4>
-                        <p>Création d'un portfolio interactif en HTML5, CSS3, et JavaScript pour présenter mes projets, compétences et mini-jeux vidéo que j'ai développés.</p>
-            
-                        <div class="projet-description">
-                            <p>Le portfolio inclut :</p>
-                            <ul>
-                                <li>🌐 Une page d'accueil dynamique avec animations CSS</li>
-                                <li>📜 Une section détaillée sur mes compétences et expériences</li>
-                                <li>🎮 Un mini-jeu interactif en JavaScript</li>
-                                <li>📸 Un carrousel de projets et screenshots</li>
-                                <li>📩 Une section de contact avec formulaire interactif</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    </li>
-            
-                    <li>
-                        <h4>Site Internet - Clash of Clans</h4>
-                        <p>Développement d'un site dédié à un clan de Clash of Clans, réalisé en HTML5, CSS3, et JavaScript. Le site inclut une présentation du clan, des rapports BI que j'ai créés avec des statistiques sur les joueurs, une page de contact, et une section de présentation personnelle.</p>
-            
-                        <div class="projet-description">
-                            <p>Ce site propose :</p>
-                            <ul>
-                                <li>📊 Des visualisations Power BI pour suivre les performances des joueurs</li>
-                                <li>🏆 Un classement interactif avec mises à jour régulières</li>
-                                <li>🛠️ Une gestion des membres du clan</li>
-                                <li>📩 Un formulaire pour postuler au clan</li>
-                                <li>💬 Un espace communautaire pour discuter des stratégies</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-            
-                        <p><a href="https://milhane69.github.io/HOTH-Milhane" target="_blank" class="btn">Visiter mon site Clash of Clans</a></p>
-                    </li>
-            
-                    <li>
-                        <h4>Développement d’un bot Discord</h4>
-                        <p>Création d’un bot Discord en Python pour la gestion d’un serveur communautaire. Le bot est capable de modérer, d’attribuer des rôles, d’envoyer des notifications et de récupérer des données depuis des API externes.</p>
-            
-                        <div class="projet-description">
-                            <p>Fonctionnalités principales :</p>
-                            <ul>
-                                <li>🤖 Modération automatique avec filtres et logs</li>
-                                <li>🎭 Attribution et gestion des rôles</li>
-                                <li>📢 Système de notifications personnalisées</li>
-                                <li>🔍 Commandes interactives pour les utilisateurs</li>
-                                <li>📊 Intégration avec Power BI pour des statistiques de serveur</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    </li>
-            
-                    <li>
-                        <h4>Automatisation de tâches avec Python</h4>
-                        <p>Développement de plusieurs scripts d’automatisation pour la gestion de fichiers, le web scraping et l’envoi automatique d’emails.</p>
-            
-                        <div class="projet-description">
-                            <p>Exemples de scripts :</p>
-                            <ul>
-                                <li>📩 Un bot d’envoi d’emails automatique avec Gmail API</li>
-                                <li>📁 Un organisateur de fichiers intelligent</li>
-                                <li>🌐 Un scraper web pour extraire des données de sites</li>
-                                <li>📅 Un script de planification de rappels</li>
-                                <li>💾 Un extracteur de données Excel et CSV pour analyse</li>
-                            </ul>
-                        </div>
-                        <button class="toggle-description">Voir plus</button>
-                    </li>
-
-                    <li>
-                        <h4>CréaSite – Générateur de sites & outils pour freelances</h4>
-                        <p>Lancement de mon projet personnel : CréaSite, un site internet développé pour aider les entrepreneurs, freelances et TPE/PME à créer facilement leur présence en ligne. Le projet inclut un générateur de maquettes interactives, un créateur de devis PDF dynamiques, et un formulaire de contact intelligent, le tout avec un design responsive.</p>
-
-                        <div class="projet-description">
-                            <p>Fonctionnalités principales :</p>
-                            <ul>
-                                <li>🖥️ Générateur de maquettes web interactives</li>
-                                <li>📄 Création de devis PDF personnalisés (jsPDF)</li>
-                                <li>📬 Formulaire de contact intelligent (EmailJS intégré)</li>
-                                <li>🎨 Design responsive avec animations douces</li>
-                                <li>🚀 Hébergement et déploiement via Netlify</li>
-                                <li>🌐 Logo & identité graphique propre au projet</li>
-                            </ul>
-                        </div>
-                    <button class="toggle-description">Voir plus</button>
-
-            <p><a href="https://creasite.netlify.app/" target="_blank" class="btn">Visiter CréaSite</a></p>
-</li>
-
-                </ul>
-            </div>
-
-        </div>
+    <section id="competences" class="container" aria-labelledby="competences-titre">
+      <h2 id="competences-titre">Compétences</h2>
+      <ul class="competences-list" id="liste-competences">
+        <li class="competence" data-description="Modélisation, intégration et exploitation de données. Qualité, gouvernance et mise en place de DWH/OLAP.">Gestion & Modélisation des Données</li>
+        <li class="competence" data-description="Sites et applications interactives (HTML, CSS, JavaScript), APIs, bonnes pratiques d’accessibilité.">Développement Web</li>
+        <li class="competence" data-description="Python (pandas, numpy, scikit-learn), scripts d’automatisation, prototypage IA.">Programmation & IA</li>
+        <li class="competence" data-description="Création de rapports, KPI, dashboards interactifs et rafraîchis (Power BI).">Visualisation (Power BI)</li>
+        <li class="competence" data-description="SQL (PostgreSQL, Oracle), bases NoSQL, optimisation de requêtes.">Bases de Données (SQL/NoSQL)</li>
+        <li class="competence" data-description="Sécurité applicative, hygiène numérique, RGPD et anonymisation de base.">Cybersécurité & RGPD</li>
+        <li class="competence" data-description="UML, MCD/MLD, schémas d’architecture et documentation.">Modélisation & UML</li>
+        <li class="competence" data-description="Gestion agile, planning, livrables, documentation et passage à l’échelle.">Gestion de Projet</li>
+      </ul>
+      <div id="competence-description" class="competence-description" aria-live="polite">
+        <p>Sélectionnez une compétence pour en savoir plus.</p>
+      </div>
     </section>
 
-    <section id="CV">
-    <div class="cv-container">
-        <h1>Mon CV</h1>
-        <p>Cliquez sur l'image pour afficher le CV en grand format.</p>
-        
+    <section id="projets" class="container" aria-labelledby="projets-titre">
+      <h2 id="projets-titre">Mes Projets</h2>
+
+      <div class="projets-category" id="projets-ecole">
+        <h3>Projets École</h3>
+        <ul>
+          <li>
+            <h4>Implémentation d'un besoin client</h4>
+            <p>Escape game sous MonoGame avec énigmes web (HTML/CSS/JS).</p>
+            <div class="projet-description" hidden>
+              <ul>
+                <li>Gameplay interactif</li><li>Mini‑jeux intégrés</li><li>Environnement immersif</li>
+              </ul>
+            </div>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <h5>Livrable</h5>
+              <ul>
+                <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">Voir le PDF</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Comparaison d'approches algorithmiques</h4>
+            <p>IA de jeu : Minimax, Alpha‑Beta, réseaux de neurones – benchmark et optimisation.</p>
+            <div class="projet-description" hidden>
+              <ul>
+                <li>Algorithmes décisionnels</li><li>Comparatifs de perfs</li><li>Ajustements heuristiques</li>
+              </ul>
+            </div>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <h5>Livrable</h5>
+              <ul>
+                <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">Voir le PDF</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Installation d'un poste de développement</h4>
+            <p>VM Debian + outillage C#; environnement front (CSS/JS) prêt à l’emploi.</p>
+            <div class="projet-description" hidden>
+              <ul>
+                <li>Provisioning reproductible</li><li>Guide utilisateur</li><li>Automatisation basique</li>
+              </ul>
+            </div>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <h5>Livrable</h5>
+              <ul>
+                <li><a href="USER_GUIDE.pdf" target="_blank" rel="noopener" class="btn">Voir le USER GUIDE</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Création d'une base de données</h4>
+            <p>Conception PostgreSQL, requêtes de validation et tests de performance.</p>
+            <div class="projet-description" hidden>
+              <ul>
+                <li>Modélisation optimisée</li><li>Intégrité et contraintes</li><li>Indexation ciblée</li>
+              </ul>
+            </div>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+          </li>
+
+          <li>
+            <h4>Recueil des besoins</h4>
+            <p>Questionnaire utilisateurs → persona → maquette (Figma).</p>
+            <div class="projet-description" hidden>
+              <ul>
+                <li>Parcours utilisateur</li><li>Fonctionnalités essentielles</li><li>Itérations rapides</li>
+              </ul>
+            </div>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <h5>Livrables</h5>
+              <ul>
+                <li><a href="https://www.figma.com/proto/ShATBSnQilreJGmetXW3x5/Untitled?node-id=1-780&node-type=canvas&t=D8qzbtdt0myHRHV8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A780&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn">Maquette Figma</a></li>
+                <li><a href="Persona.docx" target="_blank" rel="noopener" class="btn">Persona</a></li>
+                <li><a href="QuestionnaireS1.05.pdf" target="_blank" rel="noopener" class="btn">Réponses</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Analyse de l'environnement éco & éco‑responsable</h4>
+            <p>Étude Capgemini : SWOT + présentation.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="SAe_1.06.pptx" target="_blank" rel="noopener" class="btn">Présentation</a></li>
+                <li><a href="Compte rendu de synthèse Capgemini.docx" target="_blank" rel="noopener" class="btn">Compte rendu</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Développement d'une application IHM</h4>
+            <p>Application connectée à PhpPgAdmin, tests d’UX et validation.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="IHM.pdf" target="_blank" rel="noopener" class="btn">Compte rendu IHM</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Exploration algorithmique d'un problème</h4>
+            <p>Graphes + Excel/VBA pour l’aide à la décision, simulation et optimisation.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <h5>Fichiers</h5>
+              <ul>
+                <li><a href="OutilsDecision_E12V2.xlsm" target="_blank" rel="noopener" class="btn-fichier">Excel (macros)</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Installation de services réseau</h4>
+            <p>WordPress sur Raspberry Pi + MariaDB. Sécurité et administration.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="USERGUIDE_SAE" target="_blank" rel="noopener" class="btn-fichier">User guide</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Exploitation d'une base de données</h4>
+            <p>Analyses statistiques + dashboards Power BI.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="sae4.pbix" target="_blank" rel="noopener" class="btn">Fichier Power BI</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Organisation du travail d'équipe</h4>
+            <p>Séminaire en anglais : communication et livrables.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="Affiche_seminaire.pdf" target="_blank" rel="noopener" class="btn">Affiche</a></li>
+                <li><a href="sae6.pdf" target="_blank" rel="noopener" class="btn">Poster</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Site complet (Laravel, RGPD, BI, Chatbot)</h4>
+            <p>App Laravel avec sécurité, tests de charge, chatbot, MCD, Power BI.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="Rendu FinalS3.01.docx" target="_blank" rel="noopener" class="btn">Compte rendu diagramme</a></li>
+                <li><a href="CryptoS3.01.docx" target="_blank" rel="noopener" class="btn">Rendu Cryptographie</a></li>
+                <li><a href="ChargeReseauChatbotS3.01.docx" target="_blank" rel="noopener" class="btn">Réseau chatbot</a></li>
+                <li><a href="RenduFinalS3.01.xlsx" target="_blank" rel="noopener" class="btn">Excel des données</a></li>
+                <li><a href="DocRGPDS3.01.docx" target="_blank" rel="noopener" class="btn">RGPD</a></li>
+                <li><a href="CompteRenduFinalPOWERBIS3.01.docx" target="_blank" rel="noopener" class="btn">Power BI</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Open Food Facts – Optimisation BD</h4>
+            <p>Refonte PostgreSQL, ventes simulées, Knime, IA pour Nutri‑Score.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="CompteRenduS4.01.pdf" target="_blank" rel="noopener" class="btn">Compte rendu</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h4>Projet IMDb – SAE 5.C.01</h4>
+            <p>OLTP/OLAP, NLP basique des critiques, visualisations et soutenance.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+            <div class="livrables-container" hidden>
+              <ul>
+                <li><a href="Soutenance.pdf" target="_blank" rel="noopener" class="btn">Soutenance</a></li>
+                <li><a href="Document final.docx" target="_blank" rel="noopener" class="btn">Document final</a></li>
+                <li><a href="SAE5.C.01 IMDb 2024-25.docx" target="_blank" rel="noopener" class="btn">Sujet</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="projets-category" id="projets-professionnels">
+        <h3>Projets Professionnels</h3>
+        <ul>
+          <li>
+            <h4>Remodélisation d'un cube SAP (MM)</h4>
+            <p>Optimisation du reporting achats (Brenntag France).</p>
+          </li>
+          <li>
+            <h4>Système de gestion des commandes e‑commerce</h4>
+            <p>Back‑office PHP/MySQL (Easydis France).</p>
+          </li>
+          <li>
+            <h4>Reporting abonnés à l'eau potable</h4>
+            <p>Power BI + base OLAP (PostgreSQL), automatisations et monitoring (Annemasse Agglo).</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="projets-category" id="projets-personnels">
+        <h3>Projets Personnels</h3>
+        <ul>
+          <li>
+            <h4>Portfolio Personnel</h4>
+            <p>Site interactif (HTML5/CSS3/JS) – animations, mini‑jeu, carrousel.</p>
+            <button class="toggle-description" aria-expanded="false">Voir plus</button>
+          </li>
+          <li>
+            <h4>Site – Clash of Clans</h4>
+            <p>Stats Power BI, classement, gestion membres et candidatures.</p>
+            <p><a href="https://milhane69.github.io/HOTH-Milhane" target="_blank" rel="noopener" class="btn">Visiter le site</a></p>
+          </li>
+          <li>
+            <h4>Bot Discord (Python)</h4>
+            <p>Modération, rôles, notifications, commandes et stats (Power BI).</p>
+          </li>
+          <li>
+            <h4>Automatisation avec Python</h4>
+            <p>Gmail API, organisation de fichiers, web scraping, rappels et extraction Excel/CSV.</p>
+          </li>
+          <li>
+            <h4>CréaSite – Générateur de sites & outils freelances</h4>
+            <p>Maquettes interactives, devis PDF (jsPDF), EmailJS, Netlify, identité graphique.</p>
+            <p><a href="https://creasite.netlify.app/" target="_blank" rel="noopener" class="btn">Visiter CréaSite</a></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cv" class="container" aria-labelledby="cv-titre">
+      <h2 id="cv-titre">Mon CV</h2>
+      <p>Cliquez sur l'image pour l’agrandir (ou téléchargez le PDF).</p>
+      <div class="cv-container">
         <div class="cv-wrapper">
-            <img src="CV.png" alt="CV" id="cv-image" class="cv-thumbnail">
+          <figure>
+            <img src="CV.png" alt="CV de RABEHI Milhane" id="cv-image" class="cv-thumbnail" loading="lazy" decoding="async" />
+            <figcaption class="competence-description">Aperçu du CV</figcaption>
+          </figure>
         </div>
-        
-        <a href="CV rabehi milhane.pdf" download class="download-btn">Télécharger le CV (PDF)</a>
-    </div>
-    </section>
-    
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Vous pouvez me contacter par email à <a href="mailto:milhane13130@gmail.com">milhane13130@gmail.com</a></p>
-            <p>Si vous souhaitez me contacter, vous pouvez me trouver sur LinkedIn :</p>
-                <!-- Lien LinkedIn avec une icône -->
-        <a href="https://www.linkedin.com/in/milhane-rabehi-917501258" target="_blank" class="linkedin-link">
-            <i class="fab fa-linkedin"></i> RABEHI Milhane
-        </a>
-        </div>
+        <p><a href="CV_RABEHI_Milhane.pdf" download class="btn" aria-label="Télécharger mon CV en PDF">Télécharger le CV (PDF)</a></p>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; Mon Portfolio RABEHI Milhane</p>
-    </footer>
+    <section id="contact" class="container" aria-labelledby="contact-titre">
+      <h2 id="contact-titre">Contact</h2>
+      <p>Écrivez‑moi : <a href="mailto:milhane13130@gmail.com">milhane13130@gmail.com</a></p>
+      <p>LinkedIn : <a href="https://www.linkedin.com/in/milhane-rabehi-917501258" target="_blank" rel="noopener" class="linkedin-link"><i class="fab fa-linkedin" aria-hidden="true"></i> <span>RABEHI Milhane</span></a></p>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
+  <footer role="contentinfo">
+    <p>© <span id="year"></span> RABEHI Milhane — Tous droits réservés</p>
+  </footer>
+
+  <script>
+    // Année dynamique
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menu burger accessible
+    const burger = document.querySelector('.burger');
+    const links = document.querySelector('.nav-links');
+    burger?.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
+    });
+
+    // Accordéons "Voir plus" accessibles
+    document.querySelectorAll('.toggle-description').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const li = btn.closest('li');
+        const desc = li.querySelector('.projet-description');
+        const livr = li.querySelector('.livrables-container');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (desc) desc.hidden = !desc.hidden;
+        if (livr) livr.hidden = !livr.hidden;
+      });
+    });
+
+    // Info-bulles Compétences
+    const list = document.getElementById('liste-competences');
+    const info = document.getElementById('competence-description');
+    list?.addEventListener('click', (e) => {
+      const item = e.target.closest('.competence');
+      if (!item) return;
+      const text = item.getAttribute('data-description') || '—';
+      info.innerHTML = `<p>${text}</p>`;
+    });
+
+    // Zoom CV (simple lightbox native)
+    const cvImg = document.getElementById('cv-image');
+    cvImg?.addEventListener('click', () => {
+      const dlg = document.createElement('dialog');
+      dlg.style.padding = '0';
+      dlg.style.border = 'none';
+      dlg.innerHTML = `<img src="CV.png" alt="CV agrandi" style="max-width:90vw;max-height:85vh;display:block"/>`;
+      document.body.appendChild(dlg);
+      dlg.addEventListener('click', () => dlg.close());
+      dlg.addEventListener('close', () => dlg.remove());
+      dlg.showModal();
+    });
+  </script>
 </body>
 </html>
-
