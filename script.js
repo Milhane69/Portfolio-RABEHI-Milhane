@@ -1,75 +1,58 @@
 /**
  * PORTFOLIO SCRIPT - RABEHI MILHANE
- * Focus: Performance, Accessibilité & Expérience Utilisateur
+ * Focus: Performance, Accessibilité, Expérience Utilisateur & Animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. CONFIGURATION DES SECTIONS (REVEAL ANIMATION) ---
-    // Utilisation de IntersectionObserver pour une meilleure performance que l'event 'scroll'
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                // On arrête d'observer une fois affiché pour économiser des ressources
-                sectionObserver.unobserve(entry.target);
+    // ==========================================================================
+    // 1. MENU BURGER RESPONSIVE (MOBILE)
+    // ==========================================================================
+    const menuBurger = document.getElementById('menu-burger');
+    const navUl = document.querySelector('nav ul');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    if (menuBurger) {
+        // Ouvre/Ferme le menu au clic sur le burger
+        menuBurger.addEventListener('click', () => {
+            navUl.classList.toggle('nav-active');
+            
+            // Animation de l'icône (hamburger <-> croix)
+            const icon = menuBurger.querySelector('i');
+            if (navUl.classList.contains('nav-active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
-    }, { threshold: 0.15 });
 
-    document.querySelectorAll('section').forEach(section => {
-        sectionObserver.observe(section);
-    });
-
-
-    // --- 2. GESTION DES COMPÉTENCES (INTERACTIF) ---
-    const competencies = document.querySelectorAll('.competence');
-    const descriptionContainer = document.getElementById('competence-description');
-
-    competencies.forEach(competence => {
-        competence.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const text = competence.getAttribute('data-description');
-            
-            // Animation de changement de contenu
-            descriptionContainer.style.opacity = '0';
-            
-            setTimeout(() => {
-                descriptionContainer.innerHTML = `
-                    <div class="desc-content">
-                        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 10px;"></i>
-                        <span>${text}</span>
-                    </div>`;
-                descriptionContainer.classList.add('show');
-                descriptionContainer.style.opacity = '1';
-            }, 200);
-
-            // Sur mobile, on scroll légèrement vers la description
-            if (window.innerWidth < 768) {
-                descriptionContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+        // Ferme le menu automatiquement quand on clique sur un lien
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navUl.classList.contains('nav-active')) {
+                    navUl.classList.remove('nav-active');
+                    const icon = menuBurger.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
-    });
+    }
 
-    // Fermer la description si on clique ailleurs
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.competence') && !e.target.closest('#competence-description')) {
-            descriptionContainer.classList.remove('show');
-        }
-    });
-
-
-    // --- 3. SCROLL FLUIDE OPTIMISÉ ---
-    const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    // ==========================================================================
+    // 2. SCROLL FLUIDE AVEC DÉCALAGE (POUR LE HEADER FIXE)
+    // ==========================================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            
+
             if (targetElement) {
-                const headerOffset = 80;
+                // Hauteur du header pour ne pas cacher le titre de la section
+                const headerOffset = 80; 
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -81,10 +64,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================================================
+    // 3. BULLES INFORMATIVES DES COMPÉTENCES (TOOLTIPS)
+    // ==========================================================================
+    // Sur PC le CSS gère le survol, mais sur mobile/tablette il faut gérer le clic
+    const competencies = document.querySelectorAll('.competence');
+    
+    competencies.forEach(comp => {
+        comp.addEventListener('click', (e) => {
+            // Ferme toutes les autres bulles avant d'ouvrir la nouvelle
+            competencies.forEach(c => {
+                if (c !== comp) c.classList.remove('active-tooltip');
+            });
+            // Alterne l'état de la bulle cliquée
+            comp.classList.toggle('active-tooltip');
+            e.stopPropagation(); // Empêche le clic de se propager au document
+        });
+    });
 
-    // --- 4. GESTION DES PROJETS (ACCORDÉON) ---
+    // Si on clique n'importe où ailleurs sur la page, on ferme les bulles ouvertes
+    document.addEventListener('click', () => {
+        competencies.forEach(c => c.classList.remove('active-tooltip'));
+    });
+
+    // ==========================================================================
+    // 4. ACCORDÉON DES PROJETS ("VOIR PLUS")
+    // ==========================================================================
     const projectToggles = document.querySelectorAll(".toggle-description");
-
+    
     projectToggles.forEach(button => {
         button.addEventListener("click", function() {
             const parentLi = this.closest("li");
@@ -93,12 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (description) {
                 const isActive = description.classList.contains("active");
                 
-                // Fermer les autres descriptions du même bloc (optionnel pour un look propre)
-                // parentLi.parentNode.querySelectorAll('.projet-description').forEach(el => el.classList.remove('active'));
-
+                // Ouvre ou ferme la description
                 description.classList.toggle("active");
                 
-                // Changement de texte avec une petite transition
+                // Effet visuel sur le bouton
                 this.style.transform = "scale(0.95)";
                 setTimeout(() => {
                     this.textContent = isActive ? "Voir plus" : "Voir moins";
@@ -108,39 +113,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // --- 5. CV & SPLASH SCREEN ---
-    // Agrandissement du CV
+    // ==========================================================================
+    // 5. ZOOM DU CV (PLEIN ÉCRAN)
+    // ==========================================================================
     const cvImage = document.getElementById("cv-image");
+    
     if (cvImage) {
-        cvImage.addEventListener("click", () => {
-            cvImage.classList.toggle("cv-fullscreen");
-            // Empêcher le scroll quand l'image est en plein écran
-            document.body.style.overflow = cvImage.classList.contains("cv-fullscreen") ? "hidden" : "auto";
+        cvImage.addEventListener("click", function() {
+            this.classList.toggle("cv-fullscreen");
+            
+            // Ajoute une classe au body pour assombrir le fond et bloquer le scroll
+            if (this.classList.contains("cv-fullscreen")) {
+                document.body.classList.add("cv-open");
+                document.body.style.overflow = "hidden"; // Bloque le défilement
+            } else {
+                document.body.classList.remove("cv-open");
+                document.body.style.overflow = "auto"; // Réactive le défilement
+            }
         });
     }
 
-    // Splash Screen (Chargement)
-    const splashScreen = document.getElementById("splash-screen");
-    if (splashScreen) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                splashScreen.style.opacity = "0";
-                splashScreen.style.transition = "opacity 0.8s ease";
-                setTimeout(() => splashScreen.remove(), 800);
-            }, 2000); // 2 secondes suffisent pour un effet pro
+    // ==========================================================================
+    // 6. ANIMATIONS D'APPARITION AU SCROLL (INTERSECTION OBSERVER)
+    // ==========================================================================
+    const sections = document.querySelectorAll('section');
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                // Optimisation : on arrête d'observer la section une fois qu'elle est apparue
+                sectionObserver.unobserve(entry.target); 
+            }
         });
-    }
+    }, { 
+        threshold: 0.15 // Se déclenche quand 15% de la section est visible
+    });
 
-    // --- 6. EFFET NAVBAR AU SCROLL ---
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // ==========================================================================
+    // 7. EFFET D'OMBRE SUR LA NAVBAR AU SCROLL
+    // ==========================================================================
     const header = document.querySelector('header');
+    
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
-            header.style.padding = "5px 0";
+            header.classList.add('scrolled');
         } else {
-            header.style.boxShadow = "none";
-            header.style.padding = "0";
+            header.classList.remove('scrolled');
         }
     });
 });
