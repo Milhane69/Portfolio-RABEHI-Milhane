@@ -834,3 +834,14 @@ footer {
         text-align: center;
     }
 }
+
+@media (max-width: 768px) {
+    /* ... tes autres règles mobiles existantes ... */
+
+    /* SÉCURITÉ ANTI-VIDE BLANC : On force l'affichage sur mobile */
+    section {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
