@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 6. ANIMATIONS D'APPARITION AU SCROLL (LE CORRECTIF EST ICI)
+    // 6. ANIMATIONS D'APPARITION AU SCROLL (LE CORRECTIF MOBILE)
     // ==========================================================================
     const sections = document.querySelectorAll('section');
     
@@ -135,9 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, { 
-        // On n'utilise plus threshold (pourcentage de taille)
-        // On déclenche l'animation dès que la section approche du bas de l'écran (à -50px)
-        rootMargin: "0px 0px -50px 0px" 
+        // rootMargin POSITIF : On dit au navigateur de déclencher l'affichage 
+        // 200 pixels AVANT même que la section n'entre dans l'écran.
+        rootMargin: "200px 0px 200px 0px",
+        threshold: 0
     });
 
     sections.forEach(section => {
@@ -157,3 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
