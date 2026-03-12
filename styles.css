@@ -1,52 +1,45 @@
-/* ================================================================
-    PORTFOLIO PREMIUM - RABEHI MILHANE
-    MASTER MIASHS UGA - INFORMATIQUE & COGNITION
-    VERSION: 2.0 (ULTRA CLEAN & RESPONSIVE)
-    ================================================================
-*/
-
-/* 1. CONFIGURATION DES VARIABLES (DESIGN SYSTEM) */
-:root {
-    /* Couleurs Principales */
-    --primary: #3498db;          /* Bleu UGA / Pro */
-    --primary-light: #5dade2;
-    --primary-dark: #2980b9;
-    --secondary: #8e44ad;         /* Violet Master / Innovation */
-    --accent: #e74c3c;
-    
-    /* Palette Neutre (Mode Clair par défaut) */
-    --bg-body: #f4f7f6;
-    --bg-card: #ffffff;
-    --bg-nav: rgba(255, 255, 255, 0.9);
-    --text-main: #2c3e50;
-    --text-muted: #546e7a;
-    --text-light: #ffffff;
+/* ==========================================================================
+   🎨 DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+   :root {
+    /* Palette de couleurs (Thème Clair / Pro) */
+    --color-bg: #f4f7f6;
+    --color-surface: #ffffff;
+    --color-primary: #0056b3; /* Bleu académique/tech */
+    --color-primary-light: #3498db;
+    --color-secondary: #2c3e50; /* Bleu nuit presque gris */
+    --color-text: #333333;
+    --color-text-muted: #6c757d;
+    --color-border: #e9ecef;
     
     /* Gradients */
-    --grad-hero: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    --grad-blue: linear-gradient(135deg, #3498db, #2980b9);
-    --grad-dark: linear-gradient(135deg, #2c3e50, #000000);
-    
-    /* Élévation & Ombres */
-    --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
-    --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
-    --shadow-lg: 0 20px 50px rgba(0,0,0,0.12);
-    --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.06);
-    
-    /* Transitions & Bordures */
+    --gradient-hero: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    --gradient-primary: linear-gradient(135deg, #0056b3, #3498db);
+
+    /* Ombres (Élévation) */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 8px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 15px 35px rgba(0,0,0,0.12);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.18);
+
+    /* Arrondis */
     --radius-sm: 8px;
-    --radius-md: 15px;
-    --radius-lg: 30px;
-    --radius-full: 9999px;
-    --transition-fast: all 0.2s ease;
-    --transition-main: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-pill: 50px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease-out;
+    --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     
     /* Layout */
-    --container-width: 1200px;
-    --header-height: 80px;
+    --nav-height: 80px;
+    --container-max: 1200px;
 }
 
-/* 2. RESET & BASES */
+/* ==========================================================================
+   🔄 RESET & BASE
+   ========================================================================== */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -55,33 +48,31 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px; /* Base pour rem */
+    font-size: 16px;
 }
 
 body {
-    background-color: var(--bg-body);
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.7;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Inter', 'Roboto', -apple-system, sans-serif;
+    line-height: 1.6;
+    padding-top: var(--nav-height);
     overflow-x: hidden;
-    padding-top: var(--header-height);
-    -webkit-font-smoothing: antialiased;
 }
 
-/* 3. TYPOGRAPHIE PROFESSIONNELLE */
+/* Typographie */
 h1, h2, h3, h4 {
+    color: var(--color-secondary);
+    font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
     text-align: center;
+    margin-bottom: 3rem;
     position: relative;
-    padding-bottom: 20px;
-    margin-bottom: 60px;
+    padding-bottom: 1rem;
 }
 
 h2::after {
@@ -90,43 +81,46 @@ h2::after {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 5px;
-    background: var(--grad-blue);
-    border-radius: var(--radius-full);
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-pill);
 }
 
-p { margin-bottom: 1.5rem; }
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color var(--transition-fast);
+}
 
-strong { color: var(--primary-dark); font-weight: 700; }
-
-/* 4. LAYOUT / CONTENANTS */
 .container {
-    max-width: var(--container-width);
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 2rem;
 }
 
 section {
-    padding: 120px 0;
+    padding: 6rem 0;
     position: relative;
 }
 
-/* 5. HEADER & NAVIGATION NAV */
+/* ==========================================================================
+   🧭 NAVIGATION (HEADER)
+   ========================================================================== */
 header {
-    height: var(--header-height);
-    background: var(--bg-nav);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
+    height: var(--nav-height);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
+    box-shadow: var(--shadow-sm);
     display: flex;
     align-items: center;
-    box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    transition: var(--transition-main);
+    transition: var(--transition-smooth);
 }
 
 nav {
@@ -134,332 +128,428 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 30px;
 }
 
 .logo h1 {
-    font-size: 1.4rem;
-    margin-bottom: 0;
-    background: var(--grad-blue);
+    font-size: 1.5rem;
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
+    letter-spacing: -0.5px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
-    align-items: center;
+    gap: 0.5rem;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: var(--text-main);
+    color: var(--color-text);
     font-weight: 600;
     font-size: 0.95rem;
-    padding: 10px 15px;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     transition: var(--transition-fast);
 }
 
 nav ul li a:hover {
-    color: var(--primary);
-    background: rgba(52, 152, 219, 0.08);
+    background: rgba(0, 86, 179, 0.08);
+    color: var(--color-primary);
 }
 
-/* 6. HERO SECTION (ACCUEIL) */
+/* ==========================================================================
+   🌟 ACCUEIL (HERO SECTION)
+   ========================================================================== */
 #accueil {
-    min-height: calc(100vh - var(--header-height));
-    background: var(--grad-dark);
+    background: var(--gradient-hero);
+    min-height: calc(100vh - var(--nav-height));
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
     text-align: center;
-    color: white;
-}
-
-.typing-effect {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    border-right: 4px solid var(--primary);
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    white-space: nowrap;
+    color: var(--color-surface);
+    padding: 2rem;
+    position: relative;
     overflow: hidden;
 }
 
-#accueil p {
-    font-size: 1.25rem;
-    max-width: 800px;
-    margin: 0 auto 40px;
-    opacity: 0.9;
-    color: #cbd5e0;
+/* Effet de fond animé subtil */
+#accueil::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+    animation: rotateBg 30s linear infinite;
+    z-index: 0;
 }
 
-/* 7. BOUTONS */
+@keyframes rotateBg {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#accueil .container {
+    position: relative;
+    z-index: 1;
+}
+
+.typing-effect {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    color: var(--color-surface);
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+#accueil p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Bouton Global */
 .btn {
     display: inline-flex;
     align-items: center;
-    padding: 16px 35px;
-    background: var(--grad-blue);
-    color: white !important;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition-main);
-    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    background: var(--gradient-primary);
+    color: var(--color-surface) !important;
+    font-weight: 600;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-smooth);
     border: none;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
 }
 
 .btn:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
 }
 
-/* 8. SECTION A PROPOS */
-#apropos { background: var(--bg-card); }
-
-#apropos .container p {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 1.15rem;
-    color: var(--text-muted);
+/* ==========================================================================
+   🛠️ COMPÉTENCES
+   ========================================================================== */
+#competences {
+    background: var(--color-surface);
 }
 
-/* 9. COMPETENCES (GRID & CARDS) */
 .competences-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     list-style: none;
 }
 
 .competence {
-    background: var(--bg-card);
-    padding: 25px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(0,0,0,0.05);
-    text-align: center;
-    font-weight: 700;
+    background: var(--color-bg);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-border);
     cursor: pointer;
-    transition: var(--transition-main);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 80px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
 }
 
 .competence:hover {
-    background: var(--grad-blue);
-    color: white;
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    background: var(--color-primary);
+    color: var(--color-surface);
+    transform: translateY(-5px);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
 }
 
 .competence-description {
-    margin-top: 50px;
-    padding: 40px;
-    background: white;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--color-surface);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-    border-left: 8px solid var(--primary);
+    box-shadow: var(--shadow-lg);
+    border-left: 5px solid var(--color-primary);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     display: none;
-    animation: fadeIn 0.5s ease forwards;
+    animation: slideUp 0.4s ease forwards;
 }
 
-.competence-description.show { display: block; }
+.competence-description.show {
+    display: block;
+}
 
-/* 10. PROJETS (ULTRA PRO DESIGN) */
-.projets-category { margin-bottom: 80px; }
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   🚀 PROJETS (LA CORRECTION DU BUG EST ICI)
+   ========================================================================== */
+.projets-category {
+    margin-bottom: 5rem;
+}
 
 .projets-category h3 {
     font-size: 1.8rem;
-    margin-bottom: 40px;
-    color: var(--primary-dark);
+    color: var(--color-primary);
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .projets-category h3::after {
     content: '';
-    flex: 1;
+    flex-grow: 1;
     height: 1px;
-    background: rgba(0,0,0,0.1);
+    background: var(--color-border);
 }
 
-.projets-category ul {
+/* Grille principale des cartes projets */
+.projets-category > ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
     list-style: none;
 }
 
-.projets-category ul li {
-    background: var(--bg-card);
+/* La carte Projet (Li principal) */
+.projets-category > ul > li {
+    background: var(--color-surface);
     border-radius: var(--radius-md);
-    padding: 40px;
+    padding: 2rem;
     box-shadow: var(--shadow-md);
-    transition: var(--transition-main);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.02);
+    height: 100%; /* S'étire correctement */
 }
 
-.projets-category ul li:hover {
-    transform: translateY(-15px);
-    box-shadow: var(--shadow-lg);
+.projets-category > ul > li:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
 }
 
-.projets-category h4 {
-    font-size: 1.4rem;
-    color: var(--dark);
-    margin-bottom: 15px;
+.projets-category > ul > li h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
 }
 
-.projets-category p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 25px;
-    flex-grow: 1;
-}
-
-/* Détails cachés des projets */
-.projet-description {
-    display: none;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-    margin-top: 15px;
+.projets-category > ul > li p {
+    color: var(--color-text-muted);
     font-size: 0.95rem;
-    color: #444;
+    flex-grow: 1; /* Pousse le reste vers le bas */
 }
 
-.projet-description.active { display: block; }
-
-/* Bouton "Voir plus" personnalisé */
+/* --- BOUTON VOIR PLUS --- */
 .toggle-description {
     background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-    padding: 8px 20px;
-    border-radius: var(--radius-full);
-    font-weight: 700;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
     cursor: pointer;
+    margin-top: 1.5rem;
     align-self: flex-start;
     transition: var(--transition-fast);
 }
 
 .toggle-description:hover {
-    background: var(--primary);
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-surface);
 }
 
-/* Conteneur Livrables */
+/* --- DESCRIPTION CACHÉE (LE CORRECTIF) --- */
+.projet-description {
+    max-height: 0;
+    overflow: hidden; /* Cache le contenu qui dépasse */
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+}
+
+.projet-description.active {
+    max-height: 1500px; /* Assez grand pour tout afficher */
+    opacity: 1;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+/* RESET des listes à l'intérieur de la description pour annuler la grille parente */
+.projet-description ul {
+    display: block !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+.projet-description ul li {
+    display: flex !important;
+    align-items: flex-start !important;
+    background: var(--color-bg) !important;
+    padding: 0.8rem 1rem !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important; /* Annule le hover de la carte principale */
+    font-size: 0.9rem !important;
+    color: var(--color-text) !important;
+}
+
+/* Livrables */
 .livrables-container {
-    margin-top: 25px;
-    background: #f8fafc;
-    padding: 20px;
+    margin-top: 1.5rem;
+    background: var(--color-bg);
+    padding: 1.5rem;
     border-radius: var(--radius-sm);
 }
 
 .livrables-container h3 {
     font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--text-muted);
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
 }
+
+.livrables-container h3::after { display: none; } /* Enlève la ligne sur ce petit h3 */
 
 .livrables-container ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.8rem;
+    list-style: none;
 }
 
 .livrables-container .btn {
-    padding: 8px 15px;
     font-size: 0.8rem;
+    padding: 0.6rem 1.2rem;
     border-radius: var(--radius-sm);
 }
 
-/* 11. SECTION CV */
-#CV { background: #fff; }
+/* ==========================================================================
+   📄 CV (CENTRAGE ET ZOOM FLUIDE)
+   ========================================================================== */
+#CV {
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.cv-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu horizontalement */
+    justify-content: center;
+    width: 100%;
+}
 
 .cv-wrapper {
     position: relative;
-    max-width: 600px;
-    margin: 40px auto;
-    overflow: hidden;
-    border-radius: var(--radius-md);
+    max-width: 500px; /* Taille de l'aperçu */
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--color-border);
 }
 
 .cv-thumbnail {
     width: 100%;
-    transition: transform 0.5s ease;
+    height: auto;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
 }
 
 .cv-wrapper:hover .cv-thumbnail {
-    transform: scale(1.1);
+    transform: scale(1.03); /* Petit effet au survol */
 }
 
-.download-btn {
-    margin-top: 30px;
-    padding: 20px 40px;
+/* --- CLASSE AJOUTÉE PAR LE JS POUR LE PLEIN ÉCRAN --- */
+.cv-thumbnail.cv-fullscreen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrage parfait à l'écran */
+    width: auto;
+    max-width: 90vw; /* Ne dépasse pas 90% de la largeur de l'écran */
+    max-height: 90vh; /* Ne dépasse pas 90% de la hauteur de l'écran */
+    z-index: 2000;
+    cursor: zoom-out;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    object-fit: contain;
 }
 
-/* 12. SECTION CONTACT */
+/* Fond sombre quand le CV est ouvert (nécessite d'ajouter une div overlay en JS ou via :has si supporté) */
+body.cv-open::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 32, 39, 0.9);
+    z-index: 1999;
+    backdrop-filter: blur(5px);
+}
+
+/* ==========================================================================
+   📞 CONTACT & FOOTER
+   ========================================================================== */
 #contact {
-    background: var(--grad-dark);
-    color: white;
+    background: var(--color-bg);
+    text-align: center;
 }
-
-#contact h2 { color: white; }
-#contact h2::after { background: white; }
 
 .linkedin-link {
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    color: var(--color-surface);
     background: #0077b5;
-    color: white;
-    padding: 15px 30px;
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    font-weight: 700;
-    margin-top: 20px;
-    transition: var(--transition-main);
+    padding: 1rem 2rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    margin-top: 1.5rem;
+    box-shadow: var(--shadow-md);
 }
 
 .linkedin-link:hover {
-    background: #00a0dc;
-    transform: scale(1.05);
+    background: #006396;
+    color: var(--color-surface);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
 }
 
-/* 13. FOOTER */
 footer {
-    background: #111;
-    color: rgba(255,255,255,0.5);
-    padding: 60px 0;
+    background: var(--color-secondary);
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
 }
 
-/* 14. ANIMATIONS SCRIPT-BASED */
+/* ==========================================================================
+   🎭 ANIMATIONS AU SCROLL (Gérées par IntersectionObserver)
+   ========================================================================== */
 section {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 section.show {
@@ -467,114 +557,43 @@ section.show {
     transform: translateY(0);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ==========================================================================
+   📱 RESPONSIVE (MOBILE FIRST APPROCH)
+   ========================================================================== */
+
+/* Tablettes */
+@media (max-width: 992px) {
+    h2 { font-size: 2rem; }
+    .projets-category > ul { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
 }
 
-/* =================================================================
-   15. RÉPONSES AUX APPAREILS MOBILES (ULTRA RESPONSIVE)
-   ================================================================= */
-
-/* --- TABLETTES (Max 1024px) --- */
-@media (max-width: 1024px) {
-    :root { --header-height: 70px; }
-    h2 { font-size: 2.2rem; }
-    .projets-category ul { grid-template-columns: 1fr 1fr; }
-}
-
-/* --- SMARTPHONES (Max 768px) --- */
+/* Smartphones */
 @media (max-width: 768px) {
-    body { padding-top: 60px; }
-    
-    header { height: 60px; }
-    
-    /* Menu mobile simplifié */
-    nav { padding: 0 20px; }
-    
-    nav ul {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: var(--bg-card);
-        padding: 10px;
-        justify-content: space-around;
-        box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-        border-top: 1px solid #eee;
-        gap: 0;
+    :root {
+        --nav-height: 60px;
     }
+
+    body { padding-top: var(--nav-height); }
     
-    nav ul li a {
-        font-size: 0.75rem;
-        padding: 5px;
+    nav {
         flex-direction: column;
-        display: flex;
-        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0;
     }
 
-    .logo h1 { font-size: 1.1rem; }
-
-    section { padding: 60px 0; }
-    
-    .typing-effect {
-        font-size: 2rem;
-        border-right-width: 2px;
-    }
-
-    .projets-category ul {
-        grid-template-columns: 1fr; /* On passe sur une seule colonne */
-    }
-
-    .competences-list {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .competence {
-        padding: 15px;
-        font-size: 0.85rem;
-    }
-}
-
-/* --- PETITS SMARTPHONES (Max 480px) --- */
-@media (max-width: 480px) {
-    h2 { font-size: 1.8rem; }
-    
-    #accueil p { font-size: 1rem; }
-    
-    .competences-list {
-        grid-template-columns: 1fr;
-    }
-
-    .btn {
+    nav ul {
         width: 100%;
         justify-content: center;
+        overflow-x: auto; /* Permet de scroller le menu horizontalement si besoin */
+        padding-bottom: 0.5rem;
     }
 
-    .projets-category ul li {
-        padding: 25px;
+    nav ul li a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
     }
-}
 
-/* 16. EFFETS DE SCROLL ET INTERACTIONS MODERNES */
-::selection {
-    background: var(--primary);
-    color: white;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    .projets-category > ul { grid-template-columns: 1fr; } /* 1 colonne sur mobile */
+    
+    .cv-wrapper { max-width: 100%; }
 }
