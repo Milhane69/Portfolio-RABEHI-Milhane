@@ -13,11 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav ul li a');
 
     if (menuBurger) {
-        // Ouvre/Ferme le menu au clic sur le burger
         menuBurger.addEventListener('click', () => {
             navUl.classList.toggle('nav-active');
             
-            // Animation de l'icône (hamburger <-> croix)
             const icon = menuBurger.querySelector('i');
             if (navUl.classList.contains('nav-active')) {
                 icon.classList.remove('fa-bars');
@@ -28,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Ferme le menu automatiquement quand on clique sur un lien
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (navUl.classList.contains('nav-active')) {
@@ -51,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                // Hauteur du header pour ne pas cacher le titre de la section
                 const headerOffset = 80; 
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -67,22 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 3. BULLES INFORMATIVES DES COMPÉTENCES (TOOLTIPS)
     // ==========================================================================
-    // Sur PC le CSS gère le survol, mais sur mobile/tablette il faut gérer le clic
     const competencies = document.querySelectorAll('.competence');
     
     competencies.forEach(comp => {
         comp.addEventListener('click', (e) => {
-            // Ferme toutes les autres bulles avant d'ouvrir la nouvelle
             competencies.forEach(c => {
                 if (c !== comp) c.classList.remove('active-tooltip');
             });
-            // Alterne l'état de la bulle cliquée
             comp.classList.toggle('active-tooltip');
-            e.stopPropagation(); // Empêche le clic de se propager au document
+            e.stopPropagation();
         });
     });
 
-    // Si on clique n'importe où ailleurs sur la page, on ferme les bulles ouvertes
     document.addEventListener('click', () => {
         competencies.forEach(c => c.classList.remove('active-tooltip'));
     });
@@ -100,10 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (description) {
                 const isActive = description.classList.contains("active");
                 
-                // Ouvre ou ferme la description
                 description.classList.toggle("active");
                 
-                // Effet visuel sur le bouton
                 this.style.transform = "scale(0.95)";
                 setTimeout(() => {
                     this.textContent = isActive ? "Voir plus" : "Voir moins";
@@ -122,19 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
         cvImage.addEventListener("click", function() {
             this.classList.toggle("cv-fullscreen");
             
-            // Ajoute une classe au body pour assombrir le fond et bloquer le scroll
             if (this.classList.contains("cv-fullscreen")) {
                 document.body.classList.add("cv-open");
-                document.body.style.overflow = "hidden"; // Bloque le défilement
+                document.body.style.overflow = "hidden"; 
             } else {
                 document.body.classList.remove("cv-open");
-                document.body.style.overflow = "auto"; // Réactive le défilement
+                document.body.style.overflow = "auto"; 
             }
         });
     }
 
     // ==========================================================================
-    // 6. ANIMATIONS D'APPARITION AU SCROLL (INTERSECTION OBSERVER)
+    // 6. ANIMATIONS D'APPARITION AU SCROLL (LE CORRECTIF EST ICI)
     // ==========================================================================
     const sections = document.querySelectorAll('section');
     
@@ -142,12 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
-                // Optimisation : on arrête d'observer la section une fois qu'elle est apparue
                 sectionObserver.unobserve(entry.target); 
             }
         });
     }, { 
-        threshold: 0.15 // Se déclenche quand 15% de la section est visible
+        // On n'utilise plus threshold (pourcentage de taille)
+        // On déclenche l'animation dès que la section approche du bas de l'écran (à -50px)
+        rootMargin: "0px 0px -50px 0px" 
     });
 
     sections.forEach(section => {
