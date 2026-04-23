@@ -845,3 +845,83 @@ footer {
     }
 }
 
+/* ==========================================================================
+   🎓 PARCOURS ACADÉMIQUE (FORMATION)
+   ========================================================================== */
+#formation {
+    background: var(--color-bg-main);
+}
+
+.formation-card {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-md);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-normal);
+    position: relative;
+    border-left: 5px solid var(--color-primary); /* Ligne colorée sur le côté */
+}
+
+.formation-card:hover {
+    transform: translateX(10px); /* Effet de glissement vers la droite */
+    box-shadow: var(--shadow-md);
+}
+
+.formation-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.formation-school {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.formation-desc {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.formation-skills {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.formation-skills li {
+    background: rgba(41, 128, 185, 0.05); /* Fond bleu très léger */
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    border-left: 3px solid var(--color-primary-light);
+    line-height: 1.5;
+}
+
+.formation-skills li strong {
+    color: var(--color-secondary);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+    .formation-card {
+        padding: 1.5rem;
+    }
+    .formation-skills {
+        grid-template-columns: 1fr; /* 1 seule colonne sur téléphone */
+    }
+}
