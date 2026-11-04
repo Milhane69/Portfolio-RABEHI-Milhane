@@ -2,8 +2,14 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio RABEHI Milhane | Data Engineer & Business Analyst</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Milhane Rabehi | Data Analytics Engineer & Assistant Data Product Manager</title>
+    <meta name="description" content="Portfolio de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager en alternance au COJOP Alpes 2030." />
+    <meta name="theme-color" content="#14232f" />
+    <script>document.documentElement.className+=" js"</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -12,44 +18,55 @@
   </head>
 
   <body>
+    <a class="skip" href="#projets">Aller aux projets</a>
     <header>
-      <nav>
+      <nav aria-label="Navigation principale">
         <div class="logo">
           <h1>RABEHI Milhane</h1>
         </div>
         
-        <div class="menu-burger" id="menu-burger">
-          <i class="fas fa-bars"></i>
-        </div>
-
         <ul>
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#formation">Formation</a></li> 
-          <li><a href="#competences">Compétences</a></li>
-          <li><a href="#projets">Projets</a></li>
-          <li><a href="#CV">CV</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#accueil"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a></li>
+          <li><a href="#apropos"><i class="fas fa-user" aria-hidden="true"></i><span>À propos</span></a></li>
+          <li><a href="#formation"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Formation</span></a></li> 
+          <li><a href="#competences"><i class="fas fa-layer-group" aria-hidden="true"></i><span>Compétences</span></a></li>
+          <li><a href="#projets"><i class="fas fa-folder-open" aria-hidden="true"></i><span>Projets</span></a></li>
+          <li><a href="#CV"><i class="fas fa-file-lines" aria-hidden="true"></i><span>CV</span></a></li>
+          <li><a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a></li>
         </ul>
       </nav>
     </header>
 
     <section id="accueil">
-      <div class="container">
-        <h2 class="typing-effect">Data Engineer & Business Analyst</h2>
-        <p>
-          Étudiant en Master 2 MIASHS – parcours Informatique, IA & Cognition (UGA) et en alternance chez COJOP Alpes 2030. 
-          Je suis un profil hybride transformant la donnée brute en décisions stratégiques grâce à l'ingénierie des données, l'analyse BI et l'automatisation.
-        </p>
-        <a href="#projets" class="btn">Voir mes projets</a>
+      <div class="hero">
+        <div style="--i:1">
+          <p class="hero-status"><span class="dot"></span>En alternance au COJOP Alpes 2030</p>
+          <h2 class="hero-title">Data Analytics Engineer</h2>
+          <p class="hero-sub">Assistant Data Product Manager</p>
+          <p class="lead">Apprenti au COJOP Alpes 2030 (Lyon) et étudiant en Master 2 MIASHS à l'UGA. Je transforme la donnée brute en décisions : gouvernance, pipelines ETL, BI et automatisation.</p>
+          <ul class="chips"><li>Power BI</li><li>Power Query</li><li>Power Automate</li><li>Python</li><li>SQL</li><li>TypeScript</li></ul>
+          <div class="hero-actions"><a href="#cojop" class="btn gold">Mon alternance</a><a href="#projets" class="btn ghost">Mes projets</a></div>
+        </div>
+        <aside class="hero-card" style="--i:2">
+          <p class="meta">Alternance depuis septembre 2026</p>
+          <h3>Assistant Data Product Manager & Analytics Engineer</h3>
+          <p class="meta">COJOP Alpes 2030, Lyon</p>
+          <ul>
+            <li>Architecture « Single Source of Truth » pour les 4 pôles olympiques</li>
+            <li>Pipelines ETL et automatisation cloud (Power Automate, Power Query, API REST)</li>
+            <li>Dashboards Power BI pour le pilotage stratégique des opérations</li>
+          </ul>
+          <a href="#cojop">Voir le détail des missions</a>
+        </aside>
       </div>
+      <svg class="ridge" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 140 L120 90 L200 120 L340 40 L430 100 L520 70 L650 130 L780 30 L880 95 L980 60 L1100 120 L1200 80 L1200 160 L0 160Z"/></svg>
     </section>
 
     <section id="apropos">
       <div class="container">
         <h2>À propos de moi</h2>
         <p>
-          Je m’appelle <strong>Milhane Rabehi</strong> et j'ai 22 ans. Actuellement en <strong>Master 2 MIASHS</strong> à l'<strong>Université Grenoble Alpes</strong>, je me positionne comme un partenaire technique capable de faire le pont entre la complexité des données et les enjeux métiers (RH, Finance, Juridique).
+          Je m’appelle <strong>Milhane Rabehi</strong> et j'ai 22 ans. Apprenti <strong>Assistant Data Product Manager & Analytics Engineer</strong> au <strong>COJOP Alpes 2030</strong> et en <strong>Master 2 MIASHS</strong> à l'<strong>Université Grenoble Alpes</strong>, je me positionne comme un partenaire technique capable de faire le pont entre la complexité des données et les enjeux métiers (RH, Finance, Juridique).
         </p>
         <p>
           Fort d'expériences concrètes dans l'événementiel sportif international (<strong>COJOP Alpes 2030</strong>), le secteur public (<strong>Annemasse Agglo</strong>), l'industrie chimique (<strong>Brenntag France</strong>) et en recherche (Projet <strong>JADE</strong>), j'ai développé une expertise pointue en <strong>Data Analytics</strong>, <strong>Business Intelligence (Power BI)</strong> et <strong>Ingénierie des Données</strong>. J'ai une forte appétence pour le code (Python, R, SQL) et la création d'architectures de données performantes.
@@ -195,12 +212,14 @@
         <div class="projets-category" id="projets-professionnels">
           <h3>Projets Professionnels & Recherche</h3>
           <ul>
-            <li>
-              <h4>Data Engineer & Analytics (Apprenticeship) - COJOP Alpes 2030</h4>
+            <li id="cojop" class="projet-featured">
+              <span class="badge">Poste actuel, depuis septembre 2026, Lyon</span>
+              <h4>Assistant Data Product Manager & Analytics Engineer (Alternance) - COJOP Alpes 2030</h4>
               <p>Conception d'une architecture "Single Source of Truth", automatisation des flux Cloud et déploiement de dashboards stratégiques pour les décideurs (CIO).</p>
               <div class="projet-description">
                 <p>Missions principales :</p>
                 <ul>
+                  <li>🧭 <strong>Recueil de besoins & produit :</strong> Collaboration directe avec les directions métiers (FAs) pour identifier leurs besoins et points de blocage, cadrer des solutions data sur mesure et automatiser les reportings transverses.</li>
                   <li>🏛️ <strong>Data Governance & Architecture :</strong> Déploiement de l'architecture "Single Source of Truth" (SST) centralisant les données de planification des 4 pôles olympiques. Gouvernance automatisée via TypeScript (Office Scripts) pour l'assurance qualité en temps réel.</li>
                   <li>⚙️ <strong>Cloud Automation & ETL Pipelines :</strong> Création de workflows automatisés manipulant JSON et API REST (Power Automate) pour connecter les outils métiers (Excel, SharePoint, Teams, Smartsheet). Transformation et normalisation de données complexes avec Power Query M Language.</li>
                   <li>📊 <strong>Business Intelligence :</strong> Modélisation de structures relationnelles pour transformer des données brutes en architectures analytiques haute performance. Design de dashboards interactifs (Power BI) pour le Comité International Olympique (CIO).</li>
@@ -229,7 +248,7 @@
               <div class="livrables-container">
                 <h3>📂 Documents officiels</h3>
                 <ul>
-                  <li><a href="Support_soutenance_JADE.pdf" target="_blank" class="btn">📄 Support de soutenance (PDF)</a></li>
+                  <li><a href="Support_soutenance_JADE.pdf" target="_blank" rel="noopener" class="btn">📄 Support de soutenance (PDF)</a></li>
                 </ul>
               </div>
             </li>
@@ -291,7 +310,7 @@
               <div class="livrables-container">
                 <h3>📂 Livrable</h3>
                 <ul>
-                  <li><a href="CompteRenduMonogame.pdf" target="_blank" class="btn">📄 Voir le PDF</a></li>
+                  <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le PDF</a></li>
                 </ul>
               </div>
             </li>
@@ -311,7 +330,7 @@
               <div class="livrables-container">
                 <h3>📂 Livrable</h3>
                 <ul>
-                  <li><a href="CompteRenduMonogame.pdf" target="_blank" class="btn">📄 Voir le PDF</a></li>
+                  <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le PDF</a></li>
                 </ul>
               </div>
             </li>
@@ -331,7 +350,7 @@
               <div class="livrables-container">
                 <h3>📂 Livrable</h3>
                 <ul>
-                  <li><a href="USER_GUIDE.pdf" target="_blank" class="btn">📘 Voir le USER GUIDE</a></li>
+                  <li><a href="USER_GUIDE.pdf" target="_blank" rel="noopener" class="btn">📘 Voir le USER GUIDE</a></li>
                 </ul>
               </div>
             </li>
@@ -365,9 +384,9 @@
               <div class="livrables-container">
                 <h3>📂 Livrables :</h3>
                 <ul>
-                  <li><a href="https://www.figma.com/proto/ShATBSnQilreJGmetXW3x5/Untitled?node-id=1-780&node-type=canvas&t=D8qzbtdt0myHRHV8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A780&show-proto-sidebar=1" target="_blank" class="btn">🎨 Voir la maquette Figma</a></li>
-                  <li><a href="Persona.docx" target="_blank" class="btn">📑 Voir le persona</a></li>
-                  <li><a href="QuestionnaireS1.05.pdf" target="_blank" class="btn">📋 Voir les réponses</a></li>
+                  <li><a href="https://www.figma.com/proto/ShATBSnQilreJGmetXW3x5/Untitled?node-id=1-780&node-type=canvas&t=D8qzbtdt0myHRHV8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A780&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn">🎨 Voir la maquette Figma</a></li>
+                  <li><a href="Persona.docx" target="_blank" rel="noopener" class="btn">📑 Voir le persona</a></li>
+                  <li><a href="QuestionnaireS1.05.pdf" target="_blank" rel="noopener" class="btn">📋 Voir les réponses</a></li>
                 </ul>
               </div>
             </li>
@@ -387,8 +406,8 @@
               <div class="livrables-container">
                 <h3>📂 Livrables :</h3>
                 <ul>
-                  <li><a href="SAe_1.06.pptx" target="_blank" class="btn">📊 Présentation</a></li>
-                  <li><a href="Compte rendu de synthèse Capgemini.docx" target="_blank" class="btn">📑 Compte rendu</a></li>
+                  <li><a href="SAe_1.06.pptx" target="_blank" rel="noopener" class="btn">📊 Présentation</a></li>
+                  <li><a href="Compte rendu de synthèse Capgemini.docx" target="_blank" rel="noopener" class="btn">📑 Compte rendu</a></li>
                 </ul>
               </div>
             </li>
@@ -408,8 +427,8 @@
               <div class="livrables-container">
                 <h3>📂 Livrables :</h3>
                 <ul>
-                  <li><a href="IHM.pdf" target="_blank" class="btn">📜 Compte rendu IHM</a></li>
-                  <li><a href="cahierdescharges.pdf" target="_blank" class="btn">🔍 Cahier des charges</a></li>
+                  <li><a href="IHM.pdf" target="_blank" rel="noopener" class="btn">📜 Compte rendu IHM</a></li>
+                  <li><a href="cahierdescharges.pdf" target="_blank" rel="noopener" class="btn">🔍 Cahier des charges</a></li>
                 </ul>
               </div>
             </li>
@@ -435,7 +454,7 @@
               <div class="livrables-container">
                 <h3>🔗 Accès aux fichiers :</h3>
                 <ul>
-                  <li><a href="OutilsDecision_E12V2.xlsm" target="_blank" class="btn-fichier">📂 Ouvrir le fichier Excel avec macros</a></li>
+                  <li><a href="OutilsDecision_E12V2.xlsm" target="_blank" rel="noopener" class="btn-fichier">📂 Ouvrir le fichier Excel avec macros</a></li>
                 </ul>
               </div>
             </li>
@@ -461,7 +480,7 @@
               <div class="livrables-container">
                 <h3>🔗 Accès aux documents :</h3>
                 <ul>
-                  <li><a href="USERGUIDE_SAE" target="_blank" class="btn-fichier">📗 Ouvrir le User guide</a></li>
+                  <li><a href="USERGUIDE_SAE" target="_blank" rel="noopener" class="btn-fichier">📗 Ouvrir le User guide</a></li>
                 </ul>
               </div>
             </li>
@@ -481,7 +500,7 @@
               <div class="livrables-container">
                 <h3>🔗 Accès aux fichiers :</h3>
                 <ul>
-                  <li><a href="sae4.pbix" target="_blank" class="btn">📊 Fichier Power BI</a></li>
+                  <li><a href="sae4.pbix" target="_blank" rel="noopener" class="btn">📊 Fichier Power BI</a></li>
                 </ul>
               </div>
             </li>
@@ -509,9 +528,9 @@
               <div class="livrables-container">
                 <h3>🔗 Accès aux documents :</h3>
                 <ul>
-                  <li><a href="Affiche_seminaire.pdf" target="_blank" class="btn">📜 Affiche</a></li>
-                  <li><a href="sae6.pdf" target="_blank" class="btn">📄 Poster</a></li>
-                  <li><a href="Livrable_3_orale_.pdf" target="_blank" class="btn">📝 Livrable</a></li>
+                  <li><a href="Affiche_seminaire.pdf" target="_blank" rel="noopener" class="btn">📜 Affiche</a></li>
+                  <li><a href="sae6.pdf" target="_blank" rel="noopener" class="btn">📄 Poster</a></li>
+                  <li><a href="Livrable_3_orale_.pdf" target="_blank" rel="noopener" class="btn">📝 Livrable</a></li>
                 </ul>
               </div>
             </li>
@@ -531,12 +550,12 @@
                 </ul>
                 <h3>📂 Livrables :</h3>
                 <ul>
-                  <li><a href="Rendu FinalS3.01.docx" target="_blank" class="btn">📌 Compte rendu diagramme</a></li>
-                  <li><a href="CryptoS3.01.docx" target="_blank" class="btn">🔐 Rendu Cryptographie</a></li>
-                  <li><a href="ChargeReseauChatbotS3.01.docx" target="_blank" class="btn">📡 Rendu réseau chatbot</a></li>
-                  <li><a href="RenduFinalS3.01.xlsx" target="_blank" class="btn">📊 Rendu Excel des données</a></li>
-                  <li><a href="DocRGPDS3.01.docx" target="_blank" class="btn">📜 Compte rendu RGPD</a></li>
-                  <li><a href="CompteRenduFinalPOWERBIS3.01.docx" target="_blank" class="btn">📈 Compte rendu final POWER BI</a></li>
+                  <li><a href="Rendu FinalS3.01.docx" target="_blank" rel="noopener" class="btn">📌 Compte rendu diagramme</a></li>
+                  <li><a href="CryptoS3.01.docx" target="_blank" rel="noopener" class="btn">🔐 Rendu Cryptographie</a></li>
+                  <li><a href="ChargeReseauChatbotS3.01.docx" target="_blank" rel="noopener" class="btn">📡 Rendu réseau chatbot</a></li>
+                  <li><a href="RenduFinalS3.01.xlsx" target="_blank" rel="noopener" class="btn">📊 Rendu Excel des données</a></li>
+                  <li><a href="DocRGPDS3.01.docx" target="_blank" rel="noopener" class="btn">📜 Compte rendu RGPD</a></li>
+                  <li><a href="CompteRenduFinalPOWERBIS3.01.docx" target="_blank" rel="noopener" class="btn">📈 Compte rendu final POWER BI</a></li>
                 </ul>
               </div>
               <button class="toggle-description">Voir plus</button>
@@ -559,7 +578,7 @@
               <div class="livrables-container">
                 <h3>🔗 Accès aux documents :</h3>
                 <ul>
-                  <li><a href="CompteRenduS4.01.pdf" target="_blank" class="btn">📄 Voir le compte rendu</a></li>
+                  <li><a href="CompteRenduS4.01.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le compte rendu</a></li>
                 </ul>
               </div>
             </li>
@@ -579,9 +598,9 @@
               <div class="livrables-container">
                 <h3>Livrables du projet IMDb – SAE 5.C.01</h3>
                 <ul>
-                  <li><a href="Soutenance.pdf" target="_blank" class="btn">🎤 Voir la soutenance</a></li>
-                  <li><a href="Document final.docx" target="_blank" class="btn">📑 Voir le document final</a></li>
-                  <li><a href="SAE5.C.01 IMDb 2024-25.docx" target="_blank" class="btn">📌 Voir le sujet du projet</a></li>
+                  <li><a href="Soutenance.pdf" target="_blank" rel="noopener" class="btn">🎤 Voir la soutenance</a></li>
+                  <li><a href="Document final.docx" target="_blank" rel="noopener" class="btn">📑 Voir le document final</a></li>
+                  <li><a href="SAE5.C.01 IMDb 2024-25.docx" target="_blank" rel="noopener" class="btn">📌 Voir le sujet du projet</a></li>
                 </ul>
               </div>
             </li>
@@ -601,7 +620,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="Rendu_RABEHI_Milhane.pdf" target="_blank" class="btn">📄 Voir le Rapport d'Analyse</a></li>
+                  <li><a href="Rendu_RABEHI_Milhane.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport d'Analyse</a></li>
                 </ul>
               </div>
             </li>
@@ -621,7 +640,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="TP-Projet-KMEANS-RABEHI-DJENNAD.pdf" target="_blank" class="btn">📄 Voir le Code & Résultats</a></li>
+                  <li><a href="TP-Projet-KMEANS-RABEHI-DJENNAD.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Code & Résultats</a></li>
                 </ul>
               </div>
             </li>
@@ -641,8 +660,8 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="Expérience.pptx" target="_blank" class="btn">📊 Voir la Présentation</a></li>
-                  <li><a href="Soutenance-mc.pdf" target="_blank" class="btn">📊 Voir la Présentation sous format PDF</a></li>
+                  <li><a href="Expérience.pptx" target="_blank" rel="noopener" class="btn">📊 Voir la Présentation</a></li>
+                  <li><a href="Soutenance-mc.pdf" target="_blank" rel="noopener" class="btn">📊 Voir la Présentation sous format PDF</a></li>
                 </ul>
               </div>
             </li>
@@ -662,8 +681,8 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="Rapport - Projet Génie Logiciel (2).docx" target="_blank" class="btn">📑 Voir le Cahier des Charges UML</a></li>
-                  <li><a href="Rapport - Projet MiART.pdf" target="_blank" class="btn">📑 Voir la Présentation</a></li>
+                  <li><a href="Rapport - Projet Génie Logiciel (2).docx" target="_blank" rel="noopener" class="btn">📑 Voir le Cahier des Charges UML</a></li>
+                  <li><a href="Rapport - Projet MiART.pdf" target="_blank" rel="noopener" class="btn">📑 Voir la Présentation</a></li>
                 </ul>
               </div>
             </li>
@@ -683,7 +702,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="IKEA.pptx" target="_blank" class="btn">📊 Voir l'Audit Visuel</a></li>
+                  <li><a href="IKEA.pptx" target="_blank" rel="noopener" class="btn">📊 Voir l'Audit Visuel</a></li>
                 </ul>
               </div>
             </li>
@@ -703,7 +722,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="RenduV1-IHM.pdf" target="_blank" class="btn">📄 Voir l'Étude UX/UI</a></li>
+                  <li><a href="RenduV1-IHM.pdf" target="_blank" rel="noopener" class="btn">📄 Voir l'Étude UX/UI</a></li>
                 </ul>
               </div>
             </li>
@@ -723,7 +742,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="WTrad_Rab_Mil.pdf" target="_blank" class="btn">📄 Voir le Rapport NLP</a></li>
+                  <li><a href="WTrad_Rab_Mil.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport NLP</a></li>
                 </ul>
               </div>
             </li>
@@ -743,7 +762,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="Rapport_RABEHI_Milhane.pdf" target="_blank" class="btn">📑 Voir l'Étude Statistique</a></li>
+                  <li><a href="Rapport_RABEHI_Milhane.pdf" target="_blank" rel="noopener" class="btn">📑 Voir l'Étude Statistique</a></li>
                 </ul>
               </div>
             </li>
@@ -763,8 +782,8 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="Rapport.pdf" target="_blank" class="btn">📄 Voir le Rapport Technique</a></li>
-                  <li><a href="Support.pdf" target="_blank" class="btn">🎨 Voir le Support</a></li>
+                  <li><a href="Rapport.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport Technique</a></li>
+                  <li><a href="Support.pdf" target="_blank" rel="noopener" class="btn">🎨 Voir le Support</a></li>
                 </ul>
               </div>
             </li>
@@ -807,7 +826,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="https://milhane69.github.io/HOTH-Milhane" target="_blank" class="btn">🌐 Visiter mon site</a></li>
+                  <li><a href="https://milhane69.github.io/HOTH-Milhane" target="_blank" rel="noopener" class="btn">🌐 Visiter mon site</a></li>
                 </ul>
               </div>
             </li>
@@ -860,7 +879,7 @@
               <button class="toggle-description">Voir plus</button>
               <div class="livrables-container">
                 <ul>
-                  <li><a href="https://creasite.netlify.app/" target="_blank" class="btn">🚀 Visiter CréaSite</a></li>
+                  <li><a href="https://creasite.netlify.app/" target="_blank" rel="noopener" class="btn">🚀 Visiter CréaSite</a></li>
                 </ul>
               </div>
             </li>
@@ -875,7 +894,7 @@
         <p>Cliquez sur l'image pour afficher le CV en grand format.</p>
 
         <div class="cv-wrapper">
-          <img src="CV.png" alt="CV" id="cv-image" class="cv-thumbnail" />
+          <img src="CV.png" alt="CV de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager" loading="lazy" id="cv-image" class="cv-thumbnail" />
         </div>
 
         <a href="CV rabehi milhane.pdf" download class="btn" style="margin-top: 20px;">
@@ -895,7 +914,7 @@
         <p>Vous pouvez aussi me trouver sur LinkedIn :</p>
         <a
           href="https://www.linkedin.com/in/milhane-rabehi-917501258"
-          target="_blank"
+          target="_blank" rel="noopener"
           class="linkedin-link"
         >
           <i class="fab fa-linkedin"></i>

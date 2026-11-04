@@ -1,161 +1,107 @@
-/**
- * PORTFOLIO SCRIPT - RABEHI MILHANE
- * Focus: Performance, Accessibilité, Expérience Utilisateur & Animations
- */
-
+/* Portfolio RABEHI Milhane : navigation, filtres, accordéons, animations */
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ==========================================================================
-    // 1. MENU BURGER RESPONSIVE (MOBILE)
-    // ==========================================================================
-    const menuBurger = document.getElementById('menu-burger');
-    const navUl = document.querySelector('nav ul');
-    const navLinks = document.querySelectorAll('nav ul li a');
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const header = $('header');
+  const navUl = $('nav ul');
+  const links = $$('nav ul a');
 
-    if (menuBurger) {
-        menuBurger.addEventListener('click', () => {
-            navUl.classList.toggle('nav-active');
-            
-            const icon = menuBurger.querySelector('i');
-            if (navUl.classList.contains('nav-active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+  // Barre de progression + ombre du header
+  const bar = document.createElement('div');
+  bar.className = 'progress';
+  document.body.prepend(bar);
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    header.classList.toggle('scrolled', scrollY > 20);
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navUl.classList.contains('nav-active')) {
-                    navUl.classList.remove('nav-active');
-                    const icon = menuBurger.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        });
-    }
-
-    // ==========================================================================
-    // 2. SCROLL FLUIDE AVEC DÉCALAGE (POUR LE HEADER FIXE)
-    // ==========================================================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const headerOffset = 80; 
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
+  // Section active dans la navigation (barre basse sur mobile)
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(a => {
+      const on = a.getAttribute('href') === '#' + e.target.id;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+      if (on && navUl.scrollWidth > navUl.clientWidth)
+        navUl.scrollTo({ left: a.offsetLeft - navUl.clientWidth / 2 + a.clientWidth / 2, behavior: 'smooth' });
     });
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  $$('section[id]').forEach(s => spy.observe(s));
 
-    // ==========================================================================
-    // 3. BULLES INFORMATIVES DES COMPÉTENCES (TOOLTIPS)
-    // ==========================================================================
-    const competencies = document.querySelectorAll('.competence');
-    
-    competencies.forEach(comp => {
-        comp.addEventListener('click', (e) => {
-            competencies.forEach(c => {
-                if (c !== comp) c.classList.remove('active-tooltip');
-            });
-            comp.classList.toggle('active-tooltip');
-            e.stopPropagation();
-        });
+  // Apparition des sections
+  const reveal = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('show'); reveal.unobserve(e.target); }
+  }), { rootMargin: '200px 0px' });
+  $$('section').forEach(s => reveal.observe(s));
+
+  // Compétences : doublons retirés, accessibles au clavier, description en ligne
+  const seen = new Set();
+  $$('.competence').forEach(c => {
+    const k = c.textContent.trim();
+    if (seen.has(k)) return c.remove();
+    seen.add(k);
+    c.tabIndex = 0;
+    c.setAttribute('role', 'button');
+    c.setAttribute('aria-expanded', 'false');
+    const toggle = () => {
+      const open = !c.classList.contains('active-tooltip');
+      $$('.competence').forEach(o => { o.classList.remove('active-tooltip'); o.setAttribute('aria-expanded', 'false'); });
+      c.classList.toggle('active-tooltip', open);
+      c.setAttribute('aria-expanded', open);
+    };
+    c.addEventListener('click', toggle);
+    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+  });
+
+  // Projets : accordéon accessible, alternance COJOP ouverte par défaut
+  $$('.toggle-description').forEach(btn => {
+    const d = btn.closest('li').querySelector('.projet-description');
+    if (!d) return;
+    const set = open => {
+      d.classList.toggle('active', open);
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? 'Voir moins' : 'Voir plus';
+    };
+    btn.addEventListener('click', () => set(!d.classList.contains('active')));
+    set(btn.closest('#cojop') !== null);
+  });
+
+  // Projets : filtres par catégorie (une seule liste affichée à la fois)
+  const cats = $$('.projets-category');
+  if (cats.length) {
+    const names = { 'projets-professionnels': 'Pro & recherche', 'projets-ecole': 'Académiques', 'projets-personnels': 'Personnels' };
+    const tabs = document.createElement('div');
+    tabs.className = 'filters';
+    tabs.setAttribute('role', 'tablist');
+    const show = id => {
+      cats.forEach(c => { c.hidden = c.id !== id; });
+      $$('button', tabs).forEach(b => b.setAttribute('aria-selected', b.dataset.id === id));
+    };
+    cats.forEach(c => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.dataset.id = c.id; b.setAttribute('role', 'tab');
+      b.textContent = names[c.id] || c.querySelector('h3').textContent;
+      b.addEventListener('click', () => show(c.id));
+      tabs.append(b);
     });
+    cats[0].before(tabs);
+    show(cats[0].id);
+  }
 
-    document.addEventListener('click', () => {
-        competencies.forEach(c => c.classList.remove('active-tooltip'));
-    });
-
-    // ==========================================================================
-    // 4. ACCORDÉON DES PROJETS ("VOIR PLUS")
-    // ==========================================================================
-    const projectToggles = document.querySelectorAll(".toggle-description");
-    
-    projectToggles.forEach(button => {
-        button.addEventListener("click", function() {
-            const parentLi = this.closest("li");
-            const description = parentLi.querySelector(".projet-description");
-
-            if (description) {
-                const isActive = description.classList.contains("active");
-                
-                description.classList.toggle("active");
-                
-                this.style.transform = "scale(0.95)";
-                setTimeout(() => {
-                    this.textContent = isActive ? "Voir plus" : "Voir moins";
-                    this.style.transform = "scale(1)";
-                }, 150);
-            }
-        });
-    });
-
-    // ==========================================================================
-    // 5. ZOOM DU CV (PLEIN ÉCRAN)
-    // ==========================================================================
-    const cvImage = document.getElementById("cv-image");
-    
-    if (cvImage) {
-        cvImage.addEventListener("click", function() {
-            this.classList.toggle("cv-fullscreen");
-            
-            if (this.classList.contains("cv-fullscreen")) {
-                document.body.classList.add("cv-open");
-                document.body.style.overflow = "hidden"; 
-            } else {
-                document.body.classList.remove("cv-open");
-                document.body.style.overflow = "auto"; 
-            }
-        });
-    }
-
-    // ==========================================================================
-    // 6. ANIMATIONS D'APPARITION AU SCROLL (LE CORRECTIF MOBILE)
-    // ==========================================================================
-    const sections = document.querySelectorAll('section');
-    
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                sectionObserver.unobserve(entry.target); 
-            }
-        });
-    }, { 
-        // rootMargin POSITIF : On dit au navigateur de déclencher l'affichage 
-        // 200 pixels AVANT même que la section n'entre dans l'écran.
-        rootMargin: "200px 0px 200px 0px",
-        threshold: 0
-    });
-
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
-
-    // ==========================================================================
-    // 7. EFFET D'OMBRE SUR LA NAVBAR AU SCROLL
-    // ==========================================================================
-    const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+  // CV : zoom plein écran, fermeture par clic ou Échap
+  const cv = $('#cv-image');
+  if (cv) {
+    cv.tabIndex = 0;
+    cv.setAttribute('role', 'button');
+    const set = open => {
+      cv.classList.toggle('cv-fullscreen', open);
+      document.body.classList.toggle('cv-open', open);
+    };
+    cv.addEventListener('click', () => set(!cv.classList.contains('cv-fullscreen')));
+    cv.addEventListener('keydown', e => { if (e.key === 'Enter') set(!cv.classList.contains('cv-fullscreen')); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
+  }
 });
-
