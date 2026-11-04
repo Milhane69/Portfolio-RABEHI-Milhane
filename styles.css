@@ -247,3 +247,30 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 @media(max-width:860px){.steps{grid-template-columns:1fr}.now{padding:18px}}
 @media(max-width:480px){.pkt{top:17px}.wave{height:56px}.wave span{max-width:5px}}
 @media(prefers-reduced-motion:reduce){.track{animation:none;flex-wrap:wrap;width:auto;padding:0 20px}.now{animation:none}.pkt{display:none}}
+
+/* ===== v4 : aurore, éclat, tilt, apparitions en cascade ===== */
+.hero::before{animation:drift2 22s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;left:-18%;bottom:-35%;width:60vmax;height:60vmax;background:radial-gradient(closest-side,rgba(240,180,41,.10),transparent);pointer-events:none;animation:drift 18s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(14%,-10%) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-12%,10%) scale(1.12)}}
+h1 em{background-image:linear-gradient(100deg,var(--acc) 0%,var(--gold) 50%,var(--acc) 100%);background-size:220% 100%;animation:shim 8s ease-in-out infinite alternate}
+@keyframes shim{to{background-position:100% 0}}
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.32) 50%,transparent 70%);transform:translateX(-130%);transition:transform .8s}
+.btn:hover::before{transform:translateX(130%)}
+.glow{position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none;z-index:-1;will-change:transform}
+.card{transition:transform .18s ease-out,border-color .25s,box-shadow .25s}
+.card:hover{transform:perspective(800px) translateY(-6px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:0 26px 50px -30px var(--acc)}
+.kpi b{white-space:nowrap}
+.kpi{transition:transform .25s,background-color .25s}
+.kpi:hover{transform:translateY(-3px)}
+.cta{background:linear-gradient(135deg,#14232f,#1b7f8c,#14232f);background-size:220% 220%;animation:ctaflow 14s ease-in-out infinite}
+@keyframes ctaflow{50%{background-position:100% 100%}}
+.js .rv :is(.miss article,.flow li,.edu,.steps li,.chips li,.cvbox>*){opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;transition-delay:calc(var(--k,0) * 90ms + 120ms)}
+.js .rv.on :is(.miss article,.flow li,.edu,.steps li,.chips li,.cvbox>*){opacity:1;transform:none}
+@media(max-width:480px){.kpi b{font-size:1.2rem}}
+@media(prefers-reduced-motion:reduce){
+  .hero::before,.hero::after,h1 em,.cta{animation:none}
+  .js .rv :is(.miss article,.flow li,.edu,.steps li,.chips li,.cvbox>*){opacity:1;transform:none}
+  .glow{display:none}
+}

@@ -72,7 +72,7 @@ $$('[data-n]').forEach(b => counter.observe(b));
 
 /* ---------- requête SQL tapée ---------- */
 (() => {
-  const toks = [['k', 'SELECT'], ['', ' impact, gouvernance, automatisation\n'], ['k', 'FROM'], ['', '   milhane_rabehi\n'], ['k', 'WHERE'], ['', '  role = '], ['s', '’Data Analytics Engineer’'], ['', '\n'], ['k', 'AND'], ['', '    org  = '], ['s', '’COJOP Alpes 2030’'], ['', ';']];
+  const toks = [['k', 'SELECT'], ['', ' impact, gouvernance, automatisation\n'], ['k', 'FROM'], ['', '   milhane_rabehi\n'], ['k', 'WHERE'], ['', '  role = '], ['s', "'Data Analytics Engineer'"], ['', '\n'], ['k', 'AND'], ['', '    org  = '], ['s', "'COJOP Alpes 2030'"], ['', ';']];
   const total = toks.reduce((a, t) => a + t[1].length, 0);
   const render = n => {
     let out = '', left = n;
@@ -236,7 +236,7 @@ if (matchMedia('(hover: hover)').matches) {
 /* ---------- parcours : pipeline ---------- */
 const P = [
   { i: 'E', n: 'Brenntag France', s: 'EXTRACT', w: 'Avril à août 2024', t: 'Data Engineer / SAP BI (stage)', d: 'Restructuration complète d’un cube MM (Materials Management) pour fiabiliser les flux de données et le reporting des achats.', u: ['Modélisation multidimensionnelle sous SAP BW pour réduire les temps de traitement', 'Reporting granulaire sur la performance des fournisseurs et les volumes d’achat', 'Fiabilisation des KPI d’approvisionnement pour la décision'], g: ['SAP BW', 'SAP FICO', 'Modélisation'] },
-  { i: 'T', n: 'Annemasse Agglo', s: 'TRANSFORM', w: 'Septembre 2024 à 2025', t: 'Data Analyst / BI Engineer (alternance)', d: 'Système de reporting Power BI conçu de A à Z pour le suivi des abonnés au réseau d’eau potable, de l’ingénierie des données à la formation des utilisateurs.', u: ['Modèle décisionnel de plus de 750 tables et pipelines Oracle SQL en prévision de la télérelève (IoT)', 'Machine learning pour détecter doublons et incohérences', 'KPI d’abonnement, de facturation et de recouvrement', 'Site interne de gestion et chatbot d’orientation vers les rapports'], g: ['Power BI', 'Oracle SQL', 'Machine learning', 'RGPD'] },
+  { i: 'T', n: 'Annemasse Agglo', s: 'TRANSFORM', w: 'Septembre 2024 à 2025', t: 'Data Analyst / BI Engineer (alternance)', d: 'Système de reporting Power BI conçu de A à Z pour le suivi des abonnés au réseau d’eau potable, de l’ingénierie des données à la formation des utilisateurs.', u: ['Pipelines d’extraction Oracle SQL en prévision de la télérelève (IoT)', 'Machine learning pour détecter doublons et incohérences', 'KPI d’abonnement, de facturation et de recouvrement', 'Site interne de gestion et chatbot d’orientation vers les rapports'], g: ['Power BI', 'Oracle SQL', 'Machine learning', 'RGPD'] },
   { i: 'M', n: 'Projet JADE', s: 'MODEL', w: '2025 à 2026 · UGA, CRJ et LJK', t: 'Justice Algorithmique des Élections', d: 'Pipeline ETL professionnel et solution de legal analytics pour le contentieux électoral, entre le CRJ (droit) et le LJK (informatique).', u: ['ETL en Python orienté objet, logs automatisés, PostgreSQL normalisé', 'Tests unitaires pytest et traitement strict des rejets', 'Modèle prédictif sans data leakage (GroupShuffleSplit)', 'Dashboard Streamlit pour explorer le corpus juridique'], g: ['Python', 'PostgreSQL', 'pytest', 'Streamlit'] },
   { i: 'L', n: 'COJOP Alpes 2030', s: 'LOAD', w: 'Depuis septembre 2026 · Lyon', t: 'Assistant Data Product Manager & Analytics Engineer', d: 'Architecture « Single Source of Truth » pour la planification des 4 pôles olympiques, automatisation cloud et dashboards de pilotage.', u: ['Gouvernance automatisée en TypeScript (Office Scripts)', 'Workflows JSON et API REST sous Power Automate : Excel, SharePoint, Teams, Smartsheet', 'Normalisation en Power Query M, dashboards Power BI de pilotage', 'Recueil de besoins auprès des directions métiers'], g: ['Power BI', 'Power Automate', 'Power Query', 'TypeScript'], go: '#cojop' }
 ];
@@ -337,7 +337,7 @@ function render(f) {
     card.addEventListener('click', () => open(p));
     gr.append(card);
   });
-  $('#qline').textContent = f === 'all' ? 'SELECT * FROM projets;' : `SELECT * FROM projets WHERE type = ’${Q[f]}’;`;
+  $('#qline').textContent = f === 'all' ? 'SELECT * FROM projets;' : `SELECT * FROM projets WHERE type = '${Q[f]}';`;
   $('#qcount').textContent = list.length + ' résultat' + (list.length > 1 ? 's' : '');
 }
 function open(p) {
@@ -375,4 +375,35 @@ $('#copy').addEventListener('click', async () => {
   catch (e) { out.textContent = mail; }
   setTimeout(() => { out.textContent = ''; }, 3500);
 });
+})();
+
+/* ---------- v4 : éclat qui suit le curseur, tilt des cartes, cascade ---------- */
+(() => {
+  const $ = (q, r = document) => r.querySelector(q);
+  const $$ = (q, r = document) => [...r.querySelectorAll(q)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $$('.miss, .flow, .two, .steps, .chips, .cvbox').forEach(g => [...g.children].forEach((c, i) => c.style.setProperty('--k', i)));
+  if (reduce || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const g = document.createElement('div');
+  g.className = 'glow'; g.setAttribute('aria-hidden', 'true');
+  document.body.append(g);
+  let tx = innerWidth / 2, ty = innerHeight / 3, cx = tx, cy = ty;
+  addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+  (function f() {
+    cx += (tx - cx) * .12; cy += (ty - cy) * .12;
+    g.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+    requestAnimationFrame(f);
+  })();
+  const grid = $('#grid');
+  grid.addEventListener('pointermove', e => {
+    const t = e.target.closest('.card');
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    t.style.setProperty('--ry', ((e.clientX - r.left) / r.width - .5) * 8 + 'deg');
+    t.style.setProperty('--rx', (.5 - (e.clientY - r.top) / r.height) * 8 + 'deg');
+  });
+  grid.addEventListener('pointerout', e => {
+    const t = e.target.closest('.card');
+    if (t) { t.style.removeProperty('--rx'); t.style.removeProperty('--ry'); }
+  });
 })();
