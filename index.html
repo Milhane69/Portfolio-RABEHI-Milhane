@@ -366,6 +366,44 @@ section{padding:80px 0}
 .proj.star:not(.live){border-color:color-mix(in srgb,var(--acc) 55%,var(--line))}
 .proj.star h3{font-size:clamp(1.25rem,3.6vw,1.65rem)}
 @media(min-width:900px){.proj.star .deco,.proj.star .wave{height:76px}}
+
+/* ---------- v9 : formation détaillée ---------- */
+#dtabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px}
+#dtabs::-webkit-scrollbar{display:none}
+#dtabs .tab{flex:none;white-space:nowrap}
+.deg{background:var(--card);border:1px solid var(--line);border-radius:calc(var(--r) + 4px);padding:24px}
+.dhead{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+.dhead small{font:500 .78rem var(--mono);color:var(--goldt)}
+.dhead h3{font-size:clamp(1.25rem,3.6vw,1.7rem);margin:8px 0 6px}
+.org{color:var(--ink);font-weight:600}
+.spec2{color:var(--mut);max-width:52ch;margin-top:4px}
+.dstat{display:flex;gap:10px;margin:0}
+.dstat div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;min-width:92px}
+.dstat dt{font:800 1.6rem var(--head);color:var(--acc)}
+.dstat dd{margin:0;font:500 .72rem var(--mono);color:var(--mut)}
+.dskills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 24px;margin-bottom:6px}
+.sk{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
+.sk i{display:flex;gap:4px;flex:none}
+.sk b{width:22px;height:8px;border-radius:4px;background:var(--line)}
+.sk b.on{background:linear-gradient(90deg,var(--acc),var(--gold))}
+.deg .tags{margin:14px 0 4px}
+.deg .tags span{font:500 .78rem var(--mono);padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--acc)}
+.dnav{display:grid;gap:12px;margin:22px 0 16px}
+.dnav .tabs{display:flex;gap:8px;margin:0;overflow-x:auto;scrollbar-width:none}
+.sems{display:grid;gap:14px}
+.sem{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:18px}
+.sem h4{font-size:1.02rem;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:12px}
+.sem h4 small{font:500 .72rem var(--mono);color:var(--mut)}
+.crs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.crs li{font-size:.88rem;padding:7px 13px;border-radius:12px;border:1px solid var(--line);background:var(--card);line-height:1.35}
+.crs li.sae{border-color:var(--gold);color:var(--ink);font-weight:600}
+.lk{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--mut);font:500 .8rem var(--mono)}
+.lk .btn{min-height:40px;padding:6px 16px;font-size:.85rem;width:auto}
+.srcl{margin-top:16px;font:500 .8rem var(--mono)}
+.srcl a{color:var(--acc)}
+@media(max-width:520px){.deg{padding:16px}.dstat{width:100%}.dstat div{flex:1;min-width:0}.crs li{font-size:.84rem}}
+
+.note2{margin-top:14px;color:var(--mut);font-size:.9rem}
 </style>
 </head>
 <body>
@@ -501,11 +539,10 @@ section{padding:80px 0}
 <section id="formation">
   <div class="wrap rv">
     <div class="eyebrow">// 05 · formation</div>
-    <h2>Parcours académique.</h2>
-    <div class="two">
-      <article class="edu"><small>Bac+4 / Bac+5 · en cours</small><h3>Master MIASHS · Informatique et Cognition</h3><p>Université Grenoble Alpes. Data science, IA et systèmes complexes.</p><p>Machine learning, NLP, modélisation BI, IHM centrées utilisateur, analyse statistique.</p></article>
-      <article class="edu"><small>Bac+3 · Mention Bien</small><h3>B.U.T. Informatique · Parcours AGED</h3><p>IUT d’Annecy (USMB) et CFA Tétras. Ingénierie de la donnée et Business Intelligence.</p><p>Data warehouses, ETL (Talend), Power BI (DAX), Java, Python, SQL avancé, cloud, RGPD.</p></article>
-    </div>
+    <h2>Deux parcours, un fil rouge : la donnée.</h2>
+    <p class="sub">Les enseignements ci-dessous viennent des programmes officiels. Un enseignement lié à un projet du catalogue est cliquable.</p>
+    <div class="tabs" id="dtabs" role="group" aria-label="Choisir un diplôme"></div>
+    <article class="deg" id="deg" aria-live="polite"></article>
     <ul class="chips">
       <li>Anglais C1</li><li>Certifié PIX</li><li>PSC1</li><li>Musculation</li><li>Muay Thai</li><li>Sports automobiles</li>
     </ul>
@@ -992,6 +1029,82 @@ ta.addEventListener('click', () => {
 });
 $('#reset').addEventListener('click', () => { qi.value = ''; term = ''; cat = 'all'; shown = PAGE; $$('.tab', ft).forEach((t, i) => { t.classList.toggle('on', !i); t.setAttribute('aria-pressed', !i); }); render(); });
 render();
+
+/* ---------- formation : programmes officiels ---------- */
+const F = {
+  but: {
+    tab: 'BUT Informatique · parcours C', t: 'B.U.T. Informatique · parcours C', org: 'IUT d’Annecy · Université Savoie Mont Blanc', when: 'Sept. 2022 – juil. 2025', badge: 'Diplômé · Mention Bien',
+    spec: 'Administration, gestion et exploitation des données',
+    note: 'Les semestres 1 et 2 sont un tronc commun à tous les parcours ; la spécialisation en données commence au semestre 3.',
+    skills: [['Gérer les données de l’information', 3], ['Conduire un projet', 3], ['Travailler dans une équipe informatique', 3], ['Développer une application', 2], ['Optimiser des applications', 2], ['Administrer des systèmes communicants', 2]],
+    jobs: ['Administrateur de bases de données', 'Data miner', 'Développeur Big Data'],
+    sems: [
+      { k: 'S1', t: 'BUT 1 · semestre 1 (tronc commun)', c: ['Initiation au développement', 'Développement d’interfaces web', 'Introduction à l’architecture des ordinateurs', 'Introduction aux systèmes d’exploitation et à leur fonctionnement', 'Introduction aux bases de données et SQL', 'Mathématiques discrètes', 'Outils mathématiques fondamentaux', 'Gestion de projet et des organisations', 'Économie durable et numérique', 'Anglais technique', 'Bases de la communication', 'Projet professionnel et personnel'], s: ['SAÉ 1.01 · Implémentation d’un besoin client', 'SAÉ 1.02 · Comparaison d’approches algorithmiques', 'SAÉ 1.03 · Installation d’un poste pour le développement', 'SAÉ 1.04 · Création d’une base de données', 'SAÉ 1.05 · Recueil de besoins', 'SAÉ 1.06 · Découverte de l’environnement économique et écologique', 'SAÉ 1.07 · Portfolio'], p: ['Comparaison d’approches', 'poste de dév', 'Création d’une base', 'besoins', 'Capgemini'] },
+      { k: 'S2', t: 'BUT 1 · semestre 2 (tronc commun)', c: ['Développement orienté objets', 'Développement d’applications avec IHM', 'Qualité de développement', 'Communication et fonctionnement bas niveau', 'Introduction aux services réseaux', 'Exploitation d’une base de données', 'Graphes', 'Outils numériques pour les statistiques descriptives', 'Méthodes numériques', 'Gestion de projet et des organisations', 'Droit des contrats et du numérique', 'Anglais d’entreprise', 'Communication avec le milieu professionnel', 'PPP : métiers de l’informatique'], s: ['SAÉ 2.01 · Développement d’une application', 'SAÉ 2.02 · Exploration algorithmique d’un problème', 'SAÉ 2.03 · Installation de service réseau', 'SAÉ 2.04 · Exploitation d’une base de données', 'SAÉ 2.05 · Gestion d’un projet', 'SAÉ 2.06 · Organisation d’un travail d’équipe', 'SAÉ 2.07 · Portfolio'], p: ['Exploration algorithmique', 'services réseau', 'Exploitation d’une base', 'équipe'] },
+      { k: 'S3', t: 'BUT 2 · semestre 3', c: ['Développement web', 'Développement efficace', 'Analyse', 'Qualité de développement', 'Programmation système', 'Architecture des réseaux', 'SQL dans un langage de programmation', 'Probabilités', 'Cryptographie et sécurité', 'Management des systèmes d’information', 'Droit des contrats et du numérique', 'Anglais', 'Communication professionnelle', 'Projet personnel et professionnel'], s: ['SAÉ 3.01 · Développement d’une application', 'SAÉ 3.02 · Portfolio'], p: ['Laravel'] },
+      { k: 'S4', t: 'BUT 2 · semestre 4', c: ['Architecture logicielle', 'Qualité de développement', 'Méthodes d’optimisation', 'Anglais', 'Communication interne', 'Projet personnel et professionnel', 'Cryptographie et sécurité', 'Réseau avancé', 'Analyse et visualisation avancée des données', 'Management avancé des systèmes d’information'], s: ['SAÉ 4.01 · Développement avec une base de données et visualisation', 'SAÉ 4.02 · Stage', 'SAÉ 4.03 · Portfolio'], p: ['Brenntag', 'Open Food'] },
+      { k: 'S5', t: 'BUT 3 · semestre 5', c: ['Initiation au management d’une équipe de projet informatique', 'Projet personnel et professionnel', 'Politique de communication', 'Programmation au format Web des informations décisionnelles', 'Nouveaux paradigmes de base de données', 'Exploitation de la base de données', 'Données massives', 'Techniques d’intelligence artificielle', 'Statistique inférentielle', 'Économie durable et numérique', 'Optimisation des données et des systèmes décisionnels', 'Anglais'], s: ['SAÉ 5.C.01 · Proposer une solution optimisée à partir de données internes et externes', 'SAÉ 5.C.02 · Portfolio'], p: ['IMDb', 'Annemasse'] },
+      { k: 'S6', t: 'BUT 3 · semestre 6', c: ['Initiation à l’entrepreneuriat', 'Droit du numérique et de la propriété intellectuelle', 'Communication : organisation et diffusion de l’information', 'Projet personnel et professionnel', 'Administration des bases de données', 'Méthodes d’optimisation pour l’aide à la décision'], s: ['SAÉ 6.C.01 · Organisation et protection de données', 'SAÉ 6.C.02 · Stage', 'SAÉ 6.C.03 · Portfolio'], p: ['Annemasse'] }
+    ],
+    src: ['Programme IUT d’Annecy', 'https://formations-iuta.univ-smb.fr/plugins/odf-web/iuta/_content/subprogram-administration-gestion-et-exploitation-des-donnees/Administration,%20gestion%20et%20exploitation%20des%20donn%C3%A9es%20.pdf']
+  },
+  uga: {
+    tab: 'Master MIASHS · Info. et Cognition', t: 'Master MIASHS · Informatique et Cognition', org: 'Université Grenoble Alpes', when: 'Sept. 2025 – 2027', badge: 'En cours · M2 en alternance',
+    spec: 'Intelligence artificielle, sciences cognitives et développement logiciel',
+    skills: [['Modéliser un problème et proposer une solution algorithmique', 3], ['Développer, tester et faire évoluer un logiciel complexe', 3], ['Gérer des bases de données structurées et multimodales', 3], ['Concevoir des interfaces homme-machine', 2], ['Choisir l’approche de résolution la plus adaptée (IA)', 3]],
+    jobs: ['Développeur ou chef de projet junior web', 'Consultant en ergonomie cognitive', 'Recherche en sciences cognitives'],
+    sems: [
+      { k: 'S7', t: 'Master 1 · semestre 7', c: ['Analyse de données', 'Recherche opérationnelle et graphes', 'Introduction à la programmation web', 'Programmation objet avancée', 'Représentation des données et des connaissances 1', 'Psychologie cognitive et conception de systèmes', 'Outils et méthodes en sciences cognitives 1 : mesures comportementales', 'Intelligence artificielle', 'Traitement automatique des langues', 'Méthodes de génie logiciel'], s: ['Projet tuteuré'], p: [] },
+      { k: 'S8', t: 'Master 1 · semestre 8', c: ['Programmation web côté serveur 1', 'Programmation web client 1', 'Recherche d’information', 'Apprentissage statistique 1', 'Gestion de projet', 'Interaction humain-machine 1', 'Anglais', 'Outils et méthodes en sciences cognitives 2 : études comportementales'], s: ['Projet tuteuré'], p: [] },
+      { k: 'S9', t: 'Master 2 · semestre 9 (alternance)', c: ['Outils et méthodes en sciences cognitives 1 : mesures comportementales', 'Intelligence artificielle', 'Représentation des données et des connaissances 2', 'Programmation web client 2', 'Programmation web serveur 2', 'Programmation objet avancée'], s: ['Stage en entreprise · COJOP Alpes 2030'], p: ['COJOP'] },
+      { k: 'S10', t: 'Master 2 · semestre 10 (alternance)', c: ['Interaction humain-machine 1', 'Gestion de projet', 'Informatique décisionnelle', 'Outils et méthodes en sciences cognitives 2 : études comportementales', 'Recherche d’informations sur le Web'], s: ['Travail encadré de recherche', 'Stage en entreprise · COJOP Alpes 2030'], p: ['transcription'] }
+    ],
+    src: ['Programme UGA', 'https://formations.univ-grenoble-alpes.fr/plugins/odf-web/odf/_content/subprogram-web-informatique-et-connaissances-wic_3/Parcours%20Informatique%20et%20cognition%20.pdf']
+  }
+};
+const dt = $('#dtabs'), dg = $('#deg');
+let dk = 'but', sk = null, dterm = '';
+const nCours = d => d.sems.reduce((a, s) => a + s.c.length + s.s.length, 0);
+function drawDeg() {
+  const d = F[dk]; if (!sk || !d.sems.some(s => s.k === sk)) sk = d.sems[d.sems.length - 1].k;
+  const q = norm(dterm.trim());
+  const match = x => !q || norm(x).includes(q);
+  const sems = q ? d.sems : d.sems.filter(s => s.k === sk);
+  const max = d.skills.filter(s => s[1] === 3).length;
+  const block = s => {
+    const c = s.c.filter(match), z = s.s.filter(match);
+    if (q && !c.length && !z.length) return '';
+    const projs = q ? [] : s.p.map(m => J.find(p => new RegExp(m, 'i').test(p.t))).filter(Boolean);
+    return `<div class="sem"><h4>${esc(s.t)} <small>${c.length + z.length} enseignement${c.length + z.length > 1 ? 's' : ''}</small></h4>
+    <ul class="crs">${z.map(x => `<li class="sae">${esc(x)}</li>`).join('')}${c.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+    ${projs.length ? `<p class="lk">Projets liés : ${projs.map(p => `<button class="btn g" type="button" data-q="${esc(p.t.split(' · ')[0])}">${esc(p.t.split(' · ')[0])} ↓</button>`).join('')}</p>` : ''}</div>`;
+  };
+  const body = sems.map(block).join('') || '<p class="empty">Aucun enseignement ne correspond à cette recherche.</p>';
+  dg.innerHTML = `<div class="dhead"><div><small>${esc(d.when)} · ${esc(d.badge)}</small><h3>${esc(d.t)}</h3><p class="org">${esc(d.org)}</p><p class="spec2">${esc(d.spec)}</p></div>
+    <dl class="dstat"><div><dt>${d.sems.length}</dt><dd>semestres</dd></div><div><dt>${nCours(d)}</dt><dd>enseignements</dd></div><div><dt>${max}/${d.skills.length}</dt><dd>compétences au niveau 3</dd></div></dl></div>
+    <div class="dskills">${d.skills.map(s => `<div class="sk"><span>${esc(s[0])}</span><i aria-label="niveau ${s[1]} sur 3">${[1, 2, 3].map(n => `<b class="${n <= s[1] ? 'on' : ''}"></b>`).join('')}</i></div>`).join('')}</div>
+    <div class="tags">${d.jobs.map(j => `<span>${esc(j)}</span>`).join('')}</div>
+    <div class="dnav"><div class="tabs" role="group" aria-label="Choisir un semestre">${d.sems.map(s => `<button class="tab${!q && s.k === sk ? ' on' : ''}" type="button" data-s="${s.k}" aria-pressed="${!q && s.k === sk}">${s.k}</button>`).join('')}</div>
+    <label class="search"><span class="sr">Filtrer les enseignements</span><input id="dq" type="search" placeholder="Filtrer : SQL, IA, web…" value="${esc(dterm)}" autocomplete="off"></label></div>
+    <div class="sems">${body}</div>
+    ${d.note ? `<p class="note2">${esc(d.note)}</p>` : ''}<p class="srcl"><a href="${esc(d.src[1])}" target="_blank" rel="noopener">Source : ${esc(d.src[0])} ↗</a></p>`;
+  const inp = $('#dq', dg);
+  inp.addEventListener('input', () => { dterm = inp.value; const pos = inp.selectionStart; drawDeg(); const n = $('#dq', dg); n.focus(); n.setSelectionRange(pos, pos); });
+  $$('[data-s]', dg).forEach(b => b.addEventListener('click', () => { sk = b.dataset.s; dterm = ''; drawDeg(); }));
+  $$('[data-q]', dg).forEach(b => b.addEventListener('click', () => {
+    qi.value = b.dataset.q; term = norm(qi.value); cat = 'all'; shown = PAGE;
+    $$('.tab', ft).forEach((t, i) => { t.classList.toggle('on', !i); t.setAttribute('aria-pressed', !i); });
+    render(); $('#projets').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  }));
+}
+Object.keys(F).forEach((k, i) => {
+  const b = document.createElement('button');
+  b.className = 'tab' + (i ? '' : ' on'); b.type = 'button'; b.textContent = F[k].tab; b.setAttribute('aria-pressed', !i);
+  b.addEventListener('click', () => { dk = k; sk = null; dterm = ''; $$('.tab', dt).forEach(t => { t.classList.toggle('on', t === b); t.setAttribute('aria-pressed', t === b); }); drawDeg(); });
+  dt.append(b);
+});
+drawDeg();
+
 /* ---------- CV ---------- */
 const cvd = $('#cvdlg');
 const openCv = () => cvd.showModal ? cvd.showModal() : cvd.setAttribute('open', '');
