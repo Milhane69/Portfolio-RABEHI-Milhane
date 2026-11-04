@@ -1,932 +1,198 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Milhane Rabehi | Data Analytics Engineer & Assistant Data Product Manager</title>
-    <meta name="description" content="Portfolio de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager en alternance au COJOP Alpes 2030." />
-    <meta name="theme-color" content="#14232f" />
-    <script>document.documentElement.className+=" js"</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Milhane Rabehi | Data Analytics Engineer &amp; Assistant Data Product Manager</title>
+<meta name="description" content="Portfolio de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager en alternance au COJOP Alpes 2030 (Lyon). Gouvernance, pipelines ETL, Power BI, automatisation.">
+<meta name="theme-color" content="#0b1620">
+<meta property="og:title" content="Milhane Rabehi | Data Analytics Engineer">
+<meta property="og:description" content="Assistant Data Product Manager au COJOP Alpes 2030. Gouvernance, pipelines ETL, BI et automatisation.">
+<meta property="og:type" content="website">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<a class="skip" href="#projets">Aller aux projets</a>
 
-  <body>
-    <a class="skip" href="#projets">Aller aux projets</a>
-    <header>
-      <nav aria-label="Navigation principale">
-        <div class="logo">
-          <h1>RABEHI Milhane</h1>
-        </div>
-        
-        <ul>
-          <li><a href="#accueil"><i class="fas fa-house" aria-hidden="true"></i><span>Accueil</span></a></li>
-          <li><a href="#apropos"><i class="fas fa-user" aria-hidden="true"></i><span>À propos</span></a></li>
-          <li><a href="#formation"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Formation</span></a></li> 
-          <li><a href="#competences"><i class="fas fa-layer-group" aria-hidden="true"></i><span>Compétences</span></a></li>
-          <li><a href="#projets"><i class="fas fa-folder-open" aria-hidden="true"></i><span>Projets</span></a></li>
-          <li><a href="#CV"><i class="fas fa-file-lines" aria-hidden="true"></i><span>CV</span></a></li>
-          <li><a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i><span>Contact</span></a></li>
-        </ul>
-      </nav>
-    </header>
+<header>
+  <nav class="wrap" aria-label="Navigation principale">
+    <a class="brand" href="#accueil">milhane<b>.</b>data</a>
+    <div class="links">
+      <a href="#cojop">COJOP</a><a href="#parcours">Parcours</a><a href="#stack">Stack</a><a href="#projets">Projets</a><a href="#formation">Formation</a><a href="#cv">CV</a><a href="#contact">Contact</a>
+    </div>
+    <button class="tg" id="tg" type="button" aria-label="Changer de thème clair ou sombre">◐</button>
+  </nav>
+</header>
 
-    <section id="accueil">
-      <div class="hero">
-        <div style="--i:1">
-          <p class="hero-status"><span class="dot"></span>En alternance au COJOP Alpes 2030</p>
-          <h2 class="hero-title">Data Analytics Engineer</h2>
-          <p class="hero-sub">Assistant Data Product Manager</p>
-          <p class="lead">Apprenti au COJOP Alpes 2030 (Lyon) et étudiant en Master 2 MIASHS à l'UGA. Je transforme la donnée brute en décisions : gouvernance, pipelines ETL, BI et automatisation.</p>
-          <ul class="chips"><li>Power BI</li><li>Power Query</li><li>Power Automate</li><li>Python</li><li>SQL</li><li>TypeScript</li></ul>
-          <div class="hero-actions"><a href="#cojop" class="btn gold">Mon alternance</a><a href="#projets" class="btn ghost">Mes projets</a></div>
-        </div>
-        <aside class="hero-card" style="--i:2">
-          <p class="meta">Alternance depuis septembre 2026</p>
-          <h3>Assistant Data Product Manager & Analytics Engineer</h3>
-          <p class="meta">COJOP Alpes 2030, Lyon</p>
-          <ul>
-            <li>Architecture « Single Source of Truth » pour les 4 pôles olympiques</li>
-            <li>Pipelines ETL et automatisation cloud (Power Automate, Power Query, API REST)</li>
-            <li>Dashboards Power BI pour le pilotage stratégique des opérations</li>
-          </ul>
-          <a href="#cojop">Voir le détail des missions</a>
-        </aside>
+<nav class="dock" aria-label="Navigation rapide">
+  <a href="#accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Accueil</span></a>
+  <a href="#cojop"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg><span>COJOP</span></a>
+  <a href="#parcours"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.5"/></svg><span>Parcours</span></a>
+  <a href="#projets"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Projets</span></a>
+  <a href="#cv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l5 5v13H6z"/><path d="M14 3v5h5"/></svg><span>CV</span></a>
+  <a href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Contact</span></a>
+</nav>
+
+<main id="top">
+
+<!-- ACCUEIL -->
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div class="hero-txt">
+      <p class="status"><i></i>En alternance · COJOP Alpes 2030, Lyon</p>
+      <p class="who">Milhane Rabehi<span>Data Analytics Engineer · Assistant Data Product Manager</span></p>
+      <h1>Je transforme la <em>donnée brute</em> en décisions.</h1>
+      <div class="sql" aria-label="SELECT impact, gouvernance, automatisation FROM milhane_rabehi WHERE role = Data Analytics Engineer AND org = COJOP Alpes 2030">
+        <span class="ghost" id="ghost" aria-hidden="true"></span>
+        <span class="live" id="sql" aria-hidden="true"></span>
       </div>
-      <svg class="ridge" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 140 L120 90 L200 120 L340 40 L430 100 L520 70 L650 130 L780 30 L880 95 L980 60 L1100 120 L1200 80 L1200 160 L0 160Z"/></svg>
-    </section>
-
-    <section id="apropos">
-      <div class="container">
-        <h2>À propos de moi</h2>
-        <p>
-          Je m’appelle <strong>Milhane Rabehi</strong> et j'ai 22 ans. Apprenti <strong>Assistant Data Product Manager & Analytics Engineer</strong> au <strong>COJOP Alpes 2030</strong> et en <strong>Master 2 MIASHS</strong> à l'<strong>Université Grenoble Alpes</strong>, je me positionne comme un partenaire technique capable de faire le pont entre la complexité des données et les enjeux métiers (RH, Finance, Juridique).
-        </p>
-        <p>
-          Fort d'expériences concrètes dans l'événementiel sportif international (<strong>COJOP Alpes 2030</strong>), le secteur public (<strong>Annemasse Agglo</strong>), l'industrie chimique (<strong>Brenntag France</strong>) et en recherche (Projet <strong>JADE</strong>), j'ai développé une expertise pointue en <strong>Data Analytics</strong>, <strong>Business Intelligence (Power BI)</strong> et <strong>Ingénierie des Données</strong>. J'ai une forte appétence pour le code (Python, R, SQL) et la création d'architectures de données performantes.
-        </p>
-        <p>
-          Je suis d'un niveau d'<strong>Anglais C1 (avancé)</strong>, titulaire du <strong>PSC1</strong> et certifié <strong>PIX</strong>. En dehors des études, je suis passionné par les sports exigeants (musculation, boxe Muay Thai) et les sports automobiles, des disciplines qui m'apportent rigueur et détermination.
-        </p>
+      <div class="btns">
+        <a class="btn p" href="#projets">Explorer les projets →</a>
+        <a class="btn g" href="#contact">Me contacter</a>
       </div>
-    </section>
-
-    <section id="formation">
-      <div class="container">
-        <h2>Parcours Académique</h2>
-        <div class="formation-container">
-          <ul style="list-style: none; padding: 0;">
-            <li class="formation-card">
-              <h3>Master MIASHS - Informatique et Cognition (Bac+4/Bac+5)</h3>
-              <p class="formation-school"><i class="fas fa-graduation-cap"></i> Université Grenoble Alpes (UGA)</p>
-              <p class="formation-desc">Formation pluridisciplinaire axée sur la Data Science, l'IA et les systèmes complexes (Major de promotion).</p>
-              <ul class="formation-skills">
-                <li><strong>Data & IA :</strong> Machine Learning, NLP, Modélisation BI (Pandas, Scikit-Learn).</li>
-                <li><strong>Ingénierie & BDD :</strong> Programmation objet, CI/CD, PostgreSQL, Scraping.</li>
-                <li><strong>Sciences Cognitives :</strong> IHM centrées utilisateur, ergonomie, analyse statistique.</li>
-              </ul>
-            </li>
-
-            <li class="formation-card">
-              <h3>B.U.T. Informatique - Parcours AGED (Bac+3)</h3>
-              <p class="formation-school"><i class="fas fa-graduation-cap"></i> IUT d'Annecy (USMB) & CFA Tétras</p>
-              <p class="formation-desc">Spécialisation en ingénierie de la donnée et Business Intelligence (Mention Bien).</p>
-              <ul class="formation-skills">
-                <li><strong>Data & BI :</strong> Data Warehouses, ETL (Talend), Power BI (DAX).</li>
-                <li><strong>Développement :</strong> Java, Python, Web full-stack, SQL avancé.</li>
-                <li><strong>Infrastructure :</strong> Linux/Windows, Cloud (AWS, Azure), Cybersécurité, RGPD.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+    </div>
+    <aside class="dash" aria-label="Aperçu animé d’un tableau de bord">
+      <div class="top"><span class="dots"><span></span><span></span><span></span></span><span>impact_live.pbix</span></div>
+      <canvas id="curve" role="img" aria-label="Courbe de données animée, survolez ou glissez pour explorer"></canvas>
+      <div class="kpis">
+        <div class="kpi"><b data-n="4">0</b><span>pôles olympiques sur une source unique</span></div>
+        <div class="kpi"><b data-n="750" data-p="+">0</b><span>tables dans un modèle décisionnel</span></div>
+        <div class="kpi"><b>C1</b><span>anglais, niveau avancé</span></div>
       </div>
-    </section>
+      <p class="note">Courbe illustrative, non issue de données réelles.</p>
+    </aside>
+  </div>
+</section>
 
-    <section id="competences">
-      <div class="container">
-        <!-- Contenu des compétences inchangé -->
-        <h2>Compétences</h2>
+<!-- COJOP -->
+<section id="cojop">
+  <div class="wrap rv">
+    <div class="eyebrow">// 01 · alternance en cours</div>
+    <h2>Au COJOP Alpes 2030, je rends la donnée fiable, gouvernée et automatisée.</h2>
+    <p class="sub">Je fais le pont entre la complexité des données et les besoins des directions métiers du comité d’organisation des Jeux Olympiques et Paralympiques d’hiver 2030.</p>
 
-        <ul class="competences-list">
-          <li class="competence" data-description="Administration, gestion et exploitation des données, modélisation et qualité, mise en place de jeux de données.">
-            Gestion des Données
-          </li>
-          <li class="competence" data-description="Développement de sites web et d'applications interactives (HTML, CSS, JavaScript).">
-            Développement Web (HTML, CSS, JavaScript)
-          </li>
-          <li class="competence" data-description="Programmation en Python, Java et C++ pour prototyper, automatiser et analyser.">
-            Programmation (Python, Java, C++)
-          </li>
-          <li class="competence" data-description="Utilisation de SAP pour la gestion des processus et le reporting.">
-            SAP & Gestion des Processus
-          </li>
-          <li class="competence" data-description="Analyse des besoins, modélisation des données (UML/MCD) et conception de dashboards.">
-            Analyse et Modélisation des Données
-          </li>
-          <li class="competence" data-description="Planification, coordination des livrables, documentation et suivi.">
-            Gestion de Projet
-          </li>
-          <li class="competence" data-description="Conception et exploitation de bases relationnelles et NoSQL.">
-            Bases de Données (SQL, NoSQL)
-          </li>
-          <li class="competence" data-description="Développement d'applications et optimisation orientée données.">
-            Développement d'Applications
-          </li>
-          <li class="competence" data-description="Création de rapports et KPI avec Power BI (interactif, rafraîchissements).">
-            Visualisation de Données (Power BI)
-          </li>
-          <li class="competence" data-description="Hygiène sécurité, analyse des risques et bonnes pratiques de durcissement.">
-            Cybersécurité
-          </li>
-          <li class="competence" data-description="Modélisation des systèmes d'information (UML).">
-            Modélisation UML
-          </li>
-          <li class="competence" data-description="Développement sous Visual Studio Code (C, C++, C#).">
-            Développement avec Visual Studio Code
-          </li>
-          <li class="competence" data-description="Pack Office pour reporting et gestion (Excel, PowerPoint, Word, MS Project).">
-            Outils Microsoft (Excel, PPT, MSProject)
-          </li>
-          <li class="competence" data-description="Python pour l'analyse (pandas, etc.).">
-            Analyse de Données avec Python
-          </li>
-          <li class="competence" data-description="Conception de cubes d’achat et reporting avec SAP BW.">
-            SAP BW
-          </li>
-          <li class="competence" data-description="Utilisation de SAP FICO.">
-            SAP FICO
-          </li>
-        </ul>
+    <dl class="spec">
+      <div><dt>poste</dt><dd>Assistant Data Product Manager &amp; Analytics Engineer</dd></div>
+      <div><dt>structure</dt><dd>COJOP Alpes 2030</dd></div>
+      <div><dt>lieu</dt><dd>Lyon</dd></div>
+      <div><dt>depuis</dt><dd>septembre 2026</dd></div>
+      <div><dt>cursus</dt><dd>Master 2 MIASHS, Université Grenoble Alpes</dd></div>
+    </dl>
 
-        <ul class="competences-list" style="margin-top: 15px;">
-          <li class="competence" data-description="Apprentissage automatique supervisé et non supervisé (régression, classification, clustering). Mise en œuvre d’algorithmes avec scikit-learn et évaluation de modèles.">
-            Intelligence Artificielle & Machine Learning
-          </li>
-          <li class="competence" data-description="Étude et modélisation des processus cognitifs tels que la perception, la mémoire, l’attention et la prise de décision. Application à la conception d’interfaces.">
-            Sciences Cognitives & Modélisation
-          </li>
-          <li class="competence" data-description="Analyse et traitement automatique du langage (NLP) : prétraitement de corpus, extraction d’informations, classification de texte, représentation vectorielle.">
-            Traitement Automatique du Langage (NLP)
-          </li>
-          <li class="competence" data-description="Conception et exploitation de bases de données relationnelles et sémantiques (SQL, PostgreSQL). Modélisation MCD/MLD, indexation, vues et intégrité des données.">
-            Bases de Données & Représentation
-          </li>
-          <li class="competence" data-description="Conception d’interfaces intuitives selon une approche centrée utilisateur. Études ergonomiques, prototypes (Figma) et tests d’expérience utilisateur (UX).">
-            Interaction Homme-Machine (IHM) & UX
-          </li>
-          <li class="competence" data-description="Développement d’interfaces et d’applications multimodales (voix, image, texte) intégrant des composants intelligents et des retours utilisateurs.">
-            Interfaces Multimodales & Accessibilité
-          </li>
-          <li class="competence" data-description="Programmation orientée données en Python (pandas, NumPy, matplotlib), manipulation et visualisation de grands jeux de données.">
-            Python pour la Data Science
-          </li>
-          <li class="competence" data-description="Développement web full-stack : JavaScript, HTML5, CSS3, Flask, API REST, intégration de modèles de données et visualisations interactives.">
-            Dev Web & Applications Interactives
-          </li>
-          <li class="competence" data-description="Création de tableaux de bord Power BI, indicateurs et storytelling visuel. Connexions à des bases SQL, automatisation de la mise à jour des données.">
-            Visualisation de Données (Power BI)
-          </li>
-          <li class="competence" data-description="Planification et mise en œuvre d’expérimentations cognitives. Recueil de données comportementales et analyse statistique des résultats.">
-            Méthodologie Expérimentale Cognitive
-          </li>
-          <li class="competence" data-description="Gestion agile (Scrum/Kanban), documentation technique, planification Gantt, coordination d’équipe et suivi des livrables.">
-            Gestion de Projet Agile
-          </li>
-          <li class="competence" data-description="Application des bonnes pratiques de sécurité et d’éthique dans le traitement des données personnelles. Conformité RGPD et anonymisation.">
-            Sécurité, Éthique & RGPD
-          </li>
-        </ul>
-      </div>
-    </section>
+    <ol class="flow" aria-label="Chaîne de traitement de la donnée">
+      <li><small>1 · sources</small><b>Outils métiers</b><span>Excel, SharePoint, Teams, Smartsheet</span></li>
+      <li><small>2 · automatisation</small><b>Workflows cloud</b><span>Power Automate, API REST, JSON</span></li>
+      <li><small>3 · single source of truth</small><b>Source unique</b><span>Power Query M, Office Scripts en TypeScript</span></li>
+      <li><small>4 · restitution</small><b>Pilotage</b><span>Dashboards Power BI interactifs</span></li>
+    </ol>
 
-    <section id="projets">
-      <div class="container">
-        <h2>Mes Projets</h2>
+    <div class="miss">
+      <article><span class="tag">produit</span><h3>Recueil de besoins</h3><p>Collaboration directe avec les directions métiers pour identifier leurs besoins et leurs points de blocage, cadrer des solutions data sur mesure et automatiser les reportings transverses.</p></article>
+      <article><span class="tag">architecture</span><h3>Gouvernance & SST</h3><p>Pilotage de bout en bout et déploiement de l’architecture « Single Source of Truth », qui centralise les données de planification logistique des 4 pôles olympiques.</p></article>
+      <article><span class="tag">qualité</span><h3>Contrôle automatisé</h3><p>Gouvernance algorithmique en TypeScript (Office Scripts) pour auditer les données en temps réel, détecter les anomalies et garantir leur intégrité.</p></article>
+      <article><span class="tag">etl</span><h3>Pipelines cloud</h3><p>Workflows Power Automate en JSON et API REST qui interconnectent l’écosystème d’outils. Nettoyage et normalisation de fichiers non structurés avec Power Query M.</p></article>
+      <article><span class="tag">bi</span><h3>Modélisation & dashboards</h3><p>Architecture cible préparée en Python et SQL pour absorber la montée en charge, puis dashboards Power BI interactifs pour le pilotage stratégique des opérations.</p></article>
+    </div>
+  </div>
+</section>
 
-        <div class="projets-category" id="projets-professionnels">
-          <h3>Projets Professionnels & Recherche</h3>
-          <ul>
-            <li id="cojop" class="projet-featured">
-              <span class="badge">Poste actuel, depuis septembre 2026, Lyon</span>
-              <h4>Assistant Data Product Manager & Analytics Engineer (Alternance) - COJOP Alpes 2030</h4>
-              <p>Conception d'une architecture "Single Source of Truth", automatisation des flux Cloud et déploiement de dashboards stratégiques pour les décideurs (CIO).</p>
-              <div class="projet-description">
-                <p>Missions principales :</p>
-                <ul>
-                  <li>🧭 <strong>Recueil de besoins & produit :</strong> Collaboration directe avec les directions métiers (FAs) pour identifier leurs besoins et points de blocage, cadrer des solutions data sur mesure et automatiser les reportings transverses.</li>
-                  <li>🏛️ <strong>Data Governance & Architecture :</strong> Déploiement de l'architecture "Single Source of Truth" (SST) centralisant les données de planification des 4 pôles olympiques. Gouvernance automatisée via TypeScript (Office Scripts) pour l'assurance qualité en temps réel.</li>
-                  <li>⚙️ <strong>Cloud Automation & ETL Pipelines :</strong> Création de workflows automatisés manipulant JSON et API REST (Power Automate) pour connecter les outils métiers (Excel, SharePoint, Teams, Smartsheet). Transformation et normalisation de données complexes avec Power Query M Language.</li>
-                  <li>📊 <strong>Business Intelligence :</strong> Modélisation de structures relationnelles pour transformer des données brutes en architectures analytiques haute performance. Design de dashboards interactifs (Power BI) pour le Comité International Olympique (CIO).</li>
-                  <li>🚀 <strong>Internal Consulting :</strong> Rôle de facilitateur digital pour identifier les "pain points" métier et automatiser les reportings chronophages des équipes transverses. Préparation de la stack technologique (Python, SQL) pour la montée en charge.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="wrap rv">
+    <div class="eyebrow">// 02 · le pipeline</div>
+    <h2>Mon parcours, vu comme un pipeline de données.</h2>
+    <p class="sub">Touchez une étape pour en voir le détail.</p>
+    <div class="pipe" id="pipe"></div>
+    <div class="panel" id="panel" aria-live="polite"></div>
+  </div>
+</section>
 
-            <li>
-              <h4>Projet JADE (Justice Algorithmique des Élections) - Recherche Universitaire</h4>
-              <p>
-                Développement d'un pipeline ETL professionnel et d'une solution de Legal Analytics pour le traitement automatisé du contentieux électoral. Collaboration entre le CRJ (Droit) et le LJK (Informatique).
-              </p>
-              <div class="projet-description">
-                <p>Compétences techniques & livrables :</p>
-                <ul>
-                  <li>🛠️ <strong>Data Engineering :</strong> Conception d'une architecture ETL robuste en Python (POO), gestion automatisée des logs, et normalisation de base de données PostgreSQL.</li>
-                  <li>🛡️ <strong>Qualité & Fiabilité :</strong> Mise en place de tests unitaires (pytest) et d'un système strict de traitement des rejets pour garantir l'intégrité de la base de production.</li>
-                  <li>🧠 <strong>Machine Learning :</strong> Modélisation prédictive avec résolution rigoureuse du problème de "Data Leakage" (GroupShuffleSplit) et interprétabilité des résultats.</li>
-                  <li>📊 <strong>Restitution :</strong> Développement d'un Dashboard interactif sous Streamlit pour l'exploration visuelle du corpus juridique par les chercheurs.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>      
-              
-              <div class="livrables-container">
-                <h3>📂 Documents officiels</h3>
-                <ul>
-                  <li><a href="Support_soutenance_JADE.pdf" target="_blank" rel="noopener" class="btn">📄 Support de soutenance (PDF)</a></li>
-                </ul>
-              </div>
-            </li>
-            
-            <li>
-              <h4>Data Analyst / BI Engineer (Alternance) - Annemasse Agglo</h4>
-              <p>Développement de A à Z d’un système de reporting Power BI pour le suivi des abonnés au réseau d'eau potable, de l'ingénierie des données à la formation des utilisateurs.</p>
-              <div class="projet-description">
-                <p>Principales tâches réalisées :</p>
-                <ul>
-                  <li>📊 Création de dashboards interactifs Power BI et configuration de distributions multi-canales automatisées.</li>
-                  <li>⚙️ <strong>Data Engineering :</strong> Pipelines d'extraction sous Oracle SQL pour préparer le déploiement de la Télérelève (IoT).</li>
-                  <li>🔍 <strong>Data Quality & IA :</strong> Intégration d'algorithmes de Machine Learning pour la détection d'anomalies (doublons, incohérences).</li>
-                  <li>📈 Définition de KPI clés (abonnements, facturation, recouvrement).</li>
-                  <li>🌐 Développement d'un site interne de gestion et d'un Chatbot d’orientation pour faciliter l'accès aux rapports.</li>
-                  <li>🗂️ Rédaction de procédures de gouvernance et conformité RGPD.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
+<!-- STACK -->
+<section id="stack">
+  <div class="wrap rv">
+    <div class="eyebrow">// 03 · la stack</div>
+    <h2>Les outils que je manipule.</h2>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Familles d’outils"></div>
+    <div class="bubbles" id="bub" role="tabpanel"></div>
+  </div>
+</section>
 
-            <li>
-              <h4>Data Engineer / SAP BI (Stage) - Brenntag France</h4>
-              <p>Architecture SAP et modélisation de données : Restructuration complète d'un cube MM (Materials Management) pour optimiser l'intégrité des flux de données et le reporting des achats.</p>
-              <div class="projet-description">
-                <p>Principales tâches réalisées :</p>
-                <ul>
-                  <li>⚙️ Modélisation multidimensionnelle sous SAP Business Warehouse (BW) pour réduire les temps de traitement.</li>
-                  <li>📊 <strong>Business Intelligence :</strong> Déploiement d'un cadre de reporting granulaire pour le suivi de la performance des fournisseurs et des volumes d'achat.</li>
-                  <li>🚀 Aide à la décision stratégique basée sur la fiabilisation des KPI d'approvisionnement.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
+<!-- PROJETS -->
+<section id="projets">
+  <div class="wrap rv">
+    <div class="eyebrow">// 04 · le catalogue</div>
+    <h2>Projets, filtrés comme une requête.</h2>
+    <div class="console"><code id="qline">SELECT * FROM projets;</code><span id="qcount" role="status" aria-live="polite"></span></div>
+    <div class="tabs" id="ftabs" role="group" aria-label="Filtrer par catégorie"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
 
-            <li>
-              <h4>Système de gestion des commandes e-commerce - Easy Dis</h4>
-              <p>Développement d'un système de gestion des commandes (PHP/MySQL).</p>
-            </li>
-          </ul>
-        </div>
+<!-- FORMATION -->
+<section id="formation">
+  <div class="wrap rv">
+    <div class="eyebrow">// 05 · formation</div>
+    <h2>Parcours académique.</h2>
+    <div class="two">
+      <article class="edu"><small>Bac+4 / Bac+5 · en cours</small><h3>Master MIASHS · Informatique et Cognition</h3><p>Université Grenoble Alpes. Data science, IA et systèmes complexes. Major de promotion.</p><p>Machine learning, NLP, modélisation BI, IHM centrées utilisateur, analyse statistique.</p></article>
+      <article class="edu"><small>Bac+3 · Mention Bien</small><h3>B.U.T. Informatique · Parcours AGED</h3><p>IUT d’Annecy (USMB) et CFA Tétras. Ingénierie de la donnée et Business Intelligence.</p><p>Data warehouses, ETL (Talend), Power BI (DAX), Java, Python, SQL avancé, cloud, RGPD.</p></article>
+    </div>
+    <ul class="chips">
+      <li>Anglais C1</li><li>Certifié PIX</li><li>PSC1</li><li>Musculation</li><li>Muay Thai</li><li>Sports automobiles</li>
+    </ul>
+  </div>
+</section>
 
-        <div class="projets-category" id="projets-ecole">
-          <h3>Projets Académiques</h3>
-          <ul>
-            <!-- Le reste de tes projets académiques reste exactement le même qu'avant -->
-            <li>
-              <h4>Implémentation d'un besoin client</h4>
-              <p>Création d'un jeu vidéo de type escape game en utilisant MonoGame. Le jeu inclut des énigmes et questions interactives développées en HTML, CSS et JavaScript.</p>
-              <div class="projet-description">
-                <p>Ce projet avait pour objectif :</p>
-                <ul>
-                  <li>🎮 Développer un escape game interactif</li>
-                  <li>🖥️ Intégrer des énigmes et des mini-jeux en HTML, CSS et JavaScript</li>
-                  <li>🎨 Concevoir un environnement immersif avec MonoGame</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrable</h3>
-                <ul>
-                  <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le PDF</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Comparaison d'approches algorithmiques</h4>
-              <p>Développement d'une IA pour le jeu vidéo (Minimax, Alpha-Beta, réseaux de neurones) avec analyse des performances et optimisation.</p>
-              <div class="projet-description">
-                <p>Ce projet impliquait :</p>
-                <ul>
-                  <li>🤖 Développement d'un algorithme d'IA décisionnel</li>
-                  <li>🧠 Comparaison des approches</li>
-                  <li>📈 Analyse des performances et optimisation</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrable</h3>
-                <ul>
-                  <li><a href="CompteRenduMonogame.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le PDF</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Installation d'un poste de développement</h4>
-              <p>VM Debian avec environnement C# configuré et outillage front (CSS/JS).</p>
-              <div class="projet-description">
-                <p>Les étapes du projet comprenaient :</p>
-                <ul>
-                  <li>💻 Installation et configuration d'une VM Debian</li>
-                  <li>🛠️ Environnement de développement C#</li>
-                  <li>🔗 Outils front pour CSS/JS</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrable</h3>
-                <ul>
-                  <li><a href="USER_GUIDE.pdf" target="_blank" rel="noopener" class="btn">📘 Voir le USER GUIDE</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Création d'une base de données</h4>
-              <p>Conception PostgreSQL, requêtes de validation et tests de stabilité.</p>
-              <div class="projet-description">
-                <p>Objectifs :</p>
-                <ul>
-                  <li>📌 Modéliser et optimiser</li>
-                  <li>🔍 Assurer l’intégrité des données</li>
-                  <li>📊 Vérifier les performances des requêtes</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
-
-            <li>
-              <h4>Recueil des besoins</h4>
-              <p>Questionnaire utilisateurs → persona → maquette (Figma) sur une activité à Annecy.</p>
-              <div class="projet-description">
-                <p>Le projet consistait à :</p>
-                <ul>
-                  <li>📋 Élaborer un questionnaire structuré</li>
-                  <li>🎭 Définir un persona</li>
-                  <li>🖥️ Créer une maquette du parcours utilisateur</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li><a href="https://www.figma.com/proto/ShATBSnQilreJGmetXW3x5/Untitled?node-id=1-780&node-type=canvas&t=D8qzbtdt0myHRHV8-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A780&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn">🎨 Voir la maquette Figma</a></li>
-                  <li><a href="Persona.docx" target="_blank" rel="noopener" class="btn">📑 Voir le persona</a></li>
-                  <li><a href="QuestionnaireS1.05.pdf" target="_blank" rel="noopener" class="btn">📋 Voir les réponses</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Analyse de l'environnement économique et écologique</h4>
-              <p>Étude de l’entreprise Capgemini (SWOT) et présentation.</p>
-              <div class="projet-description">
-                <p>Contenus :</p>
-                <ul>
-                  <li>🔍 Étude approfondie</li>
-                  <li>📊 Analyse SWOT</li>
-                  <li>📈 Présentation orale</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li><a href="SAe_1.06.pptx" target="_blank" rel="noopener" class="btn">📊 Présentation</a></li>
-                  <li><a href="Compte rendu de synthèse Capgemini.docx" target="_blank" rel="noopener" class="btn">📑 Compte rendu</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Développement d'une application IHM</h4>
-              <p>Application connectée à PhpPgAdmin, tests d’UX et validation.</p>
-              <div class="projet-description">
-                <p>Le projet impliquait :</p>
-                <ul>
-                  <li>🖥️ Interface utilisateur</li>
-                  <li>🔗 Connexion et gestion de données</li>
-                  <li>📌 Tests de fluidité</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li><a href="IHM.pdf" target="_blank" rel="noopener" class="btn">📜 Compte rendu IHM</a></li>
-                  <li><a href="cahierdescharges.pdf" target="_blank" rel="noopener" class="btn">🔍 Cahier des charges</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Exploration algorithmique d'un problème</h4>
-              <p>Graphes + Excel/VBA pour l’aide à la décision, simulation et optimisation.</p>
-              <div class="projet-description">
-                <p>Objectifs :</p>
-                <ul>
-                  <li>🔍 Modéliser sous forme de graphes</li>
-                  <li>📊 Analyser des solutions</li>
-                  <li>⚡ Optimiser la prise de décision</li>
-                </ul>
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li>📄 Rapport d’analyse</li>
-                  <li>📊 Simulation sous Excel</li>
-                  <li>📜 Documentation technique</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>🔗 Accès aux fichiers :</h3>
-                <ul>
-                  <li><a href="OutilsDecision_E12V2.xlsm" target="_blank" rel="noopener" class="btn-fichier">📂 Ouvrir le fichier Excel avec macros</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Installation de services réseau</h4>
-              <p>Déploiement d’un site WordPress sur Raspberry Pi avec base MariaDB.</p>
-              <div class="projet-description">
-                <p>Objectifs :</p>
-                <ul>
-                  <li>🖥️ Configurer un serveur WordPress</li>
-                  <li>💾 Gérer MariaDB</li>
-                  <li>🔧 Administrer et sécuriser</li>
-                </ul>
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li>📜 Guide d’installation</li>
-                  <li>📝 Rapport de configuration réseau</li>
-                  <li>🔍 Étude performances/sécurité</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>🔗 Accès aux documents :</h3>
-                <ul>
-                  <li><a href="USERGUIDE_SAE" target="_blank" rel="noopener" class="btn-fichier">📗 Ouvrir le User guide</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Exploitation d'une base de données</h4>
-              <p>Modélisation, création de jeux de données, analyses statistiques et visualisations (Power BI).</p>
-              <div class="projet-description">
-                <p>Livrables :</p>
-                <ul>
-                  <li>📄 Documentation technique</li>
-                  <li>📊 Fichiers Power BI et Excel</li>
-                  <li>📝 Rapport d’analyse</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>🔗 Accès aux fichiers :</h3>
-                <ul>
-                  <li><a href="sae4.pbix" target="_blank" rel="noopener" class="btn">📊 Fichier Power BI</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Organisation du travail d'équipe</h4>
-              <p>Séminaire d’entreprise en anglais (cohésion, communication, présentations).</p>
-              <div class="projet-description">
-                <p>Objectifs :</p>
-                <ul>
-                  <li>✅ Cohésion de groupe</li>
-                  <li>🌍 Communication interculturelle</li>
-                  <li>🎤 Expression orale</li>
-                  <li>📋 Programme d’activités</li>
-                </ul>
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li>📜 Affiche du séminaire</li>
-                  <li>📝 Dossier de préparation</li>
-                  <li>📄 Poster récapitulatif</li>
-                  <li>🎤 Présentation orale</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>🔗 Accès aux documents :</h3>
-                <ul>
-                  <li><a href="Affiche_seminaire.pdf" target="_blank" rel="noopener" class="btn">📜 Affiche</a></li>
-                  <li><a href="sae6.pdf" target="_blank" rel="noopener" class="btn">📄 Poster</a></li>
-                  <li><a href="Livrable_3_orale_.pdf" target="_blank" rel="noopener" class="btn">📝 Livrable</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Création d'un site internet complet et fonctionnel</h4>
-              <p>Site Laravel avec sécurité, tests de charge, chatbot, MCD et dashboards Power BI.</p>
-              <div class="projet-description">
-                <ul>
-                  <li><strong>Gestion des données sensibles</strong></li>
-                  <li><strong>Tests de charge & chatbot</strong></li>
-                  <li><strong>Modélisation des données</strong> (MCD)</li>
-                  <li><strong>Analyse & visualisation</strong> (Power BI)</li>
-                  <li><strong>Approche Agile</strong> (Azure DevOps)</li>
-                  <li><strong>Documentation & RGPD</strong></li>
-                  <li><strong>Soutenance</strong></li>
-                </ul>
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li><a href="Rendu FinalS3.01.docx" target="_blank" rel="noopener" class="btn">📌 Compte rendu diagramme</a></li>
-                  <li><a href="CryptoS3.01.docx" target="_blank" rel="noopener" class="btn">🔐 Rendu Cryptographie</a></li>
-                  <li><a href="ChargeReseauChatbotS3.01.docx" target="_blank" rel="noopener" class="btn">📡 Rendu réseau chatbot</a></li>
-                  <li><a href="RenduFinalS3.01.xlsx" target="_blank" rel="noopener" class="btn">📊 Rendu Excel des données</a></li>
-                  <li><a href="DocRGPDS3.01.docx" target="_blank" rel="noopener" class="btn">📜 Compte rendu RGPD</a></li>
-                  <li><a href="CompteRenduFinalPOWERBIS3.01.docx" target="_blank" rel="noopener" class="btn">📈 Compte rendu final POWER BI</a></li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
-
-            <li>
-              <h4>Optimisation de la base de données (Open Food Facts)</h4>
-              <p>Optimisation PostgreSQL, vente simulée pour analyses Power BI, workflows Knime, IA pour Nutri-Score, détection d’erreurs de saisie.</p>
-              <div class="projet-description">
-                <h3>📂 Livrables :</h3>
-                <ul>
-                  <li>📜 Documentation technique</li>
-                  <li>💾 Scripts de nettoyage et transformation</li>
-                  <li>📊 Rapports Power BI</li>
-                  <li>🔄 Workflows Knime</li>
-                  <li>🎤 Présentation finale en anglais</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>🔗 Accès aux documents :</h3>
-                <ul>
-                  <li><a href="CompteRenduS4.01.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le compte rendu</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Projet IMDb – SAE 5.C.01</h4>
-              <p>OLTP/OLAP, NLP basique des critiques, visualisations et soutenance.</p>
-              <div class="projet-description">
-                <ul>
-                  <li><strong>OLTP</strong> : Modélisation et optimisation</li>
-                  <li><strong>OLAP</strong> : Étoile + intégration Power BI</li>
-                  <li><strong>IA</strong> : Analyse NLP des critiques</li>
-                  <li><strong>Gestion de projet</strong> : Gantt + soutenance</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <h3>Livrables du projet IMDb – SAE 5.C.01</h3>
-                <ul>
-                  <li><a href="Soutenance.pdf" target="_blank" rel="noopener" class="btn">🎤 Voir la soutenance</a></li>
-                  <li><a href="Document final.docx" target="_blank" rel="noopener" class="btn">📑 Voir le document final</a></li>
-                  <li><a href="SAE5.C.01 IMDb 2024-25.docx" target="_blank" rel="noopener" class="btn">📌 Voir le sujet du projet</a></li>
-                </ul>
-              </div>
-            </li>
-            
-            <li>
-              <h4>Profilage Socio-Financier et Risque Viral</h4>
-              <p><strong>UE : Analyse de données</strong></p>
-              <p>Étude statistique multivariée sur la propagation virale en Côte d'Ivoire. Identification de clusters de populations à risque selon leurs habitudes de vie.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>📊 <strong>Statistiques :</strong> Analyse en Composantes Principales (ACP) et Clustering pour dégager des profils.</li>
-                  <li>🔍 <strong>Interprétation :</strong> Corrélation entre précarité financière, isolement social et facteurs de risque.</li>
-                  <li>📈 <strong>Outils :</strong> Traitement de grands jeux de données complexes et modélisation.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="Rendu_RABEHI_Milhane.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport d'Analyse</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Segmentation d'Images par K-Means</h4>
-              <p><strong>UE : Apprentissage statistiques (IA)</strong></p>
-              <p>Développement d'un algorithme de classification non supervisée pour la segmentation colorimétrique d'images complexes (Star Wars vs IUT).</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🐍 <strong>Code :</strong> Implémentation de l'algorithme K-Means en R / Python.</li>
-                  <li>🖼️ <strong>IA Vision :</strong> Transfert de centres (Cross-segmentation) entre différents univers visuels.</li>
-                  <li>📉 <strong>Analyse :</strong> Étude de la convergence et réduction de la complexité des pixels.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="TP-Projet-KMEANS-RABEHI-DJENNAD.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Code & Résultats</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>L'Autorité du Curseur (Mouse Tracking)</h4>
-              <p><strong>UE : Outils et méthodes en SC2</strong></p>
-              <p>Étude expérimentale mesurant l'influence du statut social d'un agent virtuel sur la prise de décision et la motricité d'un utilisateur.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🖱️ <strong>Mouse Tracking :</strong> Analyse des trajectoires de souris pour mesurer le conflit moteur (hésitation).</li>
-                  <li>🧠 <strong>Métacognition :</strong> Évaluation de la perte de confiance face à une "autorité" numérique.</li>
-                  <li>📊 <strong>Data :</strong> Extraction et traitement statistique des temps de réaction.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="Expérience.pptx" target="_blank" rel="noopener" class="btn">📊 Voir la Présentation</a></li>
-                  <li><a href="Soutenance-mc.pdf" target="_blank" rel="noopener" class="btn">📊 Voir la Présentation sous format PDF</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Architecture Système : Gestion de Festival</h4>
-              <p><strong>UE : Méthodes de génie logiciel</strong></p>
-              <p>Conception UML complète d'une plateforme de billetterie éco-responsable incluant le calcul d'empreinte carbone.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>📐 <strong>Modélisation :</strong> Diagrammes UML avancés (Classes, Cas d'utilisation, Séquences).</li>
-                  <li>🌱 <strong>Algorithmique :</strong> Logique de calcul CO2 et modélisation de malus/bonus tarifaires.</li>
-                  <li>🛠️ <strong>Dashboards :</strong> Conception de tableaux de bord d'aide à la décision (Heatmaps de provenance).</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="Rapport - Projet Génie Logiciel (2).docx" target="_blank" rel="noopener" class="btn">📑 Voir le Cahier des Charges UML</a></li>
-                  <li><a href="Rapport - Projet MiART.pdf" target="_blank" rel="noopener" class="btn">📑 Voir la Présentation</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Audit Ergonomique & Refonte : App IKEA</h4>
-              <p><strong>UE : Ergonomie cognitive / Projet UX</strong></p>
-              <p>Évaluation experte du parcours d'achat mobile d'IKEA et création de prototypes correctifs.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>👁️ <strong>Analyse :</strong> Évaluation selon les critères de Bastien & Scapin (charge visuelle, guidage).</li>
-                  <li>🧪 <strong>Data UX :</strong> Protocoles de tests utilisateurs et analyse des pain-points.</li>
-                  <li>🎨 <strong>Figma :</strong> Prototypage haute-fidélité pour optimiser le taux de conversion.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="IKEA.pptx" target="_blank" rel="noopener" class="btn">📊 Voir l'Audit Visuel</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Conception IHM : Borne Automatique Interurbaine</h4>
-              <p><strong>UE : Interactions Homme-Machine (IHM)</strong></p>
-              <p>Étude terrain et conception d'une interface simplifiant le casse-tête du zonage tarifaire pour les voyageurs.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🔍 <strong>Recherche :</strong> Guérilla testing en gare routière et observation non-participante.</li>
-                  <li>💡 <strong>Idéation :</strong> Maquettage d'une interface supprimant la charge mentale du calcul de zones.</li>
-                  <li>🛡️ <strong>Réassurance :</strong> Intégration de feedbacks visuels pour rassurer l'utilisateur lors du paiement.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="RenduV1-IHM.pdf" target="_blank" rel="noopener" class="btn">📄 Voir l'Étude UX/UI</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Évaluation NLP : Traduction Neuronale vs Humaine</h4>
-              <p><strong>UE : Traitement automatique de langue (TALN)</strong></p>
-              <p>Analyse de la productivité et de la précision sémantique entre une traduction humaine et un modèle d'IA (LLM).</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🤖 <strong>Métriques IA :</strong> Évaluation des modèles via le score TER (Translation Edit Rate).</li>
-                  <li>⚡ <strong>Productivité :</strong> Démonstration d'un gain de temps x4 grâce à la post-édition.</li>
-                  <li>✍️ <strong>Linguistique :</strong> Analyse fine des erreurs de contexte et d'intentionnalité de la machine.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="WTrad_Rab_Mil.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport NLP</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Modélisation Cognitive : Lecture Silencieuse</h4>
-              <p><strong>UE : Mesures comportementales</strong></p>
-              <p>Étude statistique (Tests de Kolberg & La Boisière) sur l'influence de la syntaxe dans la prise de décision en lecture.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🧠 <strong>Cognition :</strong> Étude du rôle de la prosodie implicite dans le traitement de l'information.</li>
-                  <li>📊 <strong>Statistiques :</strong> Modélisation des choix d'attachement syntaxique selon des variables de longueur.</li>
-                  <li>🧪 <strong>Rigueur :</strong> Analyse critique des biais, de la taille d'échantillon et des valeurs p.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="Rapport_RABEHI_Milhane.pdf" target="_blank" rel="noopener" class="btn">📑 Voir l'Étude Statistique</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Architecture XML & SVG : Moteur de Jeu Sudoku</h4>
-              <p><strong>UE : Représentation de données et de connaissances</strong></p>
-              <p>Développement d’une application de Sudoku interactive reposant sur une architecture 100% déclarative, de la validation structurelle à la visualisation.</p>
-              <div class="projet-description">
-                <p>Méthodologie et Outils :</p>
-                <ul>
-                  <li>🏗️ <strong>Validation :</strong> Modélisation de la structure de données XML et définition de contraintes strictes via Schémas XSD.</li>
-                  <li>⚙️ <strong>Moteur de règles :</strong> Traduction de la logique géométrique du Sudoku (lignes, colonnes, blocs 3x3) en expressions XPath pour la détection d'erreurs.</li>
-                  <li>🎨 <strong>UX/UI :</strong> Génération d'une interface dynamique en SVG intégrant un système d'aide à la résolution et des feedbacks visuels en temps réel.</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="Rapport.pdf" target="_blank" rel="noopener" class="btn">📄 Voir le Rapport Technique</a></li>
-                  <li><a href="Support.pdf" target="_blank" rel="noopener" class="btn">🎨 Voir le Support</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="projets-category" id="projets-personnels">
-          <!-- Projets personnels inchangés -->
-          <h3>Projets Personnels</h3>
-          <ul>
-            <li>
-              <h4>Portfolio Personnel</h4>
-              <p>Portfolio interactif en HTML5, CSS3, et JavaScript (projets, compétences, mini-jeux).</p>
-              <div class="projet-description">
-                <p>Le portfolio inclut :</p>
-                <ul>
-                  <li>🌐 Page d'accueil animée</li>
-                  <li>📜 Section compétences/expériences</li>
-                  <li>🎮 Mini-jeu JavaScript</li>
-                  <li>📸 Carrousel de projets</li>
-                  <li>📩 Formulaire de contact</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
-
-            <li>
-              <h4>Site Internet - Clash of Clans</h4>
-              <p>Site dédié au clan : stats Power BI, classement, gestion des membres, page de contact et présentation personnelle.</p>
-              <div class="projet-description">
-                <p>Ce site propose :</p>
-                <ul>
-                  <li>📊 Visualisations Power BI</li>
-                  <li>🏆 Classement interactif</li>
-                  <li>🛠️ Gestion des membres</li>
-                  <li>📩 Formulaire de candidature</li>
-                  <li>💬 Espace communautaire</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="https://milhane69.github.io/HOTH-Milhane" target="_blank" rel="noopener" class="btn">🌐 Visiter mon site</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <h4>Développement d’un bot Discord</h4>
-              <p>Bot Discord (Python) : modération, rôles, notifications, intégrations API, et stats via Power BI.</p>
-              <div class="projet-description">
-                <p>Fonctionnalités principales :</p>
-                <ul>
-                  <li>🤖 Modération (filtres, logs)</li>
-                  <li>🎭 Rôles</li>
-                  <li>📢 Notifications</li>
-                  <li>🔍 Commandes interactives</li>
-                  <li>📊 Statistiques de serveur</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
-
-            <li>
-              <h4>Automatisation de tâches avec Python</h4>
-              <p>Scripts d’automatisation (organisation de fichiers, web scraping, envoi d’e-mails, rappels, extraction Excel/CSV).</p>
-              <div class="projet-description">
-                <p>Exemples :</p>
-                <ul>
-                  <li>📩 Bot d’envoi d’e-mails (Gmail API)</li>
-                  <li>📁 Organisation automatique de fichiers</li>
-                  <li>🌐 Scraper Web</li>
-                  <li>📅 Planification de rappels</li>
-                  <li>💾 Extracteur Excel/CSV</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-            </li>
-
-            <li>
-              <h4>CréaSite – Générateur de sites & outils pour freelances</h4>
-              <p>Générateur de maquettes, devis PDF (jsPDF), EmailJS, design responsive, déployé via Netlify.</p>
-              <div class="projet-description">
-                <p>Fonctionnalités :</p>
-                <ul>
-                  <li>🖥️ Maquettes interactives</li>
-                  <li>📄 Devis PDF personnalisés</li>
-                  <li>📬 Formulaire de contact intelligent</li>
-                  <li>🎨 Design responsive</li>
-                  <li>🚀 Déploiement Netlify</li>
-                </ul>
-              </div>
-              <button class="toggle-description">Voir plus</button>
-              <div class="livrables-container">
-                <ul>
-                  <li><a href="https://creasite.netlify.app/" target="_blank" rel="noopener" class="btn">🚀 Visiter CréaSite</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+<!-- CV -->
+<section id="cv">
+  <div class="wrap rv">
+    <div class="eyebrow">// 06 · cv</div>
+    <h2>Mon CV.</h2>
+    <div class="cvbox">
+      <button class="cvthumb" id="cvopen" type="button" aria-label="Afficher le CV en grand"><img src="CV.png" alt="CV de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager" loading="lazy"></button>
+      <div class="cvside">
+        <p>Une page : profil, compétences, expériences professionnelles, projets de recherche et formation.</p>
+        <div class="btns">
+          <a class="btn p" href="CV%20rabehi%20milhane.pdf" download>Télécharger le PDF</a>
+          <button class="btn g" id="cvopen2" type="button">Voir en grand</button>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="CV">
-      <div class="cv-container">
-        <h2>Mon CV</h2>
-        <p>Cliquez sur l'image pour afficher le CV en grand format.</p>
-
-        <div class="cv-wrapper">
-          <img src="CV.png" alt="CV de Milhane Rabehi, Data Analytics Engineer et Assistant Data Product Manager" loading="lazy" id="cv-image" class="cv-thumbnail" />
-        </div>
-
-        <a href="CV rabehi milhane.pdf" download class="btn" style="margin-top: 20px;">
-          <i class="fas fa-download" style="margin-right: 10px;"></i> Télécharger le CV (PDF)
-        </a>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap rv">
+    <div class="cta">
+      <div class="eyebrow" style="color:var(--gold)">// 07 · contact</div>
+      <h2>Une donnée à faire&nbsp;parler&nbsp;?</h2>
+      <p>Parlons de gouvernance, de pipelines, de dashboards ou d’un projet qui a besoin de clarté.</p>
+      <div class="btns c">
+        <a class="btn p" href="mailto:milhane13130@gmail.com">Écrire un email</a>
+        <button class="btn g" id="copy" type="button">Copier l’adresse</button>
+        <a class="btn g" href="https://www.linkedin.com/in/milhane-rabehi-917501258" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
-    </section>
+      <p class="mail" id="mail" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
 
-    <section id="contact">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Vous pouvez me contacter par email :</p>
-        <a href="mailto:milhane13130@gmail.com" class="btn" style="background-color: var(--color-secondary); margin-bottom: 20px;">
-          <i class="fas fa-envelope" style="margin-right: 10px;"></i> milhane13130@gmail.com
-        </a>
-        <br>
-        <p>Vous pouvez aussi me trouver sur LinkedIn :</p>
-        <a
-          href="https://www.linkedin.com/in/milhane-rabehi-917501258"
-          target="_blank" rel="noopener"
-          class="linkedin-link"
-        >
-          <i class="fab fa-linkedin"></i>
-          RABEHI Milhane
-        </a>
-      </div>
-    </section>
+</main>
 
-    <footer>
-      <p>&copy; 2026 - Portfolio de RABEHI Milhane | Master MIASHS - Informatique & Cognition</p>
-    </footer>
+<footer>© 2026 · Milhane Rabehi · Master MIASHS, Informatique &amp; Cognition</footer>
 
-    <script src="script.js"></script>
-  </body>
+<dialog id="dlg" aria-labelledby="dlgt"></dialog>
+<dialog id="cvdlg" aria-label="CV en grand">
+  <button class="x" type="button" aria-label="Fermer">✕</button>
+  <img src="CV.png" alt="CV de Milhane Rabehi" loading="lazy">
+  <p><a class="btn p" href="CV%20rabehi%20milhane.pdf" download>Télécharger le PDF</a></p>
+</dialog>
+
+<script src="script.js"></script>
+</body>
 </html>
