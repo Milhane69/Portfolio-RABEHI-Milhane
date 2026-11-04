@@ -317,6 +317,40 @@ section{padding:80px 0}
 @media(max-width:520px){.proj{padding:16px}.proj .wave{height:44px}.tg2,.morebar .btn{width:100%}.acts .btn{flex:1 1 100%}}
 @media(prefers-reduced-motion:reduce){.pbody{transition:none}.proj .wave span{animation:none!important}}
 .proj .tags span{font:500 .78rem var(--mono);padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--acc)}
+
+/* ---------- v7 : décors propres au sujet de chaque projet ---------- */
+.deco{display:block;width:100%;height:64px;margin-bottom:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.deco *{transform-box:fill-box;transform-origin:center}
+.deco .st{fill:none;stroke:var(--acc);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.deco .s-gold{stroke:var(--gold)}
+.deco .ln{stroke-dasharray:1}
+.deco .f-acc{fill:var(--acc)}.deco .f-gold{fill:var(--gold)}.deco .f-mut{fill:var(--mut)}
+.deco .flow{stroke-dasharray:3 5}
+.deco .bar{transform-origin:50% 100%}
+.deco .rs{transform-origin:0 50%}
+.deco .pk{opacity:0}
+.deco .ring{opacity:0}
+.deco text{font:700 14px var(--mono);fill:var(--ink);text-anchor:middle;stroke:none}
+.proj:is(:hover,.open,.live) .deco .bar{animation:d-grow 2.6s ease-in-out infinite;animation-delay:calc(var(--i,0) * -110ms)}
+.proj:is(:hover,.open,.live) .deco .ln{animation:d-draw 3.4s ease-in-out infinite}
+.proj:is(:hover,.open,.live) .deco .pk{animation:d-pk 2.2s linear infinite}
+.proj:is(:hover,.open,.live) .deco .flow{animation:d-flow 1s linear infinite}
+.proj:is(:hover,.open,.live) .deco .ring{animation:d-pulse 2s ease-out infinite}
+.proj:is(:hover,.open,.live) .deco .led{animation:d-blink 1.4s steps(2) infinite}
+.proj:is(:hover,.open,.live) .deco .fl{animation:d-float 3s ease-in-out infinite}
+.proj:is(:hover,.open,.live) .deco .dotp{animation:d-dot 2.4s ease-in-out infinite;animation-delay:calc(var(--i,0) * -200ms)}
+.proj:is(:hover,.open,.live) .deco .rs{animation:d-rise 2.8s ease-in-out infinite;animation-delay:calc(var(--i,0) * -300ms)}
+@keyframes d-grow{50%{transform:scaleY(.4)}}
+@keyframes d-draw{0%{stroke-dashoffset:1}55%,100%{stroke-dashoffset:0}}
+@keyframes d-pk{0%{transform:translateX(0);opacity:0}15%,85%{opacity:1}100%{transform:translateX(var(--dx,60px));opacity:0}}
+@keyframes d-flow{to{stroke-dashoffset:-8}}
+@keyframes d-pulse{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+@keyframes d-blink{50%{opacity:.2}}
+@keyframes d-float{50%{transform:translateY(-4px)}}
+@keyframes d-dot{50%{opacity:.35;transform:scale(.7)}}
+@keyframes d-rise{50%{transform:scaleX(.35)}}
+@media(max-width:520px){.deco{height:56px;margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.deco *{animation:none!important}}
 </style>
 </head>
 <body>
@@ -835,6 +869,36 @@ function wave(t) {
   for (let i = 0; i < BARS; i++) h += `<span style="--i:${i};--h:${(.18 + .82 * Math.abs(Math.sin(i / 4 + r() * 3)) * (.45 + r() * .55)).toFixed(2)}"></span>`;
   return h;
 }
+
+/* ---------- décors propres à chaque sujet ---------- */
+document.body.insertAdjacentHTML('beforeend', '<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--acc)"/><stop offset="1" style="stop-color:var(--gold)"/></linearGradient></defs></svg>');
+const SV = s => `<svg class="deco" viewBox="0 0 600 64" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">${s}</svg>`;
+const cube = (x, y, k, c) => `<g transform="translate(${x} ${y}) scale(${k})"><g class="${c}"><path d="M0-22 36-4 0 14-36-4Z" fill="var(--gold)" opacity=".85"/><path d="M-36-4 0 14V34L-36 16Z" fill="var(--acc)" opacity=".55"/><path d="M36-4 0 14V34L36 16Z" fill="var(--acc)"/></g></g>`;
+const cyl = x => `<g transform="translate(${x} 0)"><path class="st" d="M-26 14v28c0 4.4 11.6 8 26 8s26-3.6 26-8V14"/><ellipse class="st" cx="0" cy="14" rx="26" ry="8"/><path class="st" d="M-26 28c0 4.4 11.6 8 26 8s26-3.6 26-8" opacity=".55"/><circle class="led f-gold" cx="14" cy="44" r="2.4"/></g>`;
+const DECO = {
+  bi: r => { let h = '', d = ''; for (let i = 0; i < 24; i++) { const v = 10 + i / 24 * 24 + r() * 12, x = 96 + i * 19; h += `<rect class="bar" style="--i:${i}" x="${x}" y="${60 - v}" width="10" height="${v}" rx="3" fill="url(#dg)"/>`; d += (i ? 'L' : 'M') + (x + 5) + ' ' + (54 - v) + ' '; } return h + `<path class="st s-gold ln" pathLength="1" d="${d}"/>`; },
+  etl: () => { const xs = [90, 195, 300, 405, 510]; let h = ''; xs.forEach((x, i) => { if (i < 4) h += `<path class="st flow" opacity=".6" d="M${x + 14} 32H${xs[i + 1] - 14}"/><circle class="pk f-gold" cx="${x + 14}" cy="32" r="3.5" style="--dx:${xs[i + 1] - x - 28}px;animation-delay:${i * .5}s"/>`; h += `<circle class="st${i === 4 ? ' s-gold' : ''}" cx="${x}" cy="32" r="12"/><circle class="${i === 4 ? 'f-gold' : 'f-acc'}" cx="${x}" cy="32" r="${i === 4 ? 5 : 3.5}"/>`; }); return h; },
+  sst: () => { let h = ''; [10, 24, 40, 54].forEach(y => { h += `<path class="st flow" opacity=".65" d="M156 ${y}C225 ${y} 225 32 284 32"/><circle class="f-acc" cx="150" cy="${y}" r="4.5"/>`; }); h += `<path class="st flow" opacity=".65" d="M316 32H388"/><circle class="ring st s-gold" cx="300" cy="32" r="14"/><circle class="st s-gold" cx="300" cy="32" r="14"/><circle class="f-gold" cx="300" cy="32" r="6"/>`; [18, 32, 46].forEach((v, i) => { h += `<rect class="bar" style="--i:${i * 2}" x="${398 + i * 18}" y="${58 - v}" width="12" height="${v}" rx="3" fill="url(#dg)"/>`; }); return h; },
+  cube: () => cube(210, 32, .62, 'fl') + cube(300, 26, 1, 'fl') + cube(390, 32, .62, 'fl'),
+  db: () => cyl(220) + cyl(300) + cyl(380) + '<path class="st flow" opacity=".6" d="M248 32H272M328 32H352"/>',
+  cluster: r => { let h = ''; [[190, 36, 'f-acc'], [300, 22, 'f-gold'], [410, 42, 'f-mut']].forEach(([cx, cy, c], k) => { for (let i = 0; i < 9; i++) h += `<circle class="dotp ${c}" style="--i:${k * 9 + i}" cx="${(cx + (r() - .5) * 74).toFixed(0)}" cy="${Math.max(7, Math.min(57, cy + (r() - .5) * 30)).toFixed(0)}" r="3.2"/>`; h += `<path class="st" style="stroke:var(--ink)" d="M${cx - 6} ${cy - 6}l12 12M${cx + 6} ${cy - 6}l-12 12"/>`; }); return h; },
+  traj: () => '<path class="st flow" opacity=".4" d="M70 52C170 52 260 20 330 34S450 30 520 36"/><path class="st s-gold ln" pathLength="1" d="M70 52C150 6 210 62 290 32S430 6 520 36"/><path class="fl" fill="var(--gold)" d="M520 34v20l5-4 4 9 4-2-4-9h7z"/>',
+  uml: () => { let h = ''; [140, 258, 376].forEach((x, i) => { h += `<rect class="st" x="${x}" y="10" width="84" height="44" rx="7"/><path class="st" opacity=".6" d="M${x} 23H${x + 84}"/><path class="st" opacity=".4" d="M${x + 10} 32h40M${x + 10} 42h56"/>`; if (i < 2) h += `<path class="st s-gold flow" d="M${x + 88} 32H${x + 114}"/><path class="st s-gold" d="M${x + 110} 27l5 5-5 5"/>`; }); return h; },
+  wire: () => '<rect class="st" x="110" y="8" width="130" height="48" rx="7"/><path class="st" opacity=".6" d="M110 20H240"/><circle class="f-gold" cx="120" cy="14" r="2"/><circle class="f-acc" cx="128" cy="14" r="2"/><rect class="f-acc" opacity=".35" x="120" y="27" width="50" height="22" rx="4"/><path class="st" opacity=".5" d="M180 30h48M180 38h36M180 46h44"/><rect class="st" x="272" y="3" width="56" height="58" rx="10"/><path class="st" opacity=".5" d="M284 16h32M284 24h22"/><rect class="ring f-gold" x="284" y="42" width="32" height="10" rx="5"/><rect class="f-gold" x="284" y="42" width="32" height="10" rx="5"/><circle class="st" cx="392" cy="24" r="10"/><path class="st" opacity=".5" d="M412 18h66M412 28h46"/><rect class="st s-gold" x="370" y="42" width="110" height="12" rx="6"/>',
+  tokens: r => { let h = '', k = 0; [10, 36].forEach(y => { let x = 108 + r() * 20; while (x < 470) { const w = 28 + r() * 40; h += `<g class="dotp" style="--i:${k++}"><rect class="st${r() > .65 ? ' s-gold' : ''}" x="${x.toFixed(0)}" y="${y}" width="${w.toFixed(0)}" height="18" rx="9"/><path class="st" opacity=".45" d="M${(x + 8).toFixed(0)} ${y + 9}h${(w - 16).toFixed(0)}"/></g>`; x += w + 9; } }); return h; },
+  grid: r => { let h = '<path class="st" d="M228 20l-14 12 14 12M372 20l14 12-14 12"/>'; for (let i = 0; i <= 9; i++) { const o = 273 + i * 6, t = 5 + i * 6, th = i % 3 === 0; h += `<path class="st" opacity="${th ? 1 : .35}" stroke-width="${th ? 2 : 1}" d="M${o} 5V59M273 ${t}H327"/>`; } for (let i = 0; i < 9; i++) h += `<rect class="dotp f-gold" style="--i:${i}" x="${275 + Math.floor(r() * 9) * 6}" y="${7 + Math.floor(r() * 9) * 6}" width="2.6" height="2.6"/>`; return h; },
+  tree: () => { let h = ''; [200, 300, 400].forEach(x => { h += `<path class="st" opacity=".5" d="M300 10L${x} 30"/>`; [-36, 0, 36].forEach(o => { h += `<path class="st" opacity=".5" d="M${x} 30L${x + o} 54"/><circle class="f-acc" cx="${x + o}" cy="54" r="3.5"/>`; }); h += `<circle class="st" style="fill:var(--card)" cx="${x}" cy="30" r="5"/>`; }); return h + '<path class="st s-gold ln" pathLength="1" d="M300 10L300 30L336 54"/><circle class="f-gold" cx="336" cy="54" r="5.5"/><circle class="st s-gold" style="fill:var(--card)" cx="300" cy="9" r="5.5"/>'; },
+  maze: r => { let h = '', row = 1, d = '', on = {}; for (let c = 0; c < 31; c++) { if (r() > .55) row = Math.max(0, Math.min(3, row + (r() > .5 ? 1 : -1))); on[c + ',' + row] = 1; d += (c ? 'L' : 'M') + (60 + c * 16 + 6) + ' ' + (8 + row * 16 + 6) + ' '; if (c < 30 && r() > .6) { const nr = Math.max(0, Math.min(3, row + (r() > .5 ? 1 : -1))); if (nr !== row) { on[c + ',' + nr] = 1; d += 'L' + (60 + c * 16 + 6) + ' ' + (8 + nr * 16 + 6) + ' '; row = nr; } } } for (let c = 0; c < 31; c++) for (let k = 0; k < 4; k++) if (!on[c + ',' + k] && r() > .62) h += `<rect class="f-acc" opacity=".28" x="${60 + c * 16}" y="${8 + k * 16}" width="12" height="12" rx="3"/>`; return h + `<path class="st s-gold ln" pathLength="1" stroke-width="3" d="${d}"/>`; },
+  graph: r => { const p = Array.from({ length: 15 }, () => [110 + r() * 380, 8 + r() * 48]); let h = ''; p.forEach((a, i) => p.forEach((b, j) => { if (j > i && Math.hypot(a[0] - b[0], a[1] - b[1]) < 92) h += `<path class="st" opacity=".4" stroke-width="1.4" d="M${a[0].toFixed(0)} ${a[1].toFixed(0)}L${b[0].toFixed(0)} ${b[1].toFixed(0)}"/>`; })); p.forEach((a, i) => { h += `<circle class="dotp ${i === 5 ? 'f-gold' : 'f-acc'}" style="--i:${i}" cx="${a[0].toFixed(0)}" cy="${a[1].toFixed(0)}" r="${i === 5 ? 6 : 3.6}"/>`; }); return h; },
+  swot: () => { let h = '<path class="st rs" style="--i:0" opacity=".4" d="M130 18H210M130 32H196M130 46H206"/><path class="st rs" style="--i:2" opacity=".4" d="M392 18H470M392 32H456M392 46H466"/>'; [[238, 4, 'S'], [306, 4, 'W'], [238, 34, 'O'], [306, 34, 'T']].forEach(([x, y, l], i) => { h += `<rect class="st${i % 3 ? '' : ' s-gold'}" x="${x}" y="${y}" width="56" height="26" rx="7"/><text x="${x + 28}" y="${y + 18}">${l}</text>`; }); return h; },
+  net: () => { let h = ''; [6, 24, 42].forEach((y, i) => { h += `<rect class="st" x="240" y="${y}" width="120" height="16" rx="4"/><path class="st" opacity=".5" d="M250 ${y + 8}h40"/><circle class="led f-gold" style="animation-delay:${i * -.4}s" cx="346" cy="${y + 8}" r="2.6"/><path class="st flow" opacity=".5" d="M240 ${y + 8}L196 32M360 ${y + 8}L404 32"/>`; }); return h + '<circle class="f-acc" cx="190" cy="32" r="6"/><circle class="f-acc" cx="410" cy="32" r="6"/><path class="st flow" opacity=".5" d="M184 32H112M416 32H488"/><circle class="f-gold" cx="104" cy="32" r="4.5"/><circle class="f-gold" cx="496" cy="32" r="4.5"/>'; },
+  code: r => { let h = '<path class="st" opacity=".7" d="M150 12q-10 0-10 8v6q0 4-6 6 6 2 6 6v6q0 8 10 8"/><path class="st" opacity=".7" d="M404 12q10 0 10 8v6q0 4 6 6-6 2-6 6v6q0 8-10 8"/>'; for (let i = 0; i < 5; i++) { const x = 172 + (i % 3) * 14, w = 50 + r() * 120, y = 7 + i * 12; h += `<rect class="rs f-gold" style="--i:${i}" x="${x}" y="${y}" width="${(w * .35).toFixed(0)}" height="5" rx="2.5"/><rect class="rs f-acc" style="--i:${i}" opacity=".85" x="${x + w * .35 + 6}" y="${y}" width="${(w * .65).toFixed(0)}" height="5" rx="2.5"/>`; } return h + '<rect class="led f-gold" x="372" y="55" width="7" height="5" rx="1"/>'; }
+};
+const RULES = [[/transcription/i, 'wave'], [/COJOP/, 'sst'], [/JADE/, 'etl'], [/Annemasse|Clash|Exploitation d/, 'bi'], [/Brenntag|IMDb/, 'cube'], [/Easy Dis|Open Food|Création d’une base/, 'db'], [/Profilage|K-Means/, 'cluster'], [/curseur/, 'traj'], [/UML|festival/, 'uml'], [/IKEA|IHM|besoins|CréaSite/, 'wire'], [/NLP|lecture/, 'tokens'], [/Sudoku/, 'grid'], [/algorithmiques/, 'tree'], [/Escape/, 'maze'], [/Exploration algorithmique/, 'graph'], [/SWOT|Capgemini|équipe/, 'swot'], [/réseau|poste de dév/, 'net'], [/Laravel|Bot|Python|Portfolio/, 'code']];
+function deco(p) {
+  const k = (RULES.find(x => x[0].test(p.t)) || [0, 'bi'])[1];
+  return k === 'wave' ? `<div class="wave" aria-hidden="true">${wave(p.t)}</div>` : SV(DECO[k](rnd(seed(p.t))));
+}
 const hay = p => norm([p.t, p.s, p.d || '', p.g.join(' '), p.b.join(' '), L[p.c]].join(' '));
 J.forEach(p => { p.h = hay(p); p.open = !!p.live; });
 function card(p, i) {
@@ -845,7 +909,7 @@ function card(p, i) {
   const el = document.createElement('article');
   el.className = 'proj spot' + (p.live ? ' live' : '') + (p.open ? ' open' : '');
   el.style.setProperty('--d', Math.min(i % PAGE, 8) * 60 + 'ms');
-  el.innerHTML = `<div class="wave" aria-hidden="true">${wave(p.t)}</div>
+  el.innerHTML = `${deco(p)}
   <div class="nowtxt"><p class="nowlive${p.live ? '' : ' off'}"><i></i>${L[p.c]}${p.live ? ' · en cours · semestre 10, jusqu’en juin' : ''}</p>
   <h3>${esc(p.t)}</h3><p class="lead2">${esc(p.d || p.s)}</p>
   <div class="tags">${p.g.map(g => `<span>${esc(g)}</span>`).join('')}</div>
