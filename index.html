@@ -41,6 +41,7 @@
 
 <!-- ACCUEIL -->
 <section class="hero" id="accueil">
+  <canvas id="net" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
     <div class="hero-txt">
       <p class="status"><i></i>En alternance · COJOP Alpes 2030, Lyon</p>
@@ -67,6 +68,8 @@
     </aside>
   </div>
 </section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
 
 <!-- COJOP -->
 <section id="cojop">
@@ -126,6 +129,23 @@
   <div class="wrap rv">
     <div class="eyebrow">// 04 · le catalogue</div>
     <h2>Projets, filtrés comme une requête.</h2>
+
+    <article class="now" id="recherche">
+      <div class="wave" id="wave" aria-hidden="true"></div>
+      <div class="nowtxt">
+        <p class="nowlive"><i></i>En cours · semestre 10, jusqu’en juin</p>
+        <h3>Benchmark d’approches de transcription automatique de conférences musicales</h3>
+        <p class="lead2">Travail de recherche mené en parallèle de mes cours et de mon alternance. Il s’inscrit dans le projet Music Graph RAG (Inria, Philharmonie de Paris) : évaluer et comparer des modèles de reconnaissance automatique de la parole sur les conférences de la Philharmonie, dont les erreurs de transcription dégradent la recherche d’extraits et la reconnaissance des entités nommées.</p>
+        <ol class="steps">
+          <li><b>Transcrire</b><span>comparer des modèles open source à la baseline WhisperX</span></li>
+          <li><b>Corriger</b><span>reconnaître les entités nommées pendant ou après la transcription</span></li>
+          <li><b>Évaluer</b><span>WER et CER, tableaux de résultats</span></li>
+        </ol>
+        <p class="scope">Le sujet comporte plusieurs axes : j’en traite une partie, précisée au fil du projet.</p>
+        <button class="btn g" id="nowopen" type="button">Voir le détail</button>
+      </div>
+    </article>
+
     <div class="console"><code id="qline">SELECT * FROM projets;</code><span id="qcount" role="status" aria-live="polite"></span></div>
     <div class="tabs" id="ftabs" role="group" aria-label="Filtrer par catégorie"></div>
     <div class="grid" id="grid"></div>

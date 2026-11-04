@@ -113,10 +113,9 @@ $$('[data-n]').forEach(b => counter.observe(b));
   c.addEventListener('pointermove', setX);
   c.addEventListener('pointerdown', setX);
   c.addEventListener('pointerleave', () => { mx = -1; });
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) draw(); }).observe(c);
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) start(); }).observe(c);
   const y = i => H - (pts[i] + Math.sin(t * 1.4 + i * .5) * .025) * H * .8 - 10;
-  function draw() {
-    if (!visible) return;
+  function step() {
     t += .016;
     x.clearRect(0, 0, W, H);
     x.strokeStyle = colors.line; x.lineWidth = 1;
@@ -137,9 +136,101 @@ $$('[data-n]').forEach(b => counter.observe(b));
     const label = 'S' + (hi + 1) + ' · ' + Math.round(pts[hi] * 100);
     x.textAlign = px > W - 80 ? 'right' : 'left';
     x.fillText(label, px + (px > W - 80 ? -12 : 12), Math.max(16, py - 12));
-    requestAnimationFrame(draw);
   }
-  draw();
+  let running = false;
+  function start() {
+    if (running) return;
+    if (reduce) { step(); return; }
+    running = true;
+    (function f() { if (!visible) { running = false; return; } step(); requestAnimationFrame(f); })();
+  }
+  start();
+})();
+
+/* ---------- réseau de données du hero ---------- */
+(() => {
+  const c = $('#net'), hero = $('.hero');
+  if (!c) return;
+  const x = c.getContext('2d');
+  let W = 0, H = 0, pts = [], px = -1e3, py = -1e3, vis = true, running = false;
+  const seed = () => {
+    const n = Math.min(70, Math.floor(W * H / 15000));
+    pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28 }));
+  };
+  const size = () => {
+    const r = Math.min(devicePixelRatio || 1, 2), w = hero.clientWidth;
+    H = hero.clientHeight;
+    c.width = w * r; c.height = H * r; x.setTransform(r, 0, 0, r, 0, 0);
+    if (w !== W) { W = w; seed(); } else W = w;
+    if (reduce) frame();
+  };
+  const D = 120;
+  function frame() {
+    x.clearRect(0, 0, W, H);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      if (!reduce) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+      }
+      x.beginPath(); x.arc(p.x, p.y, 1.8, 0, 7); x.fillStyle = colors.acc; x.fill();
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < D) { x.globalAlpha = (1 - d / D) * .4; x.strokeStyle = colors.acc; x.lineWidth = 1; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(q.x, q.y); x.stroke(); }
+      }
+      const dm = Math.hypot(p.x - px, p.y - py);
+      if (dm < 150) { x.globalAlpha = (1 - dm / 150) * .8; x.strokeStyle = colors.gold; x.lineWidth = 1.4; x.beginPath(); x.moveTo(p.x, p.y); x.lineTo(px, py); x.stroke(); }
+      x.globalAlpha = 1;
+    }
+  }
+  new ResizeObserver(size).observe(hero);
+  size();
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); px = e.clientX - r.left; py = e.clientY - r.top; });
+  hero.addEventListener('pointerleave', () => { px = py = -1e3; });
+  new IntersectionObserver(es => {
+    vis = es[0].isIntersecting;
+    if (!vis || running) return;
+    if (reduce) { frame(); return; }
+    running = true;
+    (function f() { if (!vis) { running = false; return; } frame(); requestAnimationFrame(f); })();
+  }).observe(hero);
+})();
+
+/* ---------- bandeau d’outils ---------- */
+(() => {
+  const tr = $('#track');
+  if (!tr) return;
+  const tools = ['Power BI', 'Power Query', 'Power Automate', 'TypeScript', 'Python', 'SQL', 'PostgreSQL', 'SAP BW', 'Talend', 'Streamlit', 'Machine learning', 'NLP'];
+  const html = tools.map(t => '<span>' + esc(t) + '</span>').join('');
+  tr.innerHTML = html + html;
+})();
+
+/* ---------- halos qui suivent le pointeur ---------- */
+$$('.miss article, .edu, .flow li').forEach(e => e.classList.add('spot'));
+if (matchMedia('(hover: hover)').matches) {
+  addEventListener('pointermove', e => {
+    const t = e.target.closest && e.target.closest('.spot');
+    if (!t) return;
+    const r = t.getBoundingClientRect();
+    t.style.setProperty('--mx', e.clientX - r.left + 'px');
+    t.style.setProperty('--my', e.clientY - r.top + 'px');
+  }, { passive: true });
+  addEventListener('pointerout', e => {
+    const t = e.target.closest && e.target.closest('.spot');
+    if (t) { t.style.removeProperty('--mx'); t.style.removeProperty('--my'); }
+  }, { passive: true });
+}
+
+/* ---------- forme d’onde du projet en cours ---------- */
+(() => {
+  const wv = $('#wave');
+  if (!wv) return;
+  const n = matchMedia('(max-width: 480px)').matches ? 34 : 64;
+  wv.innerHTML = Array.from({ length: n }, (_, i) => {
+    const h = .22 + .78 * Math.abs(Math.sin(i * .5) * Math.cos(i * .19 + 1));
+    return `<span style="--h:${h.toFixed(2)};--i:${i}"></span>`;
+  }).join('');
 })();
 
 /* ---------- parcours : pipeline ---------- */
@@ -164,6 +255,9 @@ function show(k) {
   pan.style.animation = 'none'; void pan.offsetWidth; pan.style.animation = '';
   pan.innerHTML = `<div class="when">${esc(p.w)}</div><h3>${esc(p.t)}</h3><p class="d">${esc(p.d)}</p><ul>${p.u.map(u => '<li>' + esc(u) + '</li>').join('')}</ul><div class="tags">${p.g.map(g => '<span class="tag">' + esc(g) + '</span>').join('')}</div>${p.go ? `<a class="go" href="${p.go}">Voir le détail de la mission ↑</a>` : ''}`;
 }
+const pkt = document.createElement('i');
+pkt.className = 'pkt'; pkt.setAttribute('aria-hidden', 'true');
+pipe.append(pkt);
 pipe.style.setProperty('--p', 0);
 show(3);
 pipe.style.setProperty('--p', 0);
@@ -193,6 +287,7 @@ const L = { all: 'Tout', pro: 'Expériences pro', rech: 'Recherche', acad: 'Acad
 const Q = { all: '', pro: 'pro', rech: 'recherche', acad: 'académique', perso: 'personnel' };
 const J = [
   { c: 'pro', t: 'COJOP Alpes 2030 · alternance', s: 'Single Source of Truth, automatisation cloud et dashboards de pilotage.', g: ['Power Automate', 'Power Query', 'Power BI', 'TypeScript'], b: ['Architecture « Single Source of Truth » centralisant les données de planification des 4 pôles olympiques', 'Gouvernance automatisée en TypeScript (Office Scripts) pour la qualité en temps réel', 'Workflows JSON et API REST (Power Automate) entre Excel, SharePoint, Teams et Smartsheet', 'Dashboards Power BI interactifs pour le pilotage, dont le Comité International Olympique', 'Recueil de besoins et facilitation digitale auprès des équipes transverses'], l: [['Voir la mission en détail', '#cojop']] },
+  { c: 'rech', live: true, t: 'Benchmark de transcription automatique · conférences musicales', s: 'Recherche en cours : évaluer et comparer des modèles de reconnaissance de la parole sur les conférences de la Philharmonie de Paris.', g: ['Python', 'ASR', 'NER', 'WER · CER'], b: ['Contexte : la Philharmonie de Paris conserve des centaines d’heures de conférences sur la musique, transcrites automatiquement avec WhisperX', 'Problème : les erreurs de transcription touchent surtout les noms propres et le vocabulaire spécialisé, puis se propagent à la reconnaissance d’entités nommées et à la recherche d’extraits', 'Axe 1 : comparer des modèles de transcription open source ou open weights (dont Qwen3-ASR et Voxtral) à la baseline WhisperX, en WER et CER, y compris sur les entités nommées', 'Axe 2 : reconnaître les entités nommées pendant la transcription ou en post-correction', 'Axe 3 : enrichir le jeu d’évaluation grâce à la post-correction automatique', 'Technologies du sujet : Python, PyTorch, transformers, vLLM, Ollama, serveur de calcul GPU avec gestionnaire de jobs', 'Cadre : projet Music Graph RAG (Inria, Philharmonie de Paris), mené en parallèle de mes cours et de mon alternance, du semestre 10 jusqu’en juin. Le sujet comporte plusieurs axes, dont je traite une partie.'], l: [] },
   { c: 'rech', t: 'Projet JADE · Justice Algorithmique des Élections', s: 'ETL Python, ML sans data leakage et dashboard Streamlit pour le contentieux électoral.', g: ['Python', 'PostgreSQL', 'pytest', 'Streamlit'], b: ['Architecture ETL robuste en Python orienté objet, logs automatisés, PostgreSQL normalisé', 'Tests unitaires pytest et système strict de traitement des rejets', 'Modélisation prédictive avec résolution du data leakage (GroupShuffleSplit)', 'Dashboard Streamlit pour l’exploration du corpus juridique. Collaboration CRJ (droit) et LJK (informatique)'], l: [['Support de soutenance (PDF)', 'Support_soutenance_JADE.pdf']] },
   { c: 'pro', t: 'Annemasse Agglo · Data Analyst / BI Engineer', s: 'Reporting Power BI de A à Z pour le réseau d’eau potable, avec détection d’anomalies par ML.', g: ['Power BI', 'Oracle SQL', 'ML', 'RGPD'], b: ['Dashboards Power BI interactifs et distributions multicanales automatisées', 'Pipelines d’extraction Oracle SQL pour préparer la télérelève (IoT)', 'Machine learning pour détecter doublons et incohérences', 'KPI d’abonnement, de facturation et de recouvrement', 'Site interne de gestion, chatbot d’orientation et procédures de gouvernance RGPD'], l: [] },
   { c: 'pro', t: 'Brenntag France · Data Engineer / SAP BI', s: 'Refonte d’un cube SAP BW pour le reporting des achats.', g: ['SAP BW', 'Modélisation', 'BI'], b: ['Modélisation multidimensionnelle sous SAP BW pour réduire les temps de traitement', 'Cadre de reporting granulaire sur la performance fournisseurs et les volumes d’achat', 'Fiabilisation des KPI d’approvisionnement'], l: [] },
@@ -236,9 +331,9 @@ function render(f) {
   list.forEach((p, i) => {
     const n = p.l.filter(l => l[1][0] !== '#').length;
     const card = document.createElement('button');
-    card.className = 'card'; card.type = 'button';
+    card.className = 'card spot'; card.type = 'button';
     card.style.animationDelay = Math.min(i, 12) * 40 + 'ms';
-    card.innerHTML = `<small>${L[p.c]}</small><h4>${esc(p.t)}</h4><p>${esc(p.s)}</p><div class="tags">${p.g.slice(0, 3).map(t => '<span class="tag">' + esc(t) + '</span>').join('')}</div><span class="more">Voir le détail${n ? ' · ' + n + ' livrable' + (n > 1 ? 's' : '') : ''}</span>`;
+    card.innerHTML = `<small>${p.live ? '<i class="dotl"></i>' : ''}${L[p.c]}${p.live ? ' · en cours' : ''}</small><h4>${esc(p.t)}</h4><p>${esc(p.s)}</p><div class="tags">${p.g.slice(0, 3).map(t => '<span class="tag">' + esc(t) + '</span>').join('')}</div><span class="more">Voir le détail${n ? ' · ' + n + ' livrable' + (n > 1 ? 's' : '') : ''}</span>`;
     card.addEventListener('click', () => open(p));
     gr.append(card);
   });
@@ -246,7 +341,7 @@ function render(f) {
   $('#qcount').textContent = list.length + ' résultat' + (list.length > 1 ? 's' : '');
 }
 function open(p) {
-  dl.innerHTML = `<button class="x" type="button" aria-label="Fermer">✕</button><span class="tag">${L[p.c]}</span><h3 id="dlgt">${esc(p.t)}</h3><p class="mut">${esc(p.s)}</p>${p.b.length ? '<ul>' + p.b.map(b => '<li>' + esc(b) + '</li>').join('') + '</ul>' : ''}<div class="tags">${p.g.map(t => '<span class="tag">' + esc(t) + '</span>').join('')}</div>${p.l.length ? '<div class="links2">' + p.l.map(l => l[1][0] === '#' ? `<a class="btn p" data-close href="${l[1]}">${esc(l[0])}</a>` : `<a class="btn g" href="${esc(href(l[1]))}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join('') + '</div>' : ''}`;
+  dl.innerHTML = `<button class="x" type="button" aria-label="Fermer">✕</button><span class="tag">${L[p.c]}${p.live ? ' · en cours' : ''}</span><h3 id="dlgt">${esc(p.t)}</h3><p class="mut">${esc(p.s)}</p>${p.b.length ? '<ul>' + p.b.map(b => '<li>' + esc(b) + '</li>').join('') + '</ul>' : ''}<div class="tags">${p.g.map(t => '<span class="tag">' + esc(t) + '</span>').join('')}</div>${p.l.length ? '<div class="links2">' + p.l.map(l => l[1][0] === '#' ? `<a class="btn p" data-close href="${l[1]}">${esc(l[0])}</a>` : `<a class="btn g" href="${esc(href(l[1]))}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join('') + '</div>' : ''}`;
   $('.x', dl).addEventListener('click', () => dl.close());
   $$('[data-close]', dl).forEach(a => a.addEventListener('click', () => dl.close()));
   dl.showModal ? dl.showModal() : dl.setAttribute('open', '');
@@ -263,6 +358,7 @@ Object.keys(L).forEach((k, i) => {
 });
 render('all');
 dl.addEventListener('click', e => { if (e.target === dl) dl.close(); });
+$('#nowopen').addEventListener('click', () => open(J.find(p => p.live)));
 
 /* ---------- CV ---------- */
 const cvd = $('#cvdlg');
